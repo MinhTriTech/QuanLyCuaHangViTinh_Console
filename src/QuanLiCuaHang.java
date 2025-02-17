@@ -1,9 +1,11 @@
 import java.util.Scanner;
 
 public class QuanLiCuaHang {
+    public static Scanner sc = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         int checkMenu_1 = 1, menu_1;
+        DanhSachTaiKhoan dsTaiKhoan = new DanhSachTaiKhoan();
 
         while (checkMenu_1 == 1) {
             System.out.println("===Chon===");
@@ -17,7 +19,7 @@ public class QuanLiCuaHang {
                 System.out.println("Dang dang nhap...");
             }
             if (menu_1 == 2) {
-                System.out.println("Dang dang ky...");
+                dsTaiKhoan.themKh();
             }
             if (menu_1 == 3) {
                 checkMenu_1 = 0;
