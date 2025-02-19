@@ -40,24 +40,24 @@ public class KhachHang extends TaiKhoan{
         String temp;
         setRandomId();
 
-        QuanLiCuaHang.sc.nextLine();
+        QuanLyCuaHang.sc.nextLine();
         do {
             System.out.print("Nhap ten dang nhap: ");
-            temp = QuanLiCuaHang.sc.nextLine();}
+            temp = QuanLyCuaHang.sc.nextLine();}
         while(checkTenDangNhap(temp));
         setTenDn(temp.trim());
 
         System.out.print("Nhap ho va ten: ");
-        temp = QuanLiCuaHang.sc.nextLine();
+        temp = QuanLyCuaHang.sc.nextLine();
         setHoVaTen(temp.trim());
 
         System.out.print("Nhap mat khau: ");
-        temp = QuanLiCuaHang.sc.nextLine();
+        temp = QuanLyCuaHang.sc.nextLine();
 
         String temp_test;
         do {
             System.out.print("Nhap lai mat khau: ");
-            temp_test = QuanLiCuaHang.sc.nextLine();}
+            temp_test = QuanLyCuaHang.sc.nextLine();}
         while(!temp.equals(temp_test));
         setMatKhau(temp.trim());
 
@@ -65,16 +65,16 @@ public class KhachHang extends TaiKhoan{
 
         do {
             System.out.print("Nhap so dien thoai: ");
-            temp = QuanLiCuaHang.sc.nextLine();}
+            temp = QuanLyCuaHang.sc.nextLine();}
         while(!checkSoDienThoai(temp));
         setSoDienThoai(temp.trim());
 
         System.out.print("Nhap email: ");
-        temp = QuanLiCuaHang.sc.nextLine();
+        temp = QuanLyCuaHang.sc.nextLine();
         setEmail(temp.trim());
 
         System.out.print("Nhap dia chi: ");
-        temp = QuanLiCuaHang.sc.nextLine();
+        temp = QuanLyCuaHang.sc.nextLine();
         setDiaChi(temp.trim());
 
     }

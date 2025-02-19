@@ -18,21 +18,21 @@ public class QuanLy extends TaiKhoan{
 
         do {
             System.out.print("Nhap ten dang nhap: ");
-            temp = QuanLiCuaHang.sc.nextLine();}
+            temp = QuanLyCuaHang.sc.nextLine();}
         while(checkTenDangNhap(temp)==true);
         setTenDn(temp);
 
         System.out.print("Nhap ho va ten khach hang: ");
-        temp = QuanLiCuaHang.sc.nextLine();
+        temp = QuanLyCuaHang.sc.nextLine();
         setHoVaTen(temp);
 
         System.out.print("Nhap mat khau: ");
-        temp = QuanLiCuaHang.sc.nextLine();
+        temp = QuanLyCuaHang.sc.nextLine();
 
         String temp_test;
         do {
             System.out.print("Nhap lai mat khau: ");
-            temp_test = QuanLiCuaHang.sc.nextLine();}
+            temp_test = QuanLyCuaHang.sc.nextLine();}
         while(temp.equals(temp_test));
         setMatKhau(temp);
 
