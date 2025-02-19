@@ -138,6 +138,7 @@ public class QuanLyCuaHang {
 
     public static void menuQuanLy() {
         int checkMenu_3 = 1, menu_3;
+        DanhSachSanPham dsSanPham = new DanhSachSanPham();
 
         while (checkMenu_3 == 1) {
             System.out.println("===Chon===");
@@ -168,7 +169,7 @@ public class QuanLyCuaHang {
                         System.out.println("Quan ly xem san pham");
                     }
                     if (menu_3_1 == 2) {
-                        System.out.println("Quan ly them san pham (root)");
+                        dsSanPham.them();
                     }
                     if (menu_3_1 == 3) {
                         System.out.println("Quan ly sua san pham");
