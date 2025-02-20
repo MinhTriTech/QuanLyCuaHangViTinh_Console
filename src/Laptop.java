@@ -31,37 +31,37 @@ public class Laptop extends SanPham{
 
         System.out.print("Nhap ten san pham: ");
         temp = QuanLyCuaHang.sc.nextLine();
-        setTenSp(temp);
+        setTenSp(temp.trim());
 
         do {
             System.out.print("Nhap so luong: ");
             temp = QuanLyCuaHang.sc.nextLine();}
-        while(!checkSoLuong(temp));
-        setSoLuong(temp);
+        while(!checkSoLuong(temp.trim()));
+        setSoLuong(temp.trim());
 
         do {
             System.out.print("Nhap gia: ");
             temp = QuanLyCuaHang.sc.nextLine();}
-        while(!checkGia(temp));
-        setGia(temp);
+        while(!checkGia(temp.trim()));
+        setGia(temp.trim());
 
         System.out.print("Nhap mo ta: ");
         temp = QuanLyCuaHang.sc.nextLine();
-        setMoTa(temp);
+        setMoTa(temp.trim());
 
         System.out.print("Nhap mau sac: ");
         temp = QuanLyCuaHang.sc.nextLine();
-        setMauSac(temp);
+        setMauSac(temp.trim());
 
         do {
             System.out.print("Nhap gia khuyen mai: ");
             temp = QuanLyCuaHang.sc.nextLine();}
-        while(!checkGia(temp));
-        setKhuyenMai(temp);
+        while(!checkGiaKm(temp.trim()));
+        setKhuyenMai(temp.trim());
 
         System.out.print("Nhap dung luong: ");
         temp = QuanLyCuaHang.sc.nextLine();
-        setDungLuong(temp);
+        setDungLuong(temp.trim());
 
         setLoaiSp("LAPTOP");
     }

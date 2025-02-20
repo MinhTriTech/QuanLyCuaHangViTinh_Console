@@ -15,8 +15,6 @@ public class DanhSachSanPham implements IDanhSach{
                 file.createNewFile();
             }
 
-            BufferedWriter fr = new BufferedWriter(new FileWriter(file, true));
-
             System.out.println("Nhap so luong san pham can them: ");
             int slTemp = QuanLyCuaHang.sc.nextInt();
             for (int i = 1; i<= slTemp; i++) {
@@ -28,31 +26,42 @@ public class DanhSachSanPham implements IDanhSach{
                 int luaChonSp = QuanLyCuaHang.sc.nextInt();
 
                 if (luaChonSp == 1) {
+                    BufferedWriter fr = new BufferedWriter(new FileWriter(file, true));
+
                     Laptop sp = new Laptop();
                     sp.nhap();
 
                     fr.write(sp.toString());
                     fr.newLine();
+                    fr.close();
+
                     System.out.println("-Them san pham thanh cong-");
                 }
                 if (luaChonSp == 2) {
+                    BufferedWriter fr = new BufferedWriter(new FileWriter(file, true));
+
                     PhuKien sp = new PhuKien();
                     sp.nhap();
 
                     fr.write(sp.toString());
                     fr.newLine();
+                    fr.close();
+
                     System.out.println("-Them san pham thanh cong-");
                 }
                 if (luaChonSp == 3) {
+                    BufferedWriter fr = new BufferedWriter(new FileWriter(file, true));
+
                     TaiNgheLoa sp = new TaiNgheLoa();
                     sp.nhap();
 
                     fr.write(sp.toString());
                     fr.newLine();
+                    fr.close();
+
                     System.out.println("-Them san pham thanh cong-");
                 }
             }
-            fr.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

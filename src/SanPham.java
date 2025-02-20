@@ -13,7 +13,7 @@ public abstract class SanPham {
     String khuyenMai;
     String loaiSp;
 
-    private static final String FILE_NAME_SP = "DanhSachTaiKhoan.txt";
+    private static final String FILE_NAME_SP = "DanhSachSanPham.txt";
 
     public SanPham() {
     }
@@ -111,9 +111,9 @@ public abstract class SanPham {
 
         if (file.exists()) {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-                String line = reader.readLine();
-                if (line != null) {
-                    String []mang = line.split(";");
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] mang = line.split(";");
                     lastId = mang[0];
                 }
             } catch (IOException e) {
@@ -125,6 +125,7 @@ public abstract class SanPham {
         String newId = String.format("SP%05d", num);
         setMaSp(newId);
     }
+
 
     boolean checkSoLuong(String input) {
         if (input == null || input.isEmpty()) {
@@ -154,6 +155,25 @@ public abstract class SanPham {
         try {
             double number = Double.parseDouble(input);
             if (number > 0) {
+                return true;
+            } else {
+                System.out.println("Vui long nhap lai gia !!!");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    boolean checkGiaKm(String input) {
+        if (input == null || input.isEmpty()) {
+            System.out.println("Vui long nhap lai gia !!!");
+            return false;
+        }
+
+        try {
+            double number = Double.parseDouble(input);
+            if (number >= 0) {
                 return true;
             } else {
                 System.out.println("Vui long nhap lai gia !!!");

@@ -76,9 +76,9 @@ public abstract class TaiKhoan {
 
         if (file.exists()) {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-                String line = reader.readLine();
-                if (line != null) {
-                    String []mang = line.split(";");
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] mang = line.split(";");
                     lastId = mang[0];
                 }
             } catch (IOException e) {
