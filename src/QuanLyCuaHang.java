@@ -166,7 +166,7 @@ public class QuanLyCuaHang {
                     menu_3_1 = sc.nextInt();
 
                     if (menu_3_1 == 1) {
-                        System.out.println("Quan ly xem san pham");
+                        dsSanPham.xuat();
                     }
                     if (menu_3_1 == 2) {
                         dsSanPham.them();

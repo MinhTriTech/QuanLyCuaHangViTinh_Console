@@ -50,4 +50,17 @@ public class PhuKien extends SanPham{
 
         setLoaiSp("PHUKIEN");
     }
+
+    @Override
+    void xuatThongTinSp() {
+        int[] columnWidths = {10, 20, 10, 10, 30, 10, 12, 15, 10};
+        String[] values = {
+                getMaSp(), getTenSp(), String.valueOf(getSoLuong()),
+                String.valueOf(getGia()), getMoTa(), getMauSac(),
+                getKhuyenMai(), getLoaiSp(), ""
+        };
+
+        printMultiLineRow(values, columnWidths);
+        printSeparator(columnWidths);
+    }
 }

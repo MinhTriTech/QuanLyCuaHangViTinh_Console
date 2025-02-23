@@ -185,4 +185,59 @@ public abstract class SanPham {
     }
 
     abstract void nhap();
+    abstract void xuatThongTinSp();
+
+    public static void xuatHeaderSp() {
+        int[] columnWidths = {10, 20, 10, 10, 30, 10, 12, 15, 10};
+        String[] headers = {"Mã SP", "Tên SP", "Số lượng", "Giá", "Mô tả", "Màu sắc", "Khuyến mãi", "Loại SP", "Dung lượng"};
+
+        printSeparator(columnWidths);
+        printRow(headers, columnWidths);
+        printSeparator(columnWidths);
+    }
+
+    void printMultiLineRow(String[] row, int[] columnWidths) {
+        int maxLines = 1;
+        String[][] wrappedColumns = new String[row.length][];
+
+        for (int i = 0; i < row.length; i++) {
+            wrappedColumns[i] = wrapText(row[i], columnWidths[i]);
+            maxLines = Math.max(maxLines, wrappedColumns[i].length);
+        }
+
+        for (int line = 0; line < maxLines; line++) {
+            for (int i = 0; i < row.length; i++) {
+                String text = (line < wrappedColumns[i].length) ? wrappedColumns[i][line] : "";
+                System.out.printf("| %-" + columnWidths[i] + "s ", text);
+            }
+            System.out.println("|");
+        }
+    }
+
+    String[] wrapText(String text, int width) {
+        int lines = (int) Math.ceil((double) text.length() / width);
+        String[] result = new String[lines];
+
+        for (int i = 0; i < lines; i++) {
+            int start = i * width;
+            int end = Math.min(start + width, text.length());
+            result[i] = text.substring(start, end);
+        }
+
+        return result;
+    }
+
+    static void printSeparator(int[] columnWidths) {
+        for (int width : columnWidths) {
+            System.out.print("+-" + "-".repeat(width) + "-");
+        }
+        System.out.println("+");
+    }
+
+    static void printRow(String[] row, int[] columnWidths) {
+        for (int i = 0; i < row.length; i++) {
+            System.out.printf("| %-" + columnWidths[i] + "s ", row[i]);
+        }
+        System.out.println("|");
+    }
 }

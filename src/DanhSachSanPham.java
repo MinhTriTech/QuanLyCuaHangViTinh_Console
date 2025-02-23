@@ -79,6 +79,29 @@ public class DanhSachSanPham implements IDanhSach{
 
     @Override
     public void xuat() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
+            String st;
+            System.out.println("+--------------DANH SACH SAN PHAM-----------------+");
+            SanPham.xuatHeaderSp();
 
+            for(int i=1; (st = br.readLine()) != null ; i++) {
+                String s[] = st.split(";");
+                if (s[7].equals("LAPTOP")) {
+                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
+                    sp.xuatThongTinSp();
+                }
+                else if (s[7].equals("PHUKIEN")) {
+                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    sp.xuatThongTinSp();
+                } else {
+                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    sp.xuatThongTinSp();
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
