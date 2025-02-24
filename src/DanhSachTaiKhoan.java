@@ -9,47 +9,28 @@ public class DanhSachTaiKhoan implements IDanhSach{
 
     @Override
     public void them() { // Them tai khoan QL
-//        try {
-//            File file = new File(FILE_NAME);
-//
-//            if (!file.exists()) {
-//                file.createNewFile();
-//            }
-//
-//            int count = 0;
-//
-//            BufferedReader fw = new BufferedReader(new FileReader(file));
-//            while (fw.readLine() != null) {
-//                count++;
-//            }
-//
-//            dsTaiKhoan = Arrays.copyOf(dsTaiKhoan, count);
-//
-//            BufferedReader ft = new BufferedReader(new FileReader(file));
-//
-//            for (int i = 0; i < dsTaiKhoan.length; i++) {
-//                String s[] = ft.readLine().split(";");
-//                dsTaiKhoan[i] = new HoaDon(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], s[8], s[9]);
-//            }
-//
-//            BufferedWriter fr = new BufferedWriter(new FileWriter(file, true));
-//            boolean signal = false;
-//            HoaDon hd = new HoaDon();
-//            System.out.println("--Nhap thong tin hoa don--");
-//            hd.nhap();
-//
-//            if (signal == false) {
-//                fr.write(hd.toString());
-//                fr.newLine();
-//                System.out.println("-Them hoa don thanh cong-");
-//            }
-//
-//            fr.close();
-//            ft.close();
-//            fw.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        try {
+            File file = new File(FILE_NAME);
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            BufferedWriter fr = new BufferedWriter(new FileWriter(file, true));
+
+            TaiKhoan tk = new QuanLy();
+            System.out.println("--Nhap thong tin--");
+            tk.nhap();
+
+            fr.write(tk.toString());
+            fr.newLine();
+            System.out.println("-Thanh cong-");
+
+            fr.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void dangKyKh() { // Them tai khoan KH
@@ -60,36 +41,15 @@ public class DanhSachTaiKhoan implements IDanhSach{
                 file.createNewFile();
             }
 
-            int count = 0;
-
-            BufferedReader fw = new BufferedReader(new FileReader(file));
-            while (fw.readLine() != null) {
-                count++;
-            }
-            fw.close();
-
-            dsTaiKhoan = Arrays.copyOf(dsTaiKhoan, count);
-
-            BufferedReader ft = new BufferedReader(new FileReader(file));
-            for (int i = 0; i < dsTaiKhoan.length; i++) {
-                String s[] = ft.readLine().split(";");
-                if(s[4].equals("KH")) {
-                    dsTaiKhoan[i] = new KhachHang(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7]);
-                } else {
-                    dsTaiKhoan[i] = new QuanLy(s[0], s[1], s[2], s[3], s[4]);
-                }
-            }
-            ft.close();
-
             BufferedWriter fr = new BufferedWriter(new FileWriter(file, true));
 
             TaiKhoan tk = new KhachHang();
-            System.out.println("--Nhap thong tin dang ky--");
+            System.out.println("--Nhap thong tin--");
             tk.nhap();
 
             fr.write(tk.toString());
             fr.newLine();
-            System.out.println("-Dang ky thanh cong-");
+            System.out.println("-Thanh cong-");
 
             fr.close();
 
@@ -258,7 +218,7 @@ public class DanhSachTaiKhoan implements IDanhSach{
             QuanLyCuaHang.sc.nextLine();
             System.out.println("Nhap ma tai khoan ban muon tim:");
             maTk = QuanLyCuaHang.sc.nextLine();
-            maTk = maTk.toUpperCase();
+            maTk = maTk.toUpperCase().trim();
             System.out.println("+--------------KET QUA TIM KIEM-----------------+");
             TaiKhoan.xuatHeaderTk();
 
@@ -300,7 +260,7 @@ public class DanhSachTaiKhoan implements IDanhSach{
             QuanLyCuaHang.sc.nextLine();
             System.out.println("Nhap thong tin tai khoan ban muon tim:");
             thongTin = QuanLyCuaHang.sc.nextLine();
-            thongTin = thongTin.toUpperCase();
+            thongTin = thongTin.toUpperCase().trim();
             System.out.println("+--------------KET QUA TIM KIEM-----------------+");
             TaiKhoan.xuatHeaderTk();
 

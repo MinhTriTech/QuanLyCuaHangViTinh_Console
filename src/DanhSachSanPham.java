@@ -115,7 +115,7 @@ public class DanhSachSanPham implements IDanhSach{
             QuanLyCuaHang.sc.nextLine();
             System.out.println("Nhap ma san pham ban muon tim:");
             maSp = QuanLyCuaHang.sc.nextLine();
-            maSp = maSp.toUpperCase();
+            maSp = maSp.toUpperCase().trim();
             System.out.println("+--------------KET QUA TIM KIEM-----------------+");
             SanPham.xuatHeaderSp();
 
@@ -163,7 +163,7 @@ public class DanhSachSanPham implements IDanhSach{
             QuanLyCuaHang.sc.nextLine();
             System.out.println("Nhap thong tin san pham ban muon tim:");
             thongTin = QuanLyCuaHang.sc.nextLine();
-            thongTin = thongTin.toUpperCase();
+            thongTin = thongTin.toUpperCase().trim();
             System.out.println("+--------------KET QUA TIM KIEM-----------------+");
             SanPham.xuatHeaderSp();
 

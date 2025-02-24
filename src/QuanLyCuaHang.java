@@ -427,10 +427,10 @@ public class QuanLyCuaHang {
                             menu_3_4_1 = sc.nextInt();
 
                             if (menu_3_4_1 == 1) {
-                                System.out.println("Quan ly them tai khoan khach hang");
+                                dsTaiKhoan.dangKyKh();
                             }
                             if (menu_3_4_1 == 2) {
-                                System.out.println("Quan ly them tai khoan quan ly");
+                                dsTaiKhoan.them();
                             }
                             if (menu_3_4_1 == 3) {
                                 checkMenu_3_4_1 = 0;

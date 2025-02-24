@@ -131,7 +131,7 @@ public abstract class TaiKhoan {
 
     public static void xuatHeaderTk() {
         int[] columnWidths = {10, 20, 10, 25, 10, 20, 30, 20};
-        String[] headers = {"Mã TK", "Tên TK", "Mật khẩu", "Họ và tên", "Quyền TK", "Số điện thoại", "Email", "Địa chỉ"};
+        String[] headers = {"Ma TK", "Ten TK", "Mat khau", "Ho và ten", "Quyen TK", "So dien thoai", "Email", "Đia chi"};
 
         printSeparator(columnWidths);
         printRow(headers, columnWidths);

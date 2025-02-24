@@ -16,13 +16,14 @@ public class QuanLy extends TaiKhoan{
         String temp;
         setRandomId();
 
+        QuanLyCuaHang.sc.nextLine();
         do {
             System.out.print("Nhap ten dang nhap: ");
             temp = QuanLyCuaHang.sc.nextLine();}
         while(checkTenDangNhap(temp)==true);
         setTenDn(temp);
 
-        System.out.print("Nhap ho va ten khach hang: ");
+        System.out.print("Nhap ho va ten: ");
         temp = QuanLyCuaHang.sc.nextLine();
         setHoVaTen(temp);
 
@@ -33,10 +34,10 @@ public class QuanLy extends TaiKhoan{
         do {
             System.out.print("Nhap lai mat khau: ");
             temp_test = QuanLyCuaHang.sc.nextLine();}
-        while(temp.equals(temp_test));
+        while(!temp.equals(temp_test));
         setMatKhau(temp);
 
-        setQuyenTk("KH");
+        setQuyenTk("QL");
     }
 
     @Override

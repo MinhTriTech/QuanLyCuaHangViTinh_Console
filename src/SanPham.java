@@ -189,7 +189,7 @@ public abstract class SanPham {
 
     public static void xuatHeaderSp() {
         int[] columnWidths = {10, 20, 10, 10, 30, 10, 12, 15, 10};
-        String[] headers = {"Mã SP", "Tên SP", "Số lượng", "Giá", "Mô tả", "Màu sắc", "Khuyến mãi", "Loại SP", "Dung lượng"};
+        String[] headers = {"Ma SP", "Ten SP", "So luong", "Gia", "Mo ta", "Mau sac", "Khuyen mai", "Loai SP", "Dung luong"};
 
         printSeparator(columnWidths);
         printRow(headers, columnWidths);
