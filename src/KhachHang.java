@@ -93,4 +93,17 @@ public class KhachHang extends TaiKhoan{
                 + email + ";"
                 + diaChi ;
     }
+
+    @Override
+    void xuatThongTinTk() {
+        int[] columnWidths = {10, 20, 10, 25, 10, 20, 30, 20};
+        String[] values = {
+                getMaTk(), getTenDn(), getMatKhau(),
+                getHoVaTen(), getQuyenTk(), getSoDienThoai(),
+                getEmail(), getDiaChi()
+        };
+
+        printMultiLineRow(values, columnWidths);
+        printSeparator(columnWidths);
+    }
 }

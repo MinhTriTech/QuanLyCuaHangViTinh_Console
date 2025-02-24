@@ -55,8 +55,8 @@ public class TaiNgheLoa extends SanPham{
     void xuatThongTinSp() {
         int[] columnWidths = {10, 20, 10, 10, 30, 10, 12, 15, 10};
         String[] values = {
-                getMaSp(), getTenSp(), String.valueOf(getSoLuong()),
-                String.valueOf(getGia()), getMoTa(), getMauSac(),
+                getMaSp(), getTenSp(), getSoLuong(),
+                getGia(), getMoTa(), getMauSac(),
                 getKhuyenMai(), getLoaiSp(), ""
         };
 

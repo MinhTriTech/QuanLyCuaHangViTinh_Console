@@ -38,4 +38,17 @@ public class QuanLy extends TaiKhoan{
 
         setQuyenTk("KH");
     }
+
+    @Override
+    void xuatThongTinTk() {
+        int[] columnWidths = {10, 20, 10, 25, 10, 20, 30, 20};
+        String[] values = {
+                getMaTk(), getTenDn(), getMatKhau(),
+                getHoVaTen(), getQuyenTk(), "",
+                "", ""
+        };
+
+        printMultiLineRow(values, columnWidths);
+        printSeparator(columnWidths);
+    }
 }

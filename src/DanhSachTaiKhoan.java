@@ -164,6 +164,172 @@ public class DanhSachTaiKhoan implements IDanhSach{
 
     @Override
     public void xuat() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
+            String st;
+            System.out.println("+--------------DANH SACH TAI KHOAN-----------------+");
+            TaiKhoan.xuatHeaderTk();
 
+            for(int i=1; (st = br.readLine()) != null ; i++) {
+                String s[] = st.split(";");
+                if (s[4].equals("QL")) {
+                    QuanLy tk = new QuanLy(s[0],s[1],s[2],s[3],s[4]);
+                    tk.xuatThongTinTk();
+                }
+                if (s[4].equals("KH")) {
+                    KhachHang tk = new KhachHang(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    tk.xuatThongTinTk();
+                }
+            }
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void xuatDanhSachTkQlFirst() {
+        try {
+            String st;
+            System.out.println("+--------------DANH SACH TAI KHOAN-----------------+");
+            TaiKhoan.xuatHeaderTk();
+
+            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
+            for(int i=1; (st = br.readLine()) != null ; i++) {
+                String s[] = st.split(";");
+                if (s[4].equals("QL")) {
+                    QuanLy tk = new QuanLy(s[0],s[1],s[2],s[3],s[4]);
+                    tk.xuatThongTinTk();
+                }
+            }
+            br.close();
+
+            BufferedReader br_temp = new BufferedReader(new FileReader(FILE_NAME));
+            for(int i=1; (st = br_temp.readLine()) != null ; i++) {
+                String s[] = st.split(";");
+                if (s[4].equals("KH")) {
+                    KhachHang tk = new KhachHang(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    tk.xuatThongTinTk();
+                }
+            }
+            br_temp.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void xuatDanhSachTkKhFirst() {
+        try {
+            String st;
+            System.out.println("+--------------DANH SACH TAI KHOAN-----------------+");
+            TaiKhoan.xuatHeaderTk();
+
+            BufferedReader br_temp = new BufferedReader(new FileReader(FILE_NAME));
+            for(int i=1; (st = br_temp.readLine()) != null ; i++) {
+                String s[] = st.split(";");
+                if (s[4].equals("KH")) {
+                    KhachHang tk = new KhachHang(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    tk.xuatThongTinTk();
+                }
+            }
+            br_temp.close();
+
+            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
+            for(int i=1; (st = br.readLine()) != null ; i++) {
+                String s[] = st.split(";");
+                if (s[4].equals("QL")) {
+                    QuanLy tk = new QuanLy(s[0],s[1],s[2],s[3],s[4]);
+                    tk.xuatThongTinTk();
+                }
+            }
+            br.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void timKiemTheoMaTk() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
+            String st, maTk;
+            boolean check = false;
+            QuanLyCuaHang.sc.nextLine();
+            System.out.println("Nhap ma tai khoan ban muon tim:");
+            maTk = QuanLyCuaHang.sc.nextLine();
+            maTk = maTk.toUpperCase();
+            System.out.println("+--------------KET QUA TIM KIEM-----------------+");
+            TaiKhoan.xuatHeaderTk();
+
+            for(int i=1; (st = br.readLine()) != null ; i++) {
+                String s[] = st.split(";");
+                if (s[4].equals("QL")) {
+                    QuanLy tk = new QuanLy(s[0],s[1],s[2],s[3],s[4]);
+                    if(tk.getMaTk().equals(maTk)) {
+                        check = true;
+                        tk.xuatThongTinTk();
+                    }
+                }
+                if (s[4].equals("KH")) {
+                    KhachHang tk = new KhachHang(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(tk.getMaTk().equals(maTk)) {
+                        check = true;
+                        tk.xuatThongTinTk();
+                    }
+                }
+            }
+
+            br.close();
+
+            if(check == false) {
+                System.out.println("+--------------KHONG CO TAI KHOAN TUONG UNG-----------------+");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void timKiemTongQuatTk() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
+            String st, thongTin;
+            boolean check = false;
+            QuanLyCuaHang.sc.nextLine();
+            System.out.println("Nhap thong tin tai khoan ban muon tim:");
+            thongTin = QuanLyCuaHang.sc.nextLine();
+            thongTin = thongTin.toUpperCase();
+            System.out.println("+--------------KET QUA TIM KIEM-----------------+");
+            TaiKhoan.xuatHeaderTk();
+
+            for(int i=1; (st = br.readLine()) != null ; i++) {
+                String s[] = st.split(";");
+                if (s[4].equals("QL")) {
+                    QuanLy tk = new QuanLy(s[0],s[1],s[2],s[3],s[4]);
+                    if(tk.getMaTk().toUpperCase().contains(thongTin) || tk.getTenDn().toUpperCase().contains(thongTin)
+                            || tk.getHoVaTen().toUpperCase().contains(thongTin) || tk.getQuyenTk().toUpperCase().contains(thongTin)) {
+                        check = true;
+                        tk.xuatThongTinTk();
+                    }
+                }
+                if (s[4].equals("KH")) {
+                    KhachHang tk = new KhachHang(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(tk.getMaTk().toUpperCase().contains(thongTin) || tk.getTenDn().toUpperCase().contains(thongTin)
+                            || tk.getHoVaTen().toUpperCase().contains(thongTin) || tk.getQuyenTk().toUpperCase().contains(thongTin)
+                                || tk.getSoDienThoai().toUpperCase().contains(thongTin) || tk.getEmail().toUpperCase().contains(thongTin)
+                                    || tk.getDiaChi().toUpperCase().contains(thongTin)) {
+                        check = true;
+                        tk.xuatThongTinTk();
+                    }
+                }
+            }
+
+            if(check == false) {
+                System.out.println("+--------------KHONG CO TAI KHOAN TUONG UNG-----------------+");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

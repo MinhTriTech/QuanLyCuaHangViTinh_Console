@@ -104,4 +104,101 @@ public class DanhSachSanPham implements IDanhSach{
             e.printStackTrace();
         }
     }
+
+    public void timKiemTheoMaSp() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
+            String st, maSp;
+            boolean check = false;
+            QuanLyCuaHang.sc.nextLine();
+            System.out.println("Nhap ma san pham ban muon tim:");
+            maSp = QuanLyCuaHang.sc.nextLine();
+            maSp = maSp.toUpperCase();
+            System.out.println("+--------------KET QUA TIM KIEM-----------------+");
+            SanPham.xuatHeaderSp();
+
+            for(int i=1; (st = br.readLine()) != null ; i++) {
+                String s[] = st.split(";");
+                if (s[7].equals("LAPTOP")) {
+                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
+                    if(sp.getMaSp().equals(maSp)) {
+                        check = true;
+                        sp.xuatThongTinSp();
+                    }
+                }
+                else if (s[7].equals("PHUKIEN")) {
+                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(sp.getMaSp().equals(maSp)) {
+                        check = true;
+                        sp.xuatThongTinSp();
+                    }
+                } else {
+                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(sp.getMaSp().equals(maSp)) {
+                        check = true;
+                        sp.xuatThongTinSp();
+                    }
+                }
+            }
+
+            if(check == false) {
+                System.out.println("+--------------KHONG CO SAN PHAM TUONG UNG-----------------+");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void timKiemTongQuatSp() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
+            String st, thongTin;
+            boolean check = false;
+            QuanLyCuaHang.sc.nextLine();
+            System.out.println("Nhap thong tin san pham ban muon tim:");
+            thongTin = QuanLyCuaHang.sc.nextLine();
+            thongTin = thongTin.toUpperCase();
+            System.out.println("+--------------KET QUA TIM KIEM-----------------+");
+            SanPham.xuatHeaderSp();
+
+            for(int i=1; (st = br.readLine()) != null ; i++) {
+                String s[] = st.split(";");
+                if (s[7].equals("LAPTOP")) {
+                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
+                    if(sp.getMaSp().contains(thongTin) || sp.getTenSp().contains(thongTin)
+                        || sp.getGia().contains(thongTin) || sp.getMoTa().contains(thongTin)
+                            || sp.getMauSac().contains(thongTin) || sp.getLoaiSp().contains(thongTin)
+                                || sp.getDungLuong().contains(thongTin)) {
+                        check = true;
+                        sp.xuatThongTinSp();
+                    }
+                }
+                else if (s[7].equals("PHUKIEN")) {
+                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(sp.getMaSp().contains(thongTin) || sp.getTenSp().contains(thongTin)
+                            || sp.getGia().contains(thongTin) || sp.getMoTa().contains(thongTin)
+                                || sp.getMauSac().contains(thongTin) || sp.getLoaiSp().contains(thongTin)) {
+                        check = true;
+                        sp.xuatThongTinSp();
+                    }
+                } else {
+                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(sp.getMaSp().contains(thongTin) || sp.getTenSp().contains(thongTin)
+                            || sp.getGia().contains(thongTin) || sp.getMoTa().contains(thongTin)
+                                || sp.getMauSac().contains(thongTin) || sp.getLoaiSp().contains(thongTin)) {
+                        check = true;
+                        sp.xuatThongTinSp();
+                    }
+                }
+            }
+
+            if(check == false) {
+                System.out.println("+--------------KHONG CO SAN PHAM TUONG UNG-----------------+");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
