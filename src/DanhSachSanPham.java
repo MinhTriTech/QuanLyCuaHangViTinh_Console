@@ -80,10 +80,11 @@ public class DanhSachSanPham implements IDanhSach{
     @Override
     public void xuat() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
             String st;
             System.out.println("+--------------DANH SACH SAN PHAM-----------------+");
             SanPham.xuatHeaderSp();
+
+            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
@@ -100,6 +101,8 @@ public class DanhSachSanPham implements IDanhSach{
                 }
             }
 
+            br.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -107,7 +110,6 @@ public class DanhSachSanPham implements IDanhSach{
 
     public void timKiemTheoMaSp() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
             String st, maSp;
             boolean check = false;
             QuanLyCuaHang.sc.nextLine();
@@ -117,6 +119,8 @@ public class DanhSachSanPham implements IDanhSach{
             System.out.println("+--------------KET QUA TIM KIEM-----------------+");
             SanPham.xuatHeaderSp();
 
+            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
+
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
                 if (s[7].equals("LAPTOP")) {
@@ -140,6 +144,8 @@ public class DanhSachSanPham implements IDanhSach{
                     }
                 }
             }
+
+            br.close();
 
             if(check == false) {
                 System.out.println("+--------------KHONG CO SAN PHAM TUONG UNG-----------------+");
@@ -152,7 +158,6 @@ public class DanhSachSanPham implements IDanhSach{
 
     public void timKiemTongQuatSp() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
             String st, thongTin;
             boolean check = false;
             QuanLyCuaHang.sc.nextLine();
@@ -161,6 +166,8 @@ public class DanhSachSanPham implements IDanhSach{
             thongTin = thongTin.toUpperCase();
             System.out.println("+--------------KET QUA TIM KIEM-----------------+");
             SanPham.xuatHeaderSp();
+
+            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
@@ -192,6 +199,8 @@ public class DanhSachSanPham implements IDanhSach{
                     }
                 }
             }
+
+            br.close();
 
             if(check == false) {
                 System.out.println("+--------------KHONG CO SAN PHAM TUONG UNG-----------------+");

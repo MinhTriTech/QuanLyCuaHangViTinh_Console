@@ -8,7 +8,7 @@ public class DanhSachTaiKhoan implements IDanhSach{
     TaiKhoan[] dsTaiKhoan = new TaiKhoan[1];
 
     @Override
-    public void them() {
+    public void them() { // Them tai khoan QL
 //        try {
 //            File file = new File(FILE_NAME);
 //
@@ -52,7 +52,7 @@ public class DanhSachTaiKhoan implements IDanhSach{
 //        }
     }
 
-    public void dangKyKh() {
+    public void dangKyKh() { // Them tai khoan KH
         try {
             File file = new File(FILE_NAME);
 
@@ -66,11 +66,11 @@ public class DanhSachTaiKhoan implements IDanhSach{
             while (fw.readLine() != null) {
                 count++;
             }
+            fw.close();
 
             dsTaiKhoan = Arrays.copyOf(dsTaiKhoan, count);
 
             BufferedReader ft = new BufferedReader(new FileReader(file));
-
             for (int i = 0; i < dsTaiKhoan.length; i++) {
                 String s[] = ft.readLine().split(";");
                 if(s[4].equals("KH")) {
@@ -79,22 +79,20 @@ public class DanhSachTaiKhoan implements IDanhSach{
                     dsTaiKhoan[i] = new QuanLy(s[0], s[1], s[2], s[3], s[4]);
                 }
             }
+            ft.close();
 
             BufferedWriter fr = new BufferedWriter(new FileWriter(file, true));
-            boolean signal = false;
+
             TaiKhoan tk = new KhachHang();
             System.out.println("--Nhap thong tin dang ky--");
             tk.nhap();
 
-            if (signal == false) {
-                fr.write(tk.toString());
-                fr.newLine();
-                System.out.println("-Dang ky thanh cong-");
-            }
+            fr.write(tk.toString());
+            fr.newLine();
+            System.out.println("-Dang ky thanh cong-");
 
             fr.close();
-            ft.close();
-            fw.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -142,6 +140,7 @@ public class DanhSachTaiKhoan implements IDanhSach{
             }
 
             br.close();
+
             if(!check_2) {
                 System.out.println("Sai ten dang nhap hoac mat khau !!!");
             }
@@ -165,10 +164,11 @@ public class DanhSachTaiKhoan implements IDanhSach{
     @Override
     public void xuat() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
             String st;
             System.out.println("+--------------DANH SACH TAI KHOAN-----------------+");
             TaiKhoan.xuatHeaderTk();
+
+            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
@@ -181,7 +181,9 @@ public class DanhSachTaiKhoan implements IDanhSach{
                     tk.xuatThongTinTk();
                 }
             }
+
             br.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -251,7 +253,6 @@ public class DanhSachTaiKhoan implements IDanhSach{
 
     public void timKiemTheoMaTk() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
             String st, maTk;
             boolean check = false;
             QuanLyCuaHang.sc.nextLine();
@@ -260,6 +261,8 @@ public class DanhSachTaiKhoan implements IDanhSach{
             maTk = maTk.toUpperCase();
             System.out.println("+--------------KET QUA TIM KIEM-----------------+");
             TaiKhoan.xuatHeaderTk();
+
+            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
@@ -292,7 +295,6 @@ public class DanhSachTaiKhoan implements IDanhSach{
 
     public void timKiemTongQuatTk() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
             String st, thongTin;
             boolean check = false;
             QuanLyCuaHang.sc.nextLine();
@@ -301,6 +303,8 @@ public class DanhSachTaiKhoan implements IDanhSach{
             thongTin = thongTin.toUpperCase();
             System.out.println("+--------------KET QUA TIM KIEM-----------------+");
             TaiKhoan.xuatHeaderTk();
+
+            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
@@ -323,6 +327,8 @@ public class DanhSachTaiKhoan implements IDanhSach{
                     }
                 }
             }
+
+            br.close();
 
             if(check == false) {
                 System.out.println("+--------------KHONG CO TAI KHOAN TUONG UNG-----------------+");
