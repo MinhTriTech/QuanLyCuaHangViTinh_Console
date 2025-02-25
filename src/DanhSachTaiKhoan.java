@@ -113,12 +113,135 @@ public class DanhSachTaiKhoan implements IDanhSach{
 
     @Override
     public void sua() {
+        try {
+            File file = new File(FILE_NAME);
 
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            int count = 0;
+
+            BufferedReader fw = new BufferedReader(new FileReader(file));
+            while (fw.readLine() != null) {
+                count++;
+            }
+
+            if(count > 0) {
+                dsTaiKhoan = Arrays.copyOf(dsTaiKhoan, count);
+
+                BufferedReader ft = new BufferedReader(new FileReader(file));
+
+                for (int i = 0; i < dsTaiKhoan.length; i++) {
+                    String s[] = ft.readLine().split(";");
+                    if(s[4].equals("QL")) {
+                        dsTaiKhoan[i] = new QuanLy(s[0], s[1], s[2], s[3], s[4]);
+                    }
+                    if(s[4].equals("KH")) {
+                        dsTaiKhoan[i] = new KhachHang(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7]);
+                    }
+                }
+
+                BufferedWriter fr = new BufferedWriter(new FileWriter(file, false));
+                boolean signal = false;
+                String maTk;
+                System.out.println("--Nhap ma tai khoan can sua--");
+                QuanLyCuaHang.sc.nextLine();
+                maTk = QuanLyCuaHang.sc.nextLine();
+                maTk = maTk.toUpperCase().trim();
+
+                for (int i = 0; i < dsTaiKhoan.length; i++) {
+                    if(!dsTaiKhoan[i].getMaTk().equals(maTk)) {
+                        fr.write(dsTaiKhoan[i].toString());
+                        fr.newLine();
+                    } else{
+                        dsTaiKhoan[i].nhapDeSua();
+                        fr.write(dsTaiKhoan[i].toString());
+                        fr.newLine();
+                        signal = true;
+                    }
+                }
+
+                if(signal) {
+                    System.out.println("-Sua tai khoan thanh cong-");
+                } else {
+                    System.out.println("-Khong tim thay tai khoan tuong ung voi ma-");
+                }
+
+                fr.close();
+                ft.close();
+                fw.close();
+            } else {
+                System.out.println("-Dan sach dang trong vui long them tai khoan de thuc hien thao tac-");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void xoa() {
+        try {
+            File file = new File(FILE_NAME);
 
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            int count = 0;
+
+            BufferedReader fw = new BufferedReader(new FileReader(file));
+            while (fw.readLine() != null) {
+                count++;
+            }
+
+            if(count > 0) {
+                dsTaiKhoan = Arrays.copyOf(dsTaiKhoan, count);
+
+                BufferedReader ft = new BufferedReader(new FileReader(file));
+
+                for (int i = 0; i < dsTaiKhoan.length; i++) {
+                    String s[] = ft.readLine().split(";");
+                    if(s[4].equals("QL")) {
+                        dsTaiKhoan[i] = new QuanLy(s[0], s[1], s[2], s[3], s[4]);
+                    }
+                    if(s[4].equals("KH")) {
+                        dsTaiKhoan[i] = new KhachHang(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7]);
+                    }
+                }
+
+                BufferedWriter fr = new BufferedWriter(new FileWriter(file, false));
+                boolean signal = false;
+                String maTk;
+                System.out.println("--Nhap ma tai khoan can xoa--");
+                QuanLyCuaHang.sc.nextLine();
+                maTk = QuanLyCuaHang.sc.nextLine();
+                maTk = maTk.toUpperCase().trim();
+
+                for (int i = 0; i < dsTaiKhoan.length; i++) {
+                    if(!dsTaiKhoan[i].getMaTk().equals(maTk)) {
+                        fr.write(dsTaiKhoan[i].toString());
+                        fr.newLine();
+                    } else{
+                        signal = true;
+                    }
+                }
+
+                if(signal) {
+                    System.out.println("-Xoa tai khoan thanh cong-");
+                } else {
+                    System.out.println("-Khong tim thay tai khoan tuong ung voi ma-");
+                }
+
+                fr.close();
+                ft.close();
+                fw.close();
+            } else {
+                System.out.println("-Dan sach dang trong vui long them tai khoan de thuc hien thao tac-");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

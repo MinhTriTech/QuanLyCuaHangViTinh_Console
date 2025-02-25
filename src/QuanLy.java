@@ -20,12 +20,12 @@ public class QuanLy extends TaiKhoan{
         do {
             System.out.print("Nhap ten dang nhap: ");
             temp = QuanLyCuaHang.sc.nextLine();}
-        while(checkTenDangNhap(temp)==true);
-        setTenDn(temp);
+        while(checkTenDangNhap(temp.trim())==true);
+        setTenDn(temp.trim());
 
         System.out.print("Nhap ho va ten: ");
         temp = QuanLyCuaHang.sc.nextLine();
-        setHoVaTen(temp);
+        setHoVaTen(temp.trim());
 
         System.out.print("Nhap mat khau: ");
         temp = QuanLyCuaHang.sc.nextLine();
@@ -38,6 +38,31 @@ public class QuanLy extends TaiKhoan{
         setMatKhau(temp);
 
         setQuyenTk("QL");
+    }
+
+    @Override
+    void nhapDeSua() {
+        String temp;
+
+        System.out.print("Nhap ho va ten moi(Nhan Enter de giu thong tin cu): ");
+        temp = QuanLyCuaHang.sc.nextLine();
+        if (temp.isEmpty()) {
+        } else {
+            setHoVaTen(temp.trim());
+        }
+
+        System.out.print("Nhap mat khau moi(Nhan Enter de giu thong tin cu): ");
+        temp = QuanLyCuaHang.sc.nextLine();
+
+        if (temp.isEmpty()) {
+        } else {
+            String temp_test;
+            do {
+                System.out.print("Nhap lai mat khau: ");
+                temp_test = QuanLyCuaHang.sc.nextLine();}
+            while(!temp.equals(temp_test));
+            setMatKhau(temp);
+        }
     }
 
     @Override

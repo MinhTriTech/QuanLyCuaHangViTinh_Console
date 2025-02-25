@@ -155,7 +155,7 @@ public class QuanLyCuaHang {
                 int checkMenu_3_1 = 1, menu_3_1;
                 while (checkMenu_3_1 == 1) {
                     System.out.println("===Chon===");
-                    System.out.println("1. Xem tat ca san pham");
+                    System.out.println("1. Xem danh sach san pham");
                     System.out.println("2. Them san pham (root)");
                     System.out.println("3. Sua san pham");
                     System.out.println("4. Xoa san pham (root)");
@@ -167,16 +167,64 @@ public class QuanLyCuaHang {
                     menu_3_1 = sc.nextInt();
 
                     if (menu_3_1 == 1) {
-                        dsSanPham.xuat();
+                        int checkMenu_3_1_2 = 1, menu_3_1_2;
+                        while (checkMenu_3_1_2 == 1) {
+                            System.out.println("===Chon===");
+                            System.out.println("1. Theo thu tu mac dinh");
+                            System.out.println("2. Theo gia tu thap den cao");
+                            System.out.println("3. Theo gia tu cao den thap");
+                            System.out.println("4. Theo danh muc");
+                            System.out.println("5. Thoat");
+                            System.out.print("Nhap:");
+                            menu_3_1_2 = sc.nextInt();
+
+                            if (menu_3_1_2 == 1) {
+                                dsSanPham.xuat();
+                            }
+                            if (menu_3_1_2 == 2) {
+                                dsSanPham.xuatTheoGiaThapDenCao();
+                            }
+                            if (menu_3_1_2 == 3) {
+                                dsSanPham.xuatTheoGiaCaoDenThap();
+                            }
+                            if (menu_3_1_2 == 4) {
+                                int checkMenu_3_1_2_1 = 1, menu_3_1_2_1;
+                                while (checkMenu_3_1_2_1 == 1) {
+                                    System.out.println("===Chon===");
+                                    System.out.println("1. Laptop");
+                                    System.out.println("2. Phu kien");
+                                    System.out.println("3. Tai nghe/Loa");
+                                    System.out.println("4. Thoat");
+                                    System.out.print("Nhap:");
+                                    menu_3_1_2_1 = sc.nextInt();
+
+                                    if (menu_3_1_2_1 == 1) {
+                                        dsSanPham.xuatTheoDmLaptop();
+                                    }
+                                    if (menu_3_1_2_1 == 2) {
+                                        dsSanPham.xuatTheoDmPhuKien();
+                                    }
+                                    if (menu_3_1_2_1 == 3) {
+                                        dsSanPham.xuatTheoDmTaiNgheLoa();
+                                    }
+                                    if (menu_3_1_2_1 == 4) {
+                                        checkMenu_3_1_2_1 = 0;
+                                    }
+                                }
+                            }
+                            if (menu_3_1_2 == 5) {
+                                checkMenu_3_1_2 = 0;
+                            }
+                        }
                     }
                     if (menu_3_1 == 2) {
                         dsSanPham.them();
                     }
                     if (menu_3_1 == 3) {
-                        System.out.println("Quan ly sua san pham");
+                        dsSanPham.sua();
                     }
                     if (menu_3_1 == 4) {
-                        System.out.println("Quan ly xoa san pham (root)");
+                        dsSanPham.xoa();
                     }
                     if (menu_3_1 == 5) {
                         int checkMenu_3_1_1 = 1, menu_3_1_1;
@@ -438,10 +486,10 @@ public class QuanLyCuaHang {
                         }
                     }
                     if (menu_3_4 == 3) {
-                        System.out.println("Quan ly sua tai khoan");
+                        dsTaiKhoan.sua();
                     }
                     if (menu_3_4 == 4) {
-                        System.out.println("Quan ly xoa tai khoan");
+                        dsTaiKhoan.xoa();
                     }
                     if (menu_3_4 == 5) {
                         int checkMenu_3_4_2 = 1, menu_3_4_2;

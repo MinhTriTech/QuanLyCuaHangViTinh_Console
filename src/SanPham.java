@@ -185,6 +185,7 @@ public abstract class SanPham {
     }
 
     abstract void nhap();
+    abstract void nhapDeSua();
     abstract void xuatThongTinSp();
 
     public static void xuatHeaderSp() {

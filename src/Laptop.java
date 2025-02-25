@@ -67,6 +67,49 @@ public class Laptop extends SanPham{
     }
 
     @Override
+    void nhapDeSua() {
+        String temp;
+
+        System.out.print("Nhap ten san pham moi(Nhan Enter de giu thong tin cu): ");
+        temp = QuanLyCuaHang.sc.nextLine();
+        if (temp.isEmpty()) {
+        } else {
+            setTenSp(temp.trim());
+        }
+
+        do {
+            System.out.print("Nhap gia moi(Nhan Enter de giu thong tin cu): ");
+            temp = QuanLyCuaHang.sc.nextLine();
+            if (temp.isEmpty()) {
+                break;
+            }
+        }
+        while(!checkGia(temp.trim()));
+        setGia(temp.trim());
+
+        System.out.print("Nhap mo ta moi(Nhan Enter de giu thong tin cu): ");
+        temp = QuanLyCuaHang.sc.nextLine();
+        if (temp.isEmpty()) {
+        } else {
+            setMoTa(temp.trim());
+        }
+
+        System.out.print("Nhap mau sac moi(Nhan Enter de giu thong tin cu): ");
+        temp = QuanLyCuaHang.sc.nextLine();
+        if (temp.isEmpty()) {
+        } else {
+            setMauSac(temp.trim());
+        }
+
+        System.out.print("Nhap dung luong moi(Nhan Enter de giu thong tin cu): ");
+        temp = QuanLyCuaHang.sc.nextLine();
+        if (temp.isEmpty()) {
+        } else {
+            setDungLuong(temp.trim());
+        }
+    }
+
+    @Override
     void xuatThongTinSp() {
         int[] columnWidths = {10, 20, 10, 10, 30, 10, 12, 15, 10};
         String[] values = {

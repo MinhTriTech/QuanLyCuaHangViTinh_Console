@@ -127,6 +127,7 @@ public abstract class TaiKhoan {
     }
 
     abstract void nhap();
+    abstract void nhapDeSua();
     abstract void xuatThongTinTk();
 
     public static void xuatHeaderTk() {

@@ -66,7 +66,7 @@ public class KhachHang extends TaiKhoan{
         do {
             System.out.print("Nhap so dien thoai: ");
             temp = QuanLyCuaHang.sc.nextLine();}
-        while(!checkSoDienThoai(temp));
+        while(!checkSoDienThoai(temp.trim()));
         setSoDienThoai(temp.trim());
 
         System.out.print("Nhap email: ");
@@ -77,6 +77,54 @@ public class KhachHang extends TaiKhoan{
         temp = QuanLyCuaHang.sc.nextLine();
         setDiaChi(temp.trim());
 
+    }
+
+    @Override
+    void nhapDeSua() {
+        String temp;
+
+        System.out.print("Nhap ho va ten moi(Nhan Enter de giu thong tin cu): ");
+        temp = QuanLyCuaHang.sc.nextLine();
+        if (temp.isEmpty()) {
+        } else {
+            setHoVaTen(temp.trim());
+        }
+
+        System.out.print("Nhap mat khau moi(Nhan Enter de giu thong tin cu): ");
+        temp = QuanLyCuaHang.sc.nextLine();
+        if (temp.isEmpty()) {
+        } else {
+            String temp_test;
+            do {
+                System.out.print("Nhap lai mat khau: ");
+                temp_test = QuanLyCuaHang.sc.nextLine();}
+            while(!temp.equals(temp_test));
+            setMatKhau(temp);
+        }
+
+        do {
+            System.out.print("Nhap so dien thoai moi(Nhan Enter de giu thong tin cu): ");
+            temp = QuanLyCuaHang.sc.nextLine();
+            if (temp.isEmpty()) {
+                break;
+            }
+        }
+        while(!checkSoDienThoai(temp.trim()));
+        setSoDienThoai(temp.trim());
+
+        System.out.print("Nhap email moi(Nhan Enter de giu thong tin cu): ");
+        temp = QuanLyCuaHang.sc.nextLine();
+        if (temp.isEmpty()) {
+        } else {
+            setEmail(temp.trim());
+        }
+
+        System.out.print("Nhap dia chi moi (Nhan Enter de giu thong tin cu): ");
+        temp = QuanLyCuaHang.sc.nextLine();
+        if (temp.isEmpty()) {
+        } else {
+            setDiaChi(temp.trim());
+        }
     }
 
     private boolean checkSoDienThoai(String temp) {
