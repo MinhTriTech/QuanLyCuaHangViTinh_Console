@@ -1,5 +1,5 @@
 public class Laptop extends SanPham{
-    String dungLuong;
+    private String dungLuong;
 
     public Laptop() {
     }
@@ -18,12 +18,7 @@ public class Laptop extends SanPham{
     }
 
     @Override
-    public String toString() {
-        return super.toString() + ";" + dungLuong;
-    }
-
-    @Override
-    void nhap() {
+    public void nhap() {
         String temp;
         setRandomId();
 
@@ -67,7 +62,7 @@ public class Laptop extends SanPham{
     }
 
     @Override
-    void nhapDeSua() {
+    public void nhapDeSua() {
         String temp;
 
         System.out.print("Nhap ten san pham moi(Nhan Enter de giu thong tin cu): ");
@@ -85,7 +80,10 @@ public class Laptop extends SanPham{
             }
         }
         while(!checkGia(temp.trim()));
-        setGia(temp.trim());
+        if(checkGiaNoPrint(temp.trim())) {
+            setGia(temp.trim());
+        }
+
 
         System.out.print("Nhap mo ta moi(Nhan Enter de giu thong tin cu): ");
         temp = QuanLyCuaHang.sc.nextLine();
@@ -110,7 +108,7 @@ public class Laptop extends SanPham{
     }
 
     @Override
-    void xuatThongTinSp() {
+    public void xuatThongTinSp() {
         int[] columnWidths = {10, 20, 10, 10, 30, 10, 12, 15, 10};
         String[] values = {
                 getMaSp(), getTenSp(), getSoLuong(),
@@ -120,5 +118,10 @@ public class Laptop extends SanPham{
 
         printMultiLineRow(values, columnWidths);
         printSeparator(columnWidths);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ";" + dungLuong;
     }
 }

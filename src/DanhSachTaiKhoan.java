@@ -33,84 +33,6 @@ public class DanhSachTaiKhoan implements IDanhSach{
         }
     }
 
-    public void dangKyKh() { // Them tai khoan KH
-        try {
-            File file = new File(FILE_NAME);
-
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-
-            BufferedWriter fr = new BufferedWriter(new FileWriter(file, true));
-
-            TaiKhoan tk = new KhachHang();
-            System.out.println("--Nhap thong tin--");
-            tk.nhap();
-
-            fr.write(tk.toString());
-            fr.newLine();
-            System.out.println("-Thanh cong-");
-
-            fr.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public String dangNhap() {
-        String check = "false";
-        boolean check_2 = false;
-        try {
-            File file = new File(FILE_NAME);
-
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String st;
-
-            QuanLyCuaHang.sc.nextLine();
-            System.out.println("--Nhap thong tin dang nhap--");
-            System.out.print("Nhap ten dang nhap: ");
-            String tenDn = QuanLyCuaHang.sc.nextLine();
-            System.out.print("Nhap mat khau: ");
-            String matKhau = QuanLyCuaHang.sc.nextLine();
-
-            for(int i=1; (st = br.readLine()) != null ; i++) {
-                String s[] = st.split(";");
-                if(s[4].equals("KH")) {
-                    TaiKhoan tk = new KhachHang(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7]);
-                    if (tk.getTenDn().equals(tenDn) && tk.getMatKhau().equals(matKhau)) {
-                        check = "KH";
-                        check_2 = true;
-                        System.out.println("Dang nhap thanh cong !!!");
-                        System.out.println("Xin chao khach hang " + tk.getHoVaTen());
-                    }
-                } else {
-                    TaiKhoan tk = new QuanLy(s[0], s[1], s[2], s[3], s[4]);
-                    if (tk.getTenDn().equals(tenDn) && tk.getMatKhau().equals(matKhau)) {
-                        check = "QL";
-                        check_2 = true;
-                        System.out.println("Dang nhap thanh cong !!!");
-                        System.out.println("Xin chao quan ly " + tk.getHoVaTen());
-                    }
-                }
-            }
-
-            br.close();
-
-            if(!check_2) {
-                System.out.println("Sai ten dang nhap hoac mat khau !!!");
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return check;
-    }
-
     @Override
     public void sua() {
         try {
@@ -270,6 +192,84 @@ public class DanhSachTaiKhoan implements IDanhSach{
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void dangKyKh() { // Them tai khoan KH
+        try {
+            File file = new File(FILE_NAME);
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            BufferedWriter fr = new BufferedWriter(new FileWriter(file, true));
+
+            TaiKhoan tk = new KhachHang();
+            System.out.println("--Nhap thong tin--");
+            tk.nhap();
+
+            fr.write(tk.toString());
+            fr.newLine();
+            System.out.println("-Thanh cong-");
+
+            fr.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String dangNhap() {
+        String check = "false";
+        boolean check_2 = false;
+        try {
+            File file = new File(FILE_NAME);
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String st;
+
+            QuanLyCuaHang.sc.nextLine();
+            System.out.println("--Nhap thong tin dang nhap--");
+            System.out.print("Nhap ten dang nhap: ");
+            String tenDn = QuanLyCuaHang.sc.nextLine();
+            System.out.print("Nhap mat khau: ");
+            String matKhau = QuanLyCuaHang.sc.nextLine();
+
+            for(int i=1; (st = br.readLine()) != null ; i++) {
+                String s[] = st.split(";");
+                if(s[4].equals("KH")) {
+                    TaiKhoan tk = new KhachHang(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7]);
+                    if (tk.getTenDn().equals(tenDn) && tk.getMatKhau().equals(matKhau)) {
+                        check = "KH";
+                        check_2 = true;
+                        System.out.println("Dang nhap thanh cong !!!");
+                        System.out.println("Xin chao khach hang " + tk.getHoVaTen());
+                    }
+                } else {
+                    TaiKhoan tk = new QuanLy(s[0], s[1], s[2], s[3], s[4]);
+                    if (tk.getTenDn().equals(tenDn) && tk.getMatKhau().equals(matKhau)) {
+                        check = "QL";
+                        check_2 = true;
+                        System.out.println("Dang nhap thanh cong !!!");
+                        System.out.println("Xin chao quan ly " + tk.getHoVaTen());
+                    }
+                }
+            }
+
+            br.close();
+
+            if(!check_2) {
+                System.out.println("Sai ten dang nhap hoac mat khau !!!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return check;
     }
 
     public void xuatDanhSachTkQlFirst() {

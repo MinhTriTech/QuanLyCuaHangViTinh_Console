@@ -1,5 +1,5 @@
 public class KhachHang extends TaiKhoan{
-    String soDienThoai, email, diaChi;
+    private String soDienThoai, email, diaChi;
 
     public KhachHang() {
     }
@@ -35,8 +35,15 @@ public class KhachHang extends TaiKhoan{
         this.diaChi = diaChi;
     }
 
+    public boolean checkSoDienThoai(String temp) {
+        if (temp == null || !temp.matches("\\d{10,11}")) {
+            return false;
+        }
+        return true;
+    }
+
     @Override
-    void nhap() {
+    public void nhap() {
         String temp;
         setRandomId();
 
@@ -80,7 +87,7 @@ public class KhachHang extends TaiKhoan{
     }
 
     @Override
-    void nhapDeSua() {
+    public void nhapDeSua() {
         String temp;
 
         System.out.print("Nhap ho va ten moi(Nhan Enter de giu thong tin cu): ");
@@ -127,23 +134,8 @@ public class KhachHang extends TaiKhoan{
         }
     }
 
-    private boolean checkSoDienThoai(String temp) {
-        if (temp == null || !temp.matches("\\d{10,11}")) {
-            return false;
-        }
-        return true;
-    }
-
     @Override
-    public String toString() {
-        return super.toString() + ";"
-                + soDienThoai + ";"
-                + email + ";"
-                + diaChi ;
-    }
-
-    @Override
-    void xuatThongTinTk() {
+    public void xuatThongTinTk() {
         int[] columnWidths = {10, 20, 10, 25, 10, 20, 30, 20};
         String[] values = {
                 getMaTk(), getTenDn(), getMatKhau(),
@@ -153,5 +145,13 @@ public class KhachHang extends TaiKhoan{
 
         printMultiLineRow(values, columnWidths);
         printSeparator(columnWidths);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ";"
+                + soDienThoai + ";"
+                + email + ";"
+                + diaChi ;
     }
 }

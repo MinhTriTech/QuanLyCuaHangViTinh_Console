@@ -4,14 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public abstract class SanPham {
-    String maSp;
-    String tenSp;
-    String soLuong;
-    String gia;
-    String moTa;
-    String mauSac;
-    String khuyenMai;
-    String loaiSp;
+    private String maSp, tenSp, soLuong, gia, moTa, mauSac, khuyenMai, loaiSp;
 
     private static final String FILE_NAME_SP = "DanhSachSanPham.txt";
 
@@ -93,19 +86,7 @@ public abstract class SanPham {
         this.loaiSp = loaiSp;
     }
 
-    @Override
-    public String toString() {
-        return  maSp + ";" +
-                tenSp + ";" +
-                soLuong + ";" +
-                gia + ";" +
-                moTa + ";" +
-                mauSac + ";" +
-                khuyenMai + ";" +
-                loaiSp;
-    }
-
-    void setRandomId() {
+    public void setRandomId() {
         String lastId = "SP00000";
         File file = new File(FILE_NAME_SP);
 
@@ -126,8 +107,7 @@ public abstract class SanPham {
         setMaSp(newId);
     }
 
-
-    boolean checkSoLuong(String input) {
+    public boolean checkSoLuong(String input) {
         if (input == null || input.isEmpty()) {
             System.out.println("Vui long nhap lai so luong !!!");
             return false;
@@ -146,7 +126,7 @@ public abstract class SanPham {
         }
     }
 
-    boolean checkGia(String input) {
+    public boolean checkGia(String input) {
         if (input == null || input.isEmpty()) {
             System.out.println("Vui long nhap lai gia !!!");
             return false;
@@ -165,18 +145,16 @@ public abstract class SanPham {
         }
     }
 
-    boolean checkGiaKm(String input) {
+    public boolean checkGiaNoPrint(String input) {
         if (input == null || input.isEmpty()) {
-            System.out.println("Vui long nhap lai gia !!!");
             return false;
         }
 
         try {
             double number = Double.parseDouble(input);
-            if (number >= 0) {
+            if (number > 0) {
                 return true;
             } else {
-                System.out.println("Vui long nhap lai gia !!!");
                 return false;
             }
         } catch (NumberFormatException e) {
@@ -184,9 +162,24 @@ public abstract class SanPham {
         }
     }
 
-    abstract void nhap();
-    abstract void nhapDeSua();
-    abstract void xuatThongTinSp();
+    public boolean checkGiaKm(String input) {
+        if (input == null || input.isEmpty()) {
+            System.out.println("Vui long nhap lai phan tram khuyen mai !!!");
+            return false;
+        }
+
+        try {
+            double number = Double.parseDouble(input);
+            if (number >= 0 && number <= 100) {
+                return true;
+            } else {
+                System.out.println("Vui long nhap lai phan tram khuyen mai !!!");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 
     public static void xuatHeaderSp() {
         int[] columnWidths = {10, 20, 10, 10, 30, 10, 12, 15, 10};
@@ -197,7 +190,7 @@ public abstract class SanPham {
         printSeparator(columnWidths);
     }
 
-    void printMultiLineRow(String[] row, int[] columnWidths) {
+    public void printMultiLineRow(String[] row, int[] columnWidths) {
         int maxLines = 1;
         String[][] wrappedColumns = new String[row.length][];
 
@@ -215,7 +208,7 @@ public abstract class SanPham {
         }
     }
 
-    String[] wrapText(String text, int width) {
+    public String[] wrapText(String text, int width) {
         int lines = (int) Math.ceil((double) text.length() / width);
         String[] result = new String[lines];
 
@@ -228,17 +221,33 @@ public abstract class SanPham {
         return result;
     }
 
-    static void printSeparator(int[] columnWidths) {
+    public static void printSeparator(int[] columnWidths) {
         for (int width : columnWidths) {
             System.out.print("+-" + "-".repeat(width) + "-");
         }
         System.out.println("+");
     }
 
-    static void printRow(String[] row, int[] columnWidths) {
+    public static void printRow(String[] row, int[] columnWidths) {
         for (int i = 0; i < row.length; i++) {
             System.out.printf("| %-" + columnWidths[i] + "s ", row[i]);
         }
         System.out.println("|");
+    }
+
+    public abstract void nhap();
+    public abstract void nhapDeSua();
+    public abstract void xuatThongTinSp();
+
+    @Override
+    public String toString() {
+        return  maSp + ";" +
+                tenSp + ";" +
+                soLuong + ";" +
+                gia + ";" +
+                moTa + ";" +
+                mauSac + ";" +
+                khuyenMai + ";" +
+                loaiSp;
     }
 }

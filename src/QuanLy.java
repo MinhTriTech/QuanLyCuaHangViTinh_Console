@@ -12,7 +12,7 @@ public class QuanLy extends TaiKhoan{
     }
 
     @Override
-    void nhap() {
+    public void nhap() {
         String temp;
         setRandomId();
 
@@ -41,7 +41,7 @@ public class QuanLy extends TaiKhoan{
     }
 
     @Override
-    void nhapDeSua() {
+    public void nhapDeSua() {
         String temp;
 
         System.out.print("Nhap ho va ten moi(Nhan Enter de giu thong tin cu): ");
@@ -66,7 +66,7 @@ public class QuanLy extends TaiKhoan{
     }
 
     @Override
-    void xuatThongTinTk() {
+    public void xuatThongTinTk() {
         int[] columnWidths = {10, 20, 10, 25, 10, 20, 30, 20};
         String[] values = {
                 getMaTk(), getTenDn(), getMatKhau(),

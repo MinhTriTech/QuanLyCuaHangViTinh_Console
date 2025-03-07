@@ -101,13 +101,14 @@ public class DanhSachSanPham implements IDanhSach{
                     }
                 }
 
-                BufferedWriter fr = new BufferedWriter(new FileWriter(file, false));
                 boolean signal = false;
                 String maSp;
-                System.out.println("--Nhap ma tai khoan can sua--");
+                System.out.println("--Nhap ma san pham can sua--");
                 QuanLyCuaHang.sc.nextLine();
                 maSp = QuanLyCuaHang.sc.nextLine();
                 maSp = maSp.toUpperCase().trim();
+
+                BufferedWriter fr = new BufferedWriter(new FileWriter(file, false));
 
                 for (int i = 0; i < dsSanPham.length; i++) {
                     if(!dsSanPham[i].getMaSp().equals(maSp)) {

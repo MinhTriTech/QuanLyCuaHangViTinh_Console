@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.Scanner;
 
 public abstract class TaiKhoan {
     private String maTk;
@@ -70,7 +69,7 @@ public abstract class TaiKhoan {
                 + quyenTk;
     }
 
-    void setRandomId() {
+    public void setRandomId() {
         String lastId = "TK00000";
         File file = new File(FILE_NAME);
 
@@ -126,10 +125,6 @@ public abstract class TaiKhoan {
         return false;
     }
 
-    abstract void nhap();
-    abstract void nhapDeSua();
-    abstract void xuatThongTinTk();
-
     public static void xuatHeaderTk() {
         int[] columnWidths = {10, 20, 10, 25, 10, 20, 30, 20};
         String[] headers = {"Ma TK", "Ten TK", "Mat khau", "Ho và ten", "Quyen TK", "So dien thoai", "Email", "Đia chi"};
@@ -139,7 +134,7 @@ public abstract class TaiKhoan {
         printSeparator(columnWidths);
     }
 
-    void printMultiLineRow(String[] row, int[] columnWidths) {
+    public void printMultiLineRow(String[] row, int[] columnWidths) {
         int maxLines = 1;
         String[][] wrappedColumns = new String[row.length][];
 
@@ -157,7 +152,7 @@ public abstract class TaiKhoan {
         }
     }
 
-    String[] wrapText(String text, int width) {
+    public String[] wrapText(String text, int width) {
         int lines = (int) Math.ceil((double) text.length() / width);
         String[] result = new String[lines];
 
@@ -170,17 +165,21 @@ public abstract class TaiKhoan {
         return result;
     }
 
-    static void printSeparator(int[] columnWidths) {
+    public static void printSeparator(int[] columnWidths) {
         for (int width : columnWidths) {
             System.out.print("+-" + "-".repeat(width) + "-");
         }
         System.out.println("+");
     }
 
-    static void printRow(String[] row, int[] columnWidths) {
+    public static void printRow(String[] row, int[] columnWidths) {
         for (int i = 0; i < row.length; i++) {
             System.out.printf("| %-" + columnWidths[i] + "s ", row[i]);
         }
         System.out.println("|");
     }
+
+    public abstract void nhap();
+    public abstract void nhapDeSua();
+    public abstract void xuatThongTinTk();
 }
