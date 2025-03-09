@@ -121,6 +121,19 @@ public class Laptop extends SanPham{
     }
 
     @Override
+    public void xuatThongTinSpCoStt(String soTt) {
+        int[] columnWidths = {10, 10, 20, 10, 10, 30, 10, 12, 15, 10};
+        String[] values = {
+                soTt, getMaSp(), getTenSp(), getSoLuong(),
+                getGia(), getMoTa(), getMauSac(),
+                getKhuyenMai(), getLoaiSp(), getDungLuong()
+        };
+
+        printMultiLineRow(values, columnWidths);
+        printSeparator(columnWidths);
+    }
+
+    @Override
     public String toString() {
         return super.toString() + ";" + dungLuong;
     }

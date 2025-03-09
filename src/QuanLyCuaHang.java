@@ -16,11 +16,11 @@ public class QuanLyCuaHang {
             menu_1 = sc.nextInt();
 
             if (menu_1 == 1) {
-                String kq = dsTaiKhoan.dangNhap();
+                TaiKhoan kq = dsTaiKhoan.dangNhap();
 
-                if(kq.equals("KH")) {
-                    menuKhachHang mnKH = new menuKhachHang();
-                } else if(kq.equals("QL")) {
+                if(kq.getQuyenTk().equals("KH")) {
+                    menuKhachHang mnKH = new menuKhachHang(kq.getMaTk());
+                } else if(kq.getQuyenTk().equals("QL")) {
                     menuQuanLy mnQL = new menuQuanLy();
                 }
             }

@@ -219,8 +219,8 @@ public class DanhSachTaiKhoan implements IDanhSach{
         }
     }
 
-    public String dangNhap() {
-        String check = "false";
+    public TaiKhoan dangNhap() {
+        TaiKhoan check = null;
         boolean check_2 = false;
         try {
             File file = new File(FILE_NAME);
@@ -244,7 +244,7 @@ public class DanhSachTaiKhoan implements IDanhSach{
                 if(s[4].equals("KH")) {
                     TaiKhoan tk = new KhachHang(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7]);
                     if (tk.getTenDn().equals(tenDn) && tk.getMatKhau().equals(matKhau)) {
-                        check = "KH";
+                        check = tk;
                         check_2 = true;
                         System.out.println("Dang nhap thanh cong !!!");
                         System.out.println("Xin chao khach hang " + tk.getHoVaTen());
@@ -252,7 +252,7 @@ public class DanhSachTaiKhoan implements IDanhSach{
                 } else {
                     TaiKhoan tk = new QuanLy(s[0], s[1], s[2], s[3], s[4]);
                     if (tk.getTenDn().equals(tenDn) && tk.getMatKhau().equals(matKhau)) {
-                        check = "QL";
+                        check = tk;
                         check_2 = true;
                         System.out.println("Dang nhap thanh cong !!!");
                         System.out.println("Xin chao quan ly " + tk.getHoVaTen());

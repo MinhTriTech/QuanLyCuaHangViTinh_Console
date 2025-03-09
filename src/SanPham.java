@@ -1,7 +1,5 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.Arrays;
 
 public abstract class SanPham {
     private String maSp, tenSp, soLuong, gia, moTa, mauSac, khuyenMai, loaiSp;
@@ -86,6 +84,8 @@ public abstract class SanPham {
         this.loaiSp = loaiSp;
     }
 
+//    Các phương thức
+
     public void setRandomId() {
         String lastId = "SP00000";
         File file = new File(FILE_NAME_SP);
@@ -107,14 +107,14 @@ public abstract class SanPham {
         setMaSp(newId);
     }
 
-    public boolean checkSoLuong(String input) {
-        if (input == null || input.isEmpty()) {
+    public boolean checkSoLuong(String string) {
+        if (string == null || string.isEmpty()) {
             System.out.println("Vui long nhap lai so luong !!!");
             return false;
         }
 
         try {
-            int number = Integer.parseInt(input);
+            int number = Integer.parseInt(string);
             if (number > 0) {
                 return true;
             } else {
@@ -126,14 +126,14 @@ public abstract class SanPham {
         }
     }
 
-    public boolean checkGia(String input) {
-        if (input == null || input.isEmpty()) {
+    public boolean checkGia(String string) {
+        if (string == null || string.isEmpty()) {
             System.out.println("Vui long nhap lai gia !!!");
             return false;
         }
 
         try {
-            double number = Double.parseDouble(input);
+            double number = Double.parseDouble(string);
             if (number > 0) {
                 return true;
             } else {
@@ -145,13 +145,13 @@ public abstract class SanPham {
         }
     }
 
-    public boolean checkGiaNoPrint(String input) {
-        if (input == null || input.isEmpty()) {
+    public boolean checkGiaNoPrint(String string) {
+        if (string == null || string.isEmpty()) {
             return false;
         }
 
         try {
-            double number = Double.parseDouble(input);
+            double number = Double.parseDouble(string);
             if (number > 0) {
                 return true;
             } else {
@@ -162,14 +162,14 @@ public abstract class SanPham {
         }
     }
 
-    public boolean checkGiaKm(String input) {
-        if (input == null || input.isEmpty()) {
+    public boolean checkGiaKm(String string) {
+        if (string == null || string.isEmpty()) {
             System.out.println("Vui long nhap lai phan tram khuyen mai !!!");
             return false;
         }
 
         try {
-            double number = Double.parseDouble(input);
+            double number = Double.parseDouble(string);
             if (number >= 0 && number <= 100) {
                 return true;
             } else {
@@ -184,6 +184,15 @@ public abstract class SanPham {
     public static void xuatHeaderSp() {
         int[] columnWidths = {10, 20, 10, 10, 30, 10, 12, 15, 10};
         String[] headers = {"Ma SP", "Ten SP", "So luong", "Gia", "Mo ta", "Mau sac", "Khuyen mai", "Loai SP", "Dung luong"};
+
+        printSeparator(columnWidths);
+        printRow(headers, columnWidths);
+        printSeparator(columnWidths);
+    }
+
+    public static void xuatHeaderSpCoStt() {
+        int[] columnWidths = {10, 10, 20, 10, 10, 30, 10, 12, 15, 10};
+        String[] headers = {"STT", "Ma SP", "Ten SP", "So luong", "Gia", "Mo ta", "Mau sac", "Khuyen mai", "Loai SP", "Dung luong"};
 
         printSeparator(columnWidths);
         printRow(headers, columnWidths);
@@ -235,9 +244,95 @@ public abstract class SanPham {
         System.out.println("|");
     }
 
+    public static MuaHangAction checkDsSanPhamTrongGio(SanPham[] dsSanPham) {
+        SanPham[] sanPhamSanCo = new SanPham[0];
+        SanPham[] sanPhamKhongDatDieuKien = new SanPham[0];
+
+//        Tạo danh sách sản phẩm hiện tại
+        try {
+            File file = new File(FILE_NAME_SP);
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            int count = 0;
+
+            BufferedReader fw = new BufferedReader(new FileReader(file));
+            while (fw.readLine() != null) {
+                count++;
+            }
+
+            if(count > 0) {
+                sanPhamSanCo = Arrays.copyOf(sanPhamSanCo, count);
+
+                BufferedReader ft = new BufferedReader(new FileReader(file));
+
+                for (int i = 0; i < sanPhamSanCo.length; i++) {
+                    String s[] = ft.readLine().split(";");
+                    if(s[7].equals("LAPTOP")) {
+                        sanPhamSanCo[i] = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
+                    }
+                    if(s[7].equals("PHUKIEN")) {
+                        sanPhamSanCo[i] = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    }
+                    if(s[7].equals("TAINGHELOA")) {
+                        sanPhamSanCo[i] = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    }
+                }
+
+                ft.close();
+                fw.close();
+            } else {
+                System.out.println("-Danh sach dang trong vui long them san pham de thuc hien thao tac-");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//        Thực hiện danh sách sản phẩm hiện tại
+        for (int i = 0; i < dsSanPham.length; i++) {
+            for (int j = 0; j < sanPhamSanCo.length; j++) {
+                if(dsSanPham[i].getMaSp().equals(sanPhamSanCo[j].getMaSp())) {
+
+//                    Kiểm tra sau khi trừ có không hợp lệ không
+                    if (Integer.parseInt(sanPhamSanCo[j].getSoLuong()) - Integer.parseInt(dsSanPham[i].getSoLuong()) < 0) {
+
+//                        Nếu không hợp lệ thì gán số lượng mới và thêm sản phẩm vào danh sách không hợp lệ
+                        sanPhamSanCo[j].setSoLuong(String.valueOf(Integer.parseInt(sanPhamSanCo[j].getSoLuong()) - Integer.parseInt(dsSanPham[i].getSoLuong())));
+
+//                        Tăng kích thước của danh sách sản phẩm không hợp lệ
+                        SanPham[] sanPhamKhongDatDieuKienTemp = new SanPham[sanPhamKhongDatDieuKien.length + 1];
+
+                        for (int n = 0; n < sanPhamKhongDatDieuKien.length; n++) {
+                            sanPhamKhongDatDieuKienTemp[n] = sanPhamKhongDatDieuKien[n];
+                        }
+
+                        sanPhamKhongDatDieuKien = Arrays.copyOf(sanPhamKhongDatDieuKien, sanPhamKhongDatDieuKienTemp.length);
+
+                        for (int n = 0; n < sanPhamKhongDatDieuKienTemp.length; n++) {
+                            sanPhamKhongDatDieuKien[n] = sanPhamKhongDatDieuKienTemp[n];
+                        }
+
+                        sanPhamKhongDatDieuKien[sanPhamKhongDatDieuKien.length-1] = dsSanPham[i];
+                    } else {
+
+//                        Nếu hợp lệ thì chỉ gán số lượng mới
+                        sanPhamSanCo[j].setSoLuong(String.valueOf(Integer.parseInt(sanPhamSanCo[j].getSoLuong()) - Integer.parseInt(dsSanPham[i].getSoLuong())));
+                    }
+                }
+            }
+        }
+
+        MuaHangAction muaHangAction = new MuaHangAction(sanPhamKhongDatDieuKien, sanPhamSanCo);
+
+        return muaHangAction;
+    }
+
     public abstract void nhap();
     public abstract void nhapDeSua();
     public abstract void xuatThongTinSp();
+    public abstract void xuatThongTinSpCoStt(String soTt);
 
     @Override
     public String toString() {

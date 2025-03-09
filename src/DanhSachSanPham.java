@@ -132,7 +132,7 @@ public class DanhSachSanPham implements IDanhSach{
                 ft.close();
                 fw.close();
             } else {
-                System.out.println("-Dan sach dang trong vui long them san pham de thuc hien thao tac-");
+                System.out.println("-Danh sach dang trong vui long them san pham de thuc hien thao tac-");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -534,4 +534,125 @@ public class DanhSachSanPham implements IDanhSach{
             e.printStackTrace();
         }
     }
+
+    public boolean timKiemTheoMaSpBool(String maSp) {
+        try {
+            String st;
+            boolean check = false;
+
+            maSp = maSp.toUpperCase().trim();
+
+            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
+
+            for(int i=1; (st = br.readLine()) != null ; i++) {
+                String s[] = st.split(";");
+                if(s[7].equals("LAPTOP")) {
+                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
+                    if(sp.getMaSp().equals(maSp)) {
+                        check = true;
+                        return true;
+                    }
+                }
+                if(s[7].equals("PHUKIEN")) {
+                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(sp.getMaSp().equals(maSp)) {
+                        check = true;
+                        return true;
+                    }
+                }
+                if(s[7].equals("TAINGHELOA")) {
+                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(sp.getMaSp().equals(maSp)) {
+                        check = true;
+                        return true;
+                    }
+                }
+            }
+
+            br.close();
+
+            if(check == false) {
+                return false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public SanPham themSanPhamVaoGioHang(String maSp) {
+        SanPham spTemp = null;
+        try {
+
+            String st,soLuongSp;
+            boolean checkToast = true;
+
+            maSp = maSp.toUpperCase().trim();
+
+            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
+
+            for (int i = 1; (st = br.readLine()) != null; i++) {
+                String s[] = st.split(";");
+                if (s[7].equals("LAPTOP")) {
+                    Laptop sp = new Laptop(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], s[8]);
+                    if (sp.getMaSp().equals(maSp)) {
+                        do {
+                            if(checkToast) {
+                                System.out.print("Nhap so luong san pham can mua: ");
+                                checkToast = false;
+                            } else {
+                                System.out.print("Nhap lai so luong san pham can mua khong duoc lon hon so luong hien co " + "(" + sp.getSoLuong() + " san pham):");
+                            }
+                            soLuongSp = QuanLyCuaHang.sc.nextLine();}
+                        while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
+
+                        spTemp = new Laptop(s[0], s[1], soLuongSp, s[3], s[4], s[5], s[6], s[7], s[8]);
+                        return spTemp;
+                    }
+                }
+                if (s[7].equals("PHUKIEN")) {
+                    PhuKien sp = new PhuKien(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7]);
+                    if (sp.getMaSp().equals(maSp)) {
+                        do {
+                            if(checkToast) {
+                                System.out.print("Nhap so luong san pham can mua: ");
+                                checkToast = false;
+                            } else {
+                                System.out.print("Nhap lai so luong san pham can mua khong duoc lon hon so luong hien co: ");
+                            }
+                            soLuongSp = QuanLyCuaHang.sc.nextLine();}
+                        while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
+
+                        spTemp = new PhuKien(s[0], s[1], soLuongSp, s[3], s[4], s[5], s[6], s[7]);
+                        return spTemp;
+                    }
+                }
+                if (s[7].equals("TAINGHELOA")) {
+                    TaiNgheLoa sp = new TaiNgheLoa(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7]);
+                    if (sp.getMaSp().equals(maSp)) {
+                        do {
+                            if(checkToast) {
+                                System.out.print("Nhap so luong san pham can mua: ");
+                                checkToast = false;
+                            } else {
+                                System.out.print("Nhap lai so luong san pham can mua khong duoc lon hon so luong hien co: ");
+                            }
+                            soLuongSp = QuanLyCuaHang.sc.nextLine();}
+                        while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
+
+                        spTemp = new TaiNgheLoa(s[0], s[1], soLuongSp, s[3], s[4], s[5], s[6], s[7]);
+                        return spTemp;
+                    }
+                }
+            }
+
+            br.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return spTemp;
+    }
+
 }
