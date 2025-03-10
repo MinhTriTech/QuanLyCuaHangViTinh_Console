@@ -7,6 +7,7 @@ public class menuQuanLy {
         int checkMenu_3 = 1, menu_3;
         DanhSachSanPham dsSanPham = new DanhSachSanPham();
         DanhSachTaiKhoan dsTaiKhoan = new DanhSachTaiKhoan();
+        DanhSachMaGiamGia dsMaGiamGia = new DanhSachMaGiamGia();
 
         while (checkMenu_3 == 1) {
             System.out.println("===Chon===");
@@ -14,7 +15,8 @@ public class menuQuanLy {
             System.out.println("2. Quan ly hoa don");
             System.out.println("3. Thong ke");
             System.out.println("4. Quan ly tai khoan");
-            System.out.println("5. Dang xuat");
+            System.out.println("5. Quan ly khuyen mai");
+            System.out.println("6. Dang xuat");
             System.out.print("Nhap:");
             menu_3 = QuanLyCuaHang.sc.nextInt();
 
@@ -131,7 +133,9 @@ public class menuQuanLy {
                     System.out.println("===Chon===");
                     System.out.println("1. Xem tat ca hoa don");
                     System.out.println("2. Tim kiem hoa don");
-                    System.out.println("3. Thoat");
+                    System.out.println("3. Xoa hoa don");
+                    System.out.println("4. Xem lai hoa don da xoa");
+                    System.out.println("5. Thoat");
                     System.out.print("Nhap:");
                     menu_3_2 = QuanLyCuaHang.sc.nextInt();
 
@@ -159,7 +163,7 @@ public class menuQuanLy {
                             }
                         }
                     }
-                    if (menu_3_2 == 3) {
+                    if (menu_3_2 == 5) {
                         checkMenu_3_2 = 0;
                     }
                 }
@@ -385,6 +389,49 @@ public class menuQuanLy {
                 }
             }
             if (menu_3 == 5) {
+                int checkMenu_3_5 = 1, menu_3_5;
+                while (checkMenu_3_5 == 1) {
+                    System.out.println("===Chon===");
+                    System.out.println("1. Xem danh sach ma khuyen mai theo hoa don");
+                    System.out.println("2. Them ma khuyen mai theo hoa don");
+                    System.out.println("3. Tim kiem ma khuyen mai theo hoa don");
+                    System.out.println("4. Xoa ma khuyen mai theo hoa don");
+                    System.out.println("5. Khoi phuc ma khuyen mai");
+                    System.out.println("6. Cai dat ma khuyen mai theo san pham");
+                    System.out.println("7. Thoat");
+                    System.out.print("Nhap:");
+                    menu_3_5 = QuanLyCuaHang.sc.nextInt();
+                    if (menu_3_5 == 1) {
+                        int checkMenu_3_4_3 = 1, menu_3_4_3;
+                        while (checkMenu_3_4_3 == 1) {
+                            System.out.println("===Chon===");
+                            System.out.println("1. Theo thu tu mac dinh");
+                            System.out.println("2. Theo thu tu quan ly - khach hang");
+                            System.out.println("3. Theo thu tu khach hang - quan ly");
+                            System.out.println("4. Thoat");
+                            System.out.print("Nhap:");
+                            menu_3_4_3 = QuanLyCuaHang.sc.nextInt();
+
+                            if (menu_3_4_3 == 1) {
+                                dsTaiKhoan.xuat();
+                            }
+                            if (menu_3_4_3 == 2) {
+                                dsTaiKhoan.xuatDanhSachTkQlFirst();
+                            }
+                            if (menu_3_4_3 == 3) {
+                                dsTaiKhoan.xuatDanhSachTkKhFirst();
+                            }
+                            if (menu_3_4_3 == 4) {
+                                checkMenu_3_4_3 = 0;
+                            }
+                        }
+                    }
+                    if (menu_3_5 == 2) {
+                        dsMaGiamGia.them();
+                    }
+                }
+            }
+            if (menu_3 == 6) {
                 checkMenu_3 = 0;
             }
         }

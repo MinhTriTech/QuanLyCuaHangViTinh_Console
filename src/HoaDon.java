@@ -8,6 +8,7 @@ public class HoaDon {
     private String maHd, maKh, maKhuyenMai, tongTien, phuongThucThanhToan, ngayRaHd, trangThai;
 
     private static final String FILE_NAME_HD = "DanhSachHoaDon.txt";
+    private static final String FILE_NAME_MGG = "DanhSachMaGiamGia.txt";
 
     public HoaDon() {
     }
@@ -112,9 +113,40 @@ public class HoaDon {
         }
     }
 
-    public boolean checkMaKm(String string) {
-        System.out.println("Chua phat trien");
-        return true;
+    public boolean checkMaKm(String maKm, String tongTien) {
+        try {
+            String st;
+            boolean check = false;
+            QuanLyCuaHang.sc.nextLine();
+
+            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_MGG));
+
+            for(int i=1; (st = br.readLine()) != null ; i++) {
+                String s[] = st.split(";");
+                MaGiamGia mgg = new MaGiamGia(s[0],s[1],s[2],s[3],s[4]);
+                if(mgg.getMaChu().equals(maKm) && mgg.getTrangThai().equals("Hoat dong")) {
+                    System.out.println("--Voi hoa don nay ban duoc giam " + mgg.tinhSoTienDuocGiam(Double.parseDouble(tongTien)) + " ban co muon su dung ma giam gia nay khong (Nhap Co hoac Khong de tiep tuc)?");
+                    String xacNhan = QuanLyCuaHang.sc.nextLine();
+                    if(xacNhan.equals("Co")) {
+                        check = true;
+                    } else {
+                        check = false;
+                    }
+                }
+            }
+
+            br.close();
+
+            if(check == false) {
+                System.out.println("--Khong tim thay ma giam gia tuong ung");
+            }
+
+            return check;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public void nhap(String maKh, String tongTien) {
@@ -125,10 +157,18 @@ public class HoaDon {
         setTongTien(tongTien);
 
         do {
-            System.out.print("Nhap ma khuyen mai: ");
-            temp = QuanLyCuaHang.sc.nextLine();}
-        while(!checkMaKm(temp));
-        setMaKhuyenMai(temp);
+            System.out.print("Nhap ma khuyen mai(Nhan Enter de bo qua): ");
+            temp = QuanLyCuaHang.sc.nextLine();
+            if (temp.isEmpty()) {
+                break;
+            }
+        }
+        while(!checkMaKm(temp, tongTien));
+        if (temp.isEmpty()) {
+            setMaKhuyenMai("Khong su dung");
+        } else {
+            setMaKhuyenMai(temp);
+        }
 
         do {
             System.out.println("Chon phuong thuc thanh toan: ");
