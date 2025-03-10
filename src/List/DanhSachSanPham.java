@@ -616,7 +616,7 @@ public class DanhSachSanPham implements IDanhSach {
                             soLuongSp = StaticMethod.sc.nextLine();}
                         while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
 
-                        spTemp = new Laptop(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], s[8],s[9]);
+                        spTemp = new Laptop(s[0], s[1], soLuongSp, s[3], s[4], s[5], s[6], s[7], s[8],s[9]);
                         return spTemp;
                     }
                 }
@@ -633,7 +633,7 @@ public class DanhSachSanPham implements IDanhSach {
                             soLuongSp = StaticMethod.sc.nextLine();}
                         while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
 
-                        spTemp = new PhuKien(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7],s[8]);
+                        spTemp = new PhuKien(s[0], s[1], soLuongSp, s[3], s[4], s[5], s[6], s[7],s[8]);
                         return spTemp;
                     }
                 }
@@ -650,7 +650,7 @@ public class DanhSachSanPham implements IDanhSach {
                             soLuongSp = StaticMethod.sc.nextLine();}
                         while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
 
-                        spTemp = new TaiNgheLoa(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7],s[8]);
+                        spTemp = new TaiNgheLoa(s[0], s[1], soLuongSp, s[3], s[4], s[5], s[6], s[7],s[8]);
                         return spTemp;
                     }
                 }

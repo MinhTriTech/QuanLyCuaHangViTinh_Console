@@ -1,5 +1,6 @@
 package Menu;
 
+import List.DanhSachHoaDon;
 import List.DanhSachMaGiamGia;
 import List.DanhSachSanPham;
 import List.DanhSachTaiKhoan;
@@ -15,6 +16,7 @@ public class menuQuanLy {
         DanhSachSanPham dsSanPham = new DanhSachSanPham();
         DanhSachTaiKhoan dsTaiKhoan = new DanhSachTaiKhoan();
         DanhSachMaGiamGia dsMaGiamGia = new DanhSachMaGiamGia();
+        DanhSachHoaDon dsHoaDon = new DanhSachHoaDon();
 
         while (checkMenu_3 == 1) {
             System.out.println("===Chon===");
@@ -147,7 +149,7 @@ public class menuQuanLy {
                     menu_3_2 = StaticMethod.sc.nextInt();
 
                     if (menu_3_2 == 1) {
-                        System.out.println("Quan ly xem tat ca hoa don");
+                        dsHoaDon.xuat();
                     }
                     if (menu_3_2 == 2) {
                         int checkMenu_3_2_1 = 1, menu_3_2_1;

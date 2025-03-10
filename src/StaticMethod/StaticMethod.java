@@ -66,8 +66,8 @@ public class StaticMethod {
     }
 
     public static void xuatHeaderHd() {
-        int[] columnWidths = {10, 10, 15, 30, 20, 10, 10};
-        String[] headers = {"Ma HD", "Ma KH", "Ma KM", "Tong tien", "PTTT", "Ngay ra HD", "Trang thai"};
+        int[] columnWidths = {10, 10, 30, 15, 30, 20, 10, 20};
+        String[] headers = {"Ma HD", "Ma KH", "Tong tien ban dau", "Ma KM", "Tong tien", "PTTT", "Ngay ra HD", "Trang thai"};
 
         printSeparator(columnWidths);
         printRow(headers, columnWidths);
@@ -161,8 +161,13 @@ public class StaticMethod {
             for (int j = 0; j < sanPhamSanCo.length; j++) {
                 if(dsSanPham[i].getMaSp().equals(sanPhamSanCo[j].getMaSp())) {
 
+                    System.out.println(sanPhamSanCo[j].getSoLuong());
+                    System.out.println(dsSanPham[j].getSoLuong());
+
 //                    Kiểm tra sau khi trừ có không hợp lệ không
                     if (Integer.parseInt(sanPhamSanCo[j].getSoLuong()) - Integer.parseInt(dsSanPham[i].getSoLuong()) < 0) {
+
+
 
 //                        Nếu không hợp lệ thì gán số lượng mới và thêm sản phẩm vào danh sách không hợp lệ
                         sanPhamSanCo[j].setSoLuong(String.valueOf(Integer.parseInt(sanPhamSanCo[j].getSoLuong()) - Integer.parseInt(dsSanPham[i].getSoLuong())));
@@ -181,7 +186,8 @@ public class StaticMethod {
                         }
 
                         sanPhamKhongDatDieuKien[sanPhamKhongDatDieuKien.length-1] = dsSanPham[i];
-                    } else {
+                    }
+                    else {
 
 //                        Nếu hợp lệ thì chỉ gán số lượng mới
                         sanPhamSanCo[j].setSoLuong(String.valueOf(Integer.parseInt(sanPhamSanCo[j].getSoLuong()) - Integer.parseInt(dsSanPham[i].getSoLuong())));

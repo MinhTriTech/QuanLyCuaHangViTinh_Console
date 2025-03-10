@@ -8,7 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class HoaDon {
-    private String maHd, maKh, maKhuyenMai, tongTien, phuongThucThanhToan, ngayRaHd, trangThai;
+    private String maHd, maKh, maKhuyenMai, tongTien, tongTienBanDau, phuongThucThanhToan, ngayRaHd, trangThai;
 
     private static final String FILE_NAME_HD = "DanhSachHoaDon.txt";
     private static final String FILE_NAME_MGG = "DanhSachMaGiamGia.txt";
@@ -16,11 +16,12 @@ public class HoaDon {
     public HoaDon() {
     }
 
-    public HoaDon(String maHd, String maKh, String maKhuyenMai, String tongTien, String phuongThucThanhToan, String ngayRaHd, String trangThai) {
+    public HoaDon(String maHd, String maKh, String tongTienBanDau, String maKhuyenMai, String tongTien, String phuongThucThanhToan, String ngayRaHd, String trangThai) {
         this.maHd = maHd;
         this.maKh = maKh;
         this.maKhuyenMai = maKhuyenMai;
         this.tongTien = tongTien;
+        this.tongTienBanDau = tongTienBanDau;
         this.phuongThucThanhToan = phuongThucThanhToan;
         this.ngayRaHd = ngayRaHd;
         this.trangThai = trangThai;
@@ -82,7 +83,15 @@ public class HoaDon {
         this.trangThai = trangThai;
     }
 
-//    Các phương thức
+    public String getTongTienBanDau() {
+        return tongTienBanDau;
+    }
+
+    public void setTongTienBanDau(String tongTienBanDau) {
+        this.tongTienBanDau = tongTienBanDau;
+    }
+
+    //    Các phương thức
 
     public void setRandomId() {
         String lastId = "HD00000";
@@ -128,13 +137,26 @@ public class HoaDon {
                 String s[] = st.split(";");
                 MaGiamGia mgg = new MaGiamGia(s[0],s[1],s[2],s[3],s[4]);
                 if(mgg.getMaChu().equals(maKm) && mgg.getTrangThai().equals("Hoat dong")) {
-                    System.out.println("--Voi hoa don nay ban duoc giam " + mgg.tinhSoTienDuocGiam(Double.parseDouble(tongTien)) + " ban co muon su dung ma giam gia nay khong (Nhap Co hoac Khong de tiep tuc)?");
-                    String xacNhan = StaticMethod.sc.nextLine();
-                    if(xacNhan.equals("Co")) {
-                        check = true;
-                    } else {
-                        check = false;
+                    System.out.println("--Voi hoa don nay ban duoc giam " + mgg.tinhSoTienDuocGiam(Double.parseDouble(tongTien)) + " ban co muon su dung ma giam gia nay khong?");
+
+                    String xacNhan, tongTienConLaiDaLamTron;
+
+                    do {
+                        System.out.print("Nhap Co hoac Khong de tiep tuc:");
+                        xacNhan = StaticMethod.sc.nextLine();
+                        if(xacNhan.equals("Co")) {
+                            check = true;
+                            double tongTienConLai = Double.parseDouble(getTongTienBanDau()) - mgg.tinhSoTienDuocGiam(Double.parseDouble(tongTien));
+                            tongTienConLaiDaLamTron = String.format("%.2f", tongTienConLai);
+                            setTongTien(tongTienConLaiDaLamTron);
+                            break;
+                        }
+                        if(xacNhan.equals("Khong")) {
+                            check = false;
+                            break;
+                        }
                     }
+                    while(!xacNhan.equals("Co") || !xacNhan.equals("Khong"));
                 }
             }
 
@@ -157,7 +179,7 @@ public class HoaDon {
         setRandomId();
 
         setMaKh(maKh);
-        setTongTien(tongTien);
+        setTongTienBanDau(tongTien);
 
         StaticMethod.sc.nextLine();
 
@@ -202,9 +224,9 @@ public class HoaDon {
     }
 
     public void xuatThongTinHd() {
-        int[] columnWidths = {10, 10, 15, 30, 20, 10, 10};
+        int[] columnWidths = {10, 10, 30, 15, 30, 20, 10, 20};
         String[] values = {
-                getMaHd(), getMaKh(), getMaKhuyenMai(),
+                getMaHd(), getMaKh(), getTongTienBanDau(), getMaKhuyenMai(),
                 getTongTien(), getPhuongThucThanhToan(), getNgayRaHd(),
                 getTrangThai()
         };
@@ -217,6 +239,7 @@ public class HoaDon {
     public String toString() {
         return maHd + ";"
                 + maKh + ";"
+                + tongTienBanDau + ";"
                 + maKhuyenMai + ";"
                 + tongTien + ";"
                 + phuongThucThanhToan + ";"

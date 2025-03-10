@@ -28,7 +28,26 @@ public class DanhSachHoaDon implements IDanhSach {
 
     @Override
     public void xuat() {
+        try {
+            String st;
+            System.out.println("+--------------DANH SACH HOA DON-----------------+");
+            StaticMethod.xuatHeaderHd();
 
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_HD));
+
+            for(int i=1; (st = br.readLine()) != null ; i++) {
+                String s[] = st.split(";");
+                if (s[7].equals("Hoat dong")) {
+                    HoaDon hd = new HoaDon(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    hd.xuatThongTinHd();
+                }
+            }
+
+            br.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 //    Các phương thức khác
@@ -71,7 +90,7 @@ public class DanhSachHoaDon implements IDanhSach {
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
-                HoaDon hd = new HoaDon(s[0],s[1],s[2],s[3],s[4],s[5],s[6]);
+                HoaDon hd = new HoaDon(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
                 if(hd.getMaHd().equals(maHd)) {
                     return hd;
                 }
