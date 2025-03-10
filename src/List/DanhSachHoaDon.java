@@ -1,12 +1,15 @@
+package List;
+
+import Interface.IDanhSach;
+
+import Class.HoaDon;
+import StaticMethod.StaticMethod;
+
 import java.io.*;
-import java.util.Arrays;
-import java.util.Date;
 
-public class DanhSachHoaDon implements IDanhSach{
+public class DanhSachHoaDon implements IDanhSach {
 
-    private static final String FILE_NAME_HD = "DanhSachHoaDon.txt";
-
-    HoaDon[] dsHoaDon = new HoaDon[1];
+    private HoaDon[] dsHoaDon = new HoaDon[1];
 
     @Override
     public void them() {
@@ -28,9 +31,11 @@ public class DanhSachHoaDon implements IDanhSach{
 
     }
 
+//    Các phương thức khác
+
     public String themHd(String maKh, String tongTien) {
         try {
-            File file = new File(FILE_NAME_HD);
+            File file = new File(StaticMethod.FILE_NAME_HD);
 
             if (!file.exists()) {
                 file.createNewFile();
@@ -62,7 +67,7 @@ public class DanhSachHoaDon implements IDanhSach{
 
             maHd = maHd.toUpperCase().trim();
 
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_HD));
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_HD));
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");

@@ -1,16 +1,21 @@
+package List;
+
+import Interface.IDanhSach;
+import StaticMethod.StaticMethod;
+import Class.TaiKhoan;
+import Class.QuanLy;
+import Class.KhachHang;
+
 import java.io.*;
 import java.util.Arrays;
 
-public class DanhSachTaiKhoan implements IDanhSach{
-
-    private static final String FILE_NAME = "DanhSachTaiKhoan.txt";
-
-    TaiKhoan[] dsTaiKhoan = new TaiKhoan[1];
+public class DanhSachTaiKhoan implements IDanhSach {
+    private TaiKhoan[] dsTaiKhoan = new TaiKhoan[1];
 
     @Override
     public void them() { // Them tai khoan QL
         try {
-            File file = new File(FILE_NAME);
+            File file = new File(StaticMethod.FILE_NAME_TK);
 
             if (!file.exists()) {
                 file.createNewFile();
@@ -36,7 +41,7 @@ public class DanhSachTaiKhoan implements IDanhSach{
     @Override
     public void sua() {
         try {
-            File file = new File(FILE_NAME);
+            File file = new File(StaticMethod.FILE_NAME_TK);
 
             if (!file.exists()) {
                 file.createNewFile();
@@ -68,8 +73,8 @@ public class DanhSachTaiKhoan implements IDanhSach{
                 boolean signal = false;
                 String maTk;
                 System.out.println("--Nhap ma tai khoan can sua--");
-                QuanLyCuaHang.sc.nextLine();
-                maTk = QuanLyCuaHang.sc.nextLine();
+                StaticMethod.sc.nextLine();
+                maTk = StaticMethod.sc.nextLine();
                 maTk = maTk.toUpperCase().trim();
 
                 for (int i = 0; i < dsTaiKhoan.length; i++) {
@@ -104,7 +109,7 @@ public class DanhSachTaiKhoan implements IDanhSach{
     @Override
     public void xoa() {
         try {
-            File file = new File(FILE_NAME);
+            File file = new File(StaticMethod.FILE_NAME_TK);
 
             if (!file.exists()) {
                 file.createNewFile();
@@ -136,8 +141,8 @@ public class DanhSachTaiKhoan implements IDanhSach{
                 boolean signal = false;
                 String maTk;
                 System.out.println("--Nhap ma tai khoan can xoa--");
-                QuanLyCuaHang.sc.nextLine();
-                maTk = QuanLyCuaHang.sc.nextLine();
+                StaticMethod.sc.nextLine();
+                maTk = StaticMethod.sc.nextLine();
                 maTk = maTk.toUpperCase().trim();
 
                 for (int i = 0; i < dsTaiKhoan.length; i++) {
@@ -171,9 +176,9 @@ public class DanhSachTaiKhoan implements IDanhSach{
         try {
             String st;
             System.out.println("+--------------DANH SACH TAI KHOAN-----------------+");
-            TaiKhoan.xuatHeaderTk();
+            StaticMethod.xuatHeaderTk();
 
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_TK));
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
@@ -194,9 +199,11 @@ public class DanhSachTaiKhoan implements IDanhSach{
         }
     }
 
+//    Các phương thức khác
+
     public void dangKyKh() { // Them tai khoan KH
         try {
-            File file = new File(FILE_NAME);
+            File file = new File(StaticMethod.FILE_NAME_TK);
 
             if (!file.exists()) {
                 file.createNewFile();
@@ -223,7 +230,7 @@ public class DanhSachTaiKhoan implements IDanhSach{
         TaiKhoan check = null;
         boolean check_2 = false;
         try {
-            File file = new File(FILE_NAME);
+            File file = new File(StaticMethod.FILE_NAME_TK);
 
             if (!file.exists()) {
                 file.createNewFile();
@@ -232,12 +239,11 @@ public class DanhSachTaiKhoan implements IDanhSach{
             BufferedReader br = new BufferedReader(new FileReader(file));
             String st;
 
-            QuanLyCuaHang.sc.nextLine();
             System.out.println("--Nhap thong tin dang nhap--");
             System.out.print("Nhap ten dang nhap: ");
-            String tenDn = QuanLyCuaHang.sc.nextLine();
+            String tenDn = StaticMethod.sc.nextLine();
             System.out.print("Nhap mat khau: ");
-            String matKhau = QuanLyCuaHang.sc.nextLine();
+            String matKhau = StaticMethod.sc.nextLine();
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
@@ -276,9 +282,9 @@ public class DanhSachTaiKhoan implements IDanhSach{
         try {
             String st;
             System.out.println("+--------------DANH SACH TAI KHOAN-----------------+");
-            TaiKhoan.xuatHeaderTk();
+            StaticMethod.xuatHeaderTk();
 
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_TK));
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
                 if (s[4].equals("QL")) {
@@ -288,7 +294,7 @@ public class DanhSachTaiKhoan implements IDanhSach{
             }
             br.close();
 
-            BufferedReader br_temp = new BufferedReader(new FileReader(FILE_NAME));
+            BufferedReader br_temp = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_TK));
             for(int i=1; (st = br_temp.readLine()) != null ; i++) {
                 String s[] = st.split(";");
                 if (s[4].equals("KH")) {
@@ -307,9 +313,9 @@ public class DanhSachTaiKhoan implements IDanhSach{
         try {
             String st;
             System.out.println("+--------------DANH SACH TAI KHOAN-----------------+");
-            TaiKhoan.xuatHeaderTk();
+            StaticMethod.xuatHeaderTk();
 
-            BufferedReader br_temp = new BufferedReader(new FileReader(FILE_NAME));
+            BufferedReader br_temp = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_TK));
             for(int i=1; (st = br_temp.readLine()) != null ; i++) {
                 String s[] = st.split(";");
                 if (s[4].equals("KH")) {
@@ -319,7 +325,7 @@ public class DanhSachTaiKhoan implements IDanhSach{
             }
             br_temp.close();
 
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_TK));
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
                 if (s[4].equals("QL")) {
@@ -338,14 +344,14 @@ public class DanhSachTaiKhoan implements IDanhSach{
         try {
             String st, maTk;
             boolean check = false;
-            QuanLyCuaHang.sc.nextLine();
+            StaticMethod.sc.nextLine();
             System.out.println("Nhap ma tai khoan ban muon tim:");
-            maTk = QuanLyCuaHang.sc.nextLine();
+            maTk = StaticMethod.sc.nextLine();
             maTk = maTk.toUpperCase().trim();
             System.out.println("+--------------KET QUA TIM KIEM-----------------+");
-            TaiKhoan.xuatHeaderTk();
+            StaticMethod.xuatHeaderTk();
 
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_TK));
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
@@ -380,14 +386,14 @@ public class DanhSachTaiKhoan implements IDanhSach{
         try {
             String st, thongTin;
             boolean check = false;
-            QuanLyCuaHang.sc.nextLine();
+            StaticMethod.sc.nextLine();
             System.out.println("Nhap thong tin tai khoan ban muon tim:");
-            thongTin = QuanLyCuaHang.sc.nextLine();
+            thongTin = StaticMethod.sc.nextLine();
             thongTin = thongTin.toUpperCase().trim();
             System.out.println("+--------------KET QUA TIM KIEM-----------------+");
-            TaiKhoan.xuatHeaderTk();
+            StaticMethod.xuatHeaderTk();
 
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_TK));
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");

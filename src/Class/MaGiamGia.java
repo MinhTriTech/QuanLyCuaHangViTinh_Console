@@ -1,3 +1,7 @@
+package Class;
+
+import StaticMethod.StaticMethod;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -5,8 +9,6 @@ import java.io.IOException;
 
 public class MaGiamGia {
     private String maGg, maChu, phanTramGiam, giaTriToiDa, trangThai;
-
-    private static final String FILE_NAME_MGG = "DanhSachMaGiamGia.txt";
 
     public MaGiamGia() {
     }
@@ -59,6 +61,8 @@ public class MaGiamGia {
         this.trangThai = trangThai;
     }
 
+//    Các phương thức
+
     public double tinhSoTienDuocGiam(double tongGiaTri) {
         double discount = tongGiaTri * Double.parseDouble(phanTramGiam) / 100;
         return Math.min(discount, Double.parseDouble(giaTriToiDa));
@@ -66,7 +70,7 @@ public class MaGiamGia {
 
     public void setRandomId() {
         String lastId = "MGG00000";
-        File file = new File(FILE_NAME_MGG);
+        File file = new File(StaticMethod.FILE_NAME_MGG);
 
         if (file.exists()) {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -141,36 +145,27 @@ public class MaGiamGia {
         String temp;
         setRandomId();
 
-        QuanLyCuaHang.sc.nextLine();
+        StaticMethod.sc.nextLine();
 
         do {
             System.out.print("Nhap ma khuyen mai: ");
-            temp = QuanLyCuaHang.sc.nextLine();}
+            temp = StaticMethod.sc.nextLine();}
         while(!checkMaKm(temp));
         setMaChu(temp.trim().toUpperCase());
 
         do {
             System.out.print("Nhap % khuyen mai: ");
-            temp = QuanLyCuaHang.sc.nextLine();}
+            temp = StaticMethod.sc.nextLine();}
         while(!checkKm(temp));
         setPhanTramGiam(temp.trim());
 
         do {
             System.out.print("Nhap gia tri toi da: ");
-            temp = QuanLyCuaHang.sc.nextLine();}
+            temp = StaticMethod.sc.nextLine();}
         while(!checkGia(temp));
         setGiaTriToiDa(temp.trim());
 
         setTrangThai("Hoat dong");
-    }
-
-    public static void xuatHeaderMgg() {
-        int[] columnWidths = {10, 10, 15, 30, 20};
-        String[] headers = {"Ma MGG", "Ma", "% giam", "Gia tri toi da", "Trang thai"};
-
-        printSeparator(columnWidths);
-        printRow(headers, columnWidths);
-        printSeparator(columnWidths);
     }
 
     public void xuatThongTinMgg() {
@@ -179,54 +174,8 @@ public class MaGiamGia {
                 getMaGg(), getMaChu(), getPhanTramGiam(),
                 getGiaTriToiDa(), getTrangThai()
         };
-
-        printMultiLineRow(values, columnWidths);
-        printSeparator(columnWidths);
-    }
-
-    public void printMultiLineRow(String[] row, int[] columnWidths) {
-        int maxLines = 1;
-        String[][] wrappedColumns = new String[row.length][];
-
-        for (int i = 0; i < row.length; i++) {
-            wrappedColumns[i] = wrapText(row[i], columnWidths[i]);
-            maxLines = Math.max(maxLines, wrappedColumns[i].length);
-        }
-
-        for (int line = 0; line < maxLines; line++) {
-            for (int i = 0; i < row.length; i++) {
-                String text = (line < wrappedColumns[i].length) ? wrappedColumns[i][line] : "";
-                System.out.printf("| %-" + columnWidths[i] + "s ", text);
-            }
-            System.out.println("|");
-        }
-    }
-
-    public String[] wrapText(String text, int width) {
-        int lines = (int) Math.ceil((double) text.length() / width);
-        String[] result = new String[lines];
-
-        for (int i = 0; i < lines; i++) {
-            int start = i * width;
-            int end = Math.min(start + width, text.length());
-            result[i] = text.substring(start, end);
-        }
-
-        return result;
-    }
-
-    public static void printSeparator(int[] columnWidths) {
-        for (int width : columnWidths) {
-            System.out.print("+-" + "-".repeat(width) + "-");
-        }
-        System.out.println("+");
-    }
-
-    public static void printRow(String[] row, int[] columnWidths) {
-        for (int i = 0; i < row.length; i++) {
-            System.out.printf("| %-" + columnWidths[i] + "s ", row[i]);
-        }
-        System.out.println("|");
+        StaticMethod.printMultiLineRow(values, columnWidths);
+        StaticMethod.printSeparator(columnWidths);
     }
 
     @Override

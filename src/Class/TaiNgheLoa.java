@@ -1,4 +1,8 @@
-public class TaiNgheLoa extends SanPham{
+package Class;
+
+import StaticMethod.StaticMethod;
+
+public class TaiNgheLoa extends SanPham {
     public TaiNgheLoa() {
     }
 
@@ -6,40 +10,42 @@ public class TaiNgheLoa extends SanPham{
         super(maSp, tenSp, soLuong, gia, moTa, mauSac, khuyenMai, loaiSp, giaBanDau);
     }
 
+//    Các phương thức
+
     @Override
     public void nhap() {
         String temp;
         setRandomId();
 
-        QuanLyCuaHang.sc.nextLine();
+        StaticMethod.sc.nextLine();
 
         System.out.print("Nhap ten san pham: ");
-        temp = QuanLyCuaHang.sc.nextLine();
+        temp = StaticMethod.sc.nextLine();
         setTenSp(temp.trim());
 
         do {
             System.out.print("Nhap so luong: ");
-            temp = QuanLyCuaHang.sc.nextLine();}
+            temp = StaticMethod.sc.nextLine();}
         while(!checkSoLuong(temp.trim()));
         setSoLuong(temp.trim());
 
         do {
             System.out.print("Nhap gia ban dau: ");
-            temp = QuanLyCuaHang.sc.nextLine();}
+            temp = StaticMethod.sc.nextLine();}
         while(!checkGia(temp.trim()));
         setGiaBanDau(temp.trim());
 
         System.out.print("Nhap mo ta: ");
-        temp = QuanLyCuaHang.sc.nextLine();
+        temp = StaticMethod.sc.nextLine();
         setMoTa(temp.trim());
 
         System.out.print("Nhap mau sac: ");
-        temp = QuanLyCuaHang.sc.nextLine();
+        temp = StaticMethod.sc.nextLine();
         setMauSac(temp.trim());
 
         do {
             System.out.print("Nhap % khuyen mai: ");
-            temp = QuanLyCuaHang.sc.nextLine();}
+            temp = StaticMethod.sc.nextLine();}
         while(!checkKm(temp.trim()));
         setKhuyenMai(temp.trim());
 
@@ -53,7 +59,7 @@ public class TaiNgheLoa extends SanPham{
         String temp;
 
         System.out.print("Nhap ten san pham moi(Nhan Enter de giu thong tin cu): ");
-        temp = QuanLyCuaHang.sc.nextLine();
+        temp = StaticMethod.sc.nextLine();
         if (temp.isEmpty()) {
         } else {
             setTenSp(temp.trim());
@@ -61,7 +67,7 @@ public class TaiNgheLoa extends SanPham{
 
         do {
             System.out.print("Nhap gia moi(Nhan Enter de giu thong tin cu): ");
-            temp = QuanLyCuaHang.sc.nextLine();
+            temp = StaticMethod.sc.nextLine();
             if (temp.isEmpty()) {
                 break;
             }
@@ -72,14 +78,14 @@ public class TaiNgheLoa extends SanPham{
         }
 
         System.out.print("Nhap mo ta moi(Nhan Enter de giu thong tin cu): ");
-        temp = QuanLyCuaHang.sc.nextLine();
+        temp = StaticMethod.sc.nextLine();
         if (temp.isEmpty()) {
         } else {
             setMoTa(temp.trim());
         }
 
         System.out.print("Nhap mau sac moi(Nhan Enter de giu thong tin cu): ");
-        temp = QuanLyCuaHang.sc.nextLine();
+        temp = StaticMethod.sc.nextLine();
         if (temp.isEmpty()) {
         } else {
             setMauSac(temp.trim());
@@ -94,8 +100,8 @@ public class TaiNgheLoa extends SanPham{
                 getMauSac(),getLoaiSp(),getKhuyenMai(),getGia(),"Khong co thong tin ve san pham nay"
         };
 
-        printMultiLineRow(values, columnWidths);
-        printSeparator(columnWidths);
+        StaticMethod.printMultiLineRow(values, columnWidths);
+        StaticMethod.printSeparator(columnWidths);
     }
 
     @Override
@@ -106,8 +112,8 @@ public class TaiNgheLoa extends SanPham{
                 getMauSac(),getLoaiSp(),getKhuyenMai(),getGia(),"Khong co thong tin ve san pham nay"
         };
 
-        printMultiLineRow(values, columnWidths);
-        printSeparator(columnWidths);
+        StaticMethod.printMultiLineRow(values, columnWidths);
+        StaticMethod.printSeparator(columnWidths);
     }
 
     @Override

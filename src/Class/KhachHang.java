@@ -1,4 +1,8 @@
-public class KhachHang extends TaiKhoan{
+package Class;
+
+import StaticMethod.StaticMethod;
+
+public class KhachHang extends TaiKhoan {
     private String soDienThoai, email, diaChi;
 
     public KhachHang() {
@@ -35,6 +39,8 @@ public class KhachHang extends TaiKhoan{
         this.diaChi = diaChi;
     }
 
+//    Các phương thức
+
     public boolean checkSoDienThoai(String temp) {
         if (temp == null || !temp.matches("\\d{10,11}")) {
             return false;
@@ -47,24 +53,24 @@ public class KhachHang extends TaiKhoan{
         String temp;
         setRandomId();
 
-        QuanLyCuaHang.sc.nextLine();
+        StaticMethod.sc.nextLine();
         do {
             System.out.print("Nhap ten dang nhap: ");
-            temp = QuanLyCuaHang.sc.nextLine();}
+            temp = StaticMethod.sc.nextLine();}
         while(checkTenDangNhap(temp));
         setTenDn(temp.trim());
 
         System.out.print("Nhap ho va ten: ");
-        temp = QuanLyCuaHang.sc.nextLine();
+        temp = StaticMethod.sc.nextLine();
         setHoVaTen(temp.trim());
 
         System.out.print("Nhap mat khau: ");
-        temp = QuanLyCuaHang.sc.nextLine();
+        temp = StaticMethod.sc.nextLine();
 
         String temp_test;
         do {
             System.out.print("Nhap lai mat khau: ");
-            temp_test = QuanLyCuaHang.sc.nextLine();}
+            temp_test = StaticMethod.sc.nextLine();}
         while(!temp.equals(temp_test));
         setMatKhau(temp.trim());
 
@@ -72,16 +78,16 @@ public class KhachHang extends TaiKhoan{
 
         do {
             System.out.print("Nhap so dien thoai: ");
-            temp = QuanLyCuaHang.sc.nextLine();}
+            temp = StaticMethod.sc.nextLine();}
         while(!checkSoDienThoai(temp.trim()));
         setSoDienThoai(temp.trim());
 
         System.out.print("Nhap email: ");
-        temp = QuanLyCuaHang.sc.nextLine();
+        temp = StaticMethod.sc.nextLine();
         setEmail(temp.trim());
 
         System.out.print("Nhap dia chi: ");
-        temp = QuanLyCuaHang.sc.nextLine();
+        temp = StaticMethod.sc.nextLine();
         setDiaChi(temp.trim());
 
     }
@@ -91,27 +97,27 @@ public class KhachHang extends TaiKhoan{
         String temp;
 
         System.out.print("Nhap ho va ten moi(Nhan Enter de giu thong tin cu): ");
-        temp = QuanLyCuaHang.sc.nextLine();
+        temp = StaticMethod.sc.nextLine();
         if (temp.isEmpty()) {
         } else {
             setHoVaTen(temp.trim());
         }
 
         System.out.print("Nhap mat khau moi(Nhan Enter de giu thong tin cu): ");
-        temp = QuanLyCuaHang.sc.nextLine();
+        temp = StaticMethod.sc.nextLine();
         if (temp.isEmpty()) {
         } else {
             String temp_test;
             do {
                 System.out.print("Nhap lai mat khau: ");
-                temp_test = QuanLyCuaHang.sc.nextLine();}
+                temp_test = StaticMethod.sc.nextLine();}
             while(!temp.equals(temp_test));
             setMatKhau(temp);
         }
 
         do {
             System.out.print("Nhap so dien thoai moi(Nhan Enter de giu thong tin cu): ");
-            temp = QuanLyCuaHang.sc.nextLine();
+            temp = StaticMethod.sc.nextLine();
             if (temp.isEmpty()) {
                 break;
             }
@@ -120,14 +126,14 @@ public class KhachHang extends TaiKhoan{
         setSoDienThoai(temp.trim());
 
         System.out.print("Nhap email moi(Nhan Enter de giu thong tin cu): ");
-        temp = QuanLyCuaHang.sc.nextLine();
+        temp = StaticMethod.sc.nextLine();
         if (temp.isEmpty()) {
         } else {
             setEmail(temp.trim());
         }
 
         System.out.print("Nhap dia chi moi (Nhan Enter de giu thong tin cu): ");
-        temp = QuanLyCuaHang.sc.nextLine();
+        temp = StaticMethod.sc.nextLine();
         if (temp.isEmpty()) {
         } else {
             setDiaChi(temp.trim());
@@ -143,8 +149,8 @@ public class KhachHang extends TaiKhoan{
                 getEmail(), getDiaChi()
         };
 
-        printMultiLineRow(values, columnWidths);
-        printSeparator(columnWidths);
+        StaticMethod.printMultiLineRow(values, columnWidths);
+        StaticMethod.printSeparator(columnWidths);
     }
 
     @Override

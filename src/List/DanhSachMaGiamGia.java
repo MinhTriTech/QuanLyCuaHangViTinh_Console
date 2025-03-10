@@ -1,16 +1,21 @@
+package List;
+
+import Interface.IDanhSach;
+
+import Class.MaGiamGia;
+import StaticMethod.StaticMethod;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 
-public class DanhSachMaGiamGia implements IDanhSach{
-    private static final String FILE_NAME_HD = "DanhSachMaGiamGia.txt";
-
-    MaGiamGia[] dsMaGiamGia = new MaGiamGia[1];
+public class DanhSachMaGiamGia implements IDanhSach {
+    private MaGiamGia[] dsMaGiamGia = new MaGiamGia[1];
 
     @Override
     public void them() {
         try {
-            File file = new File(FILE_NAME_HD);
+            File file = new File(StaticMethod.FILE_NAME_MGG);
 
             if (!file.exists()) {
                 file.createNewFile();

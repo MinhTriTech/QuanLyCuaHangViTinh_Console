@@ -1,3 +1,7 @@
+package ActionClass;
+
+import Class.SanPham;
+
 public class MuaHangAction {
     private SanPham[] dsSanPhamKhongHopLe;
     private SanPham[] dsSanPhamKhoConLai;

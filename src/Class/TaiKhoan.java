@@ -1,3 +1,7 @@
+package Class;
+
+import StaticMethod.StaticMethod;
+
 import java.io.*;
 
 public abstract class TaiKhoan {
@@ -6,8 +10,6 @@ public abstract class TaiKhoan {
     private String matKhau;
     private String hoVaTen;
     private String quyenTk;
-
-    private static final String FILE_NAME = "DanhSachTaiKhoan.txt";
 
     public TaiKhoan() {
     }
@@ -60,6 +62,8 @@ public abstract class TaiKhoan {
         this.quyenTk = quyenTk;
     }
 
+//    Các phương thức
+
     @Override
     public String toString() {
         return maTk + ";"
@@ -71,7 +75,7 @@ public abstract class TaiKhoan {
 
     public void setRandomId() {
         String lastId = "TK00000";
-        File file = new File(FILE_NAME);
+        File file = new File(StaticMethod.FILE_NAME_TK);
 
         if (file.exists()) {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -94,10 +98,10 @@ public abstract class TaiKhoan {
         try {
             String st, tenDnCheck = "";
             boolean signal = false;
-            File file = new File(FILE_NAME);
+            File file = new File(StaticMethod.FILE_NAME_TK);
 
             if (file.exists()) {
-                BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
+                BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_TK));
                 while((st = br.readLine()) != null){
                     String []mang = st.split(";");
 
@@ -123,60 +127,6 @@ public abstract class TaiKhoan {
             e.printStackTrace();
         }
         return false;
-    }
-
-    public static void xuatHeaderTk() {
-        int[] columnWidths = {10, 20, 10, 25, 10, 20, 30, 20};
-        String[] headers = {"Ma TK", "Ten TK", "Mat khau", "Ho và ten", "Quyen TK", "So dien thoai", "Email", "Đia chi"};
-
-        printSeparator(columnWidths);
-        printRow(headers, columnWidths);
-        printSeparator(columnWidths);
-    }
-
-    public void printMultiLineRow(String[] row, int[] columnWidths) {
-        int maxLines = 1;
-        String[][] wrappedColumns = new String[row.length][];
-
-        for (int i = 0; i < row.length; i++) {
-            wrappedColumns[i] = wrapText(row[i], columnWidths[i]);
-            maxLines = Math.max(maxLines, wrappedColumns[i].length);
-        }
-
-        for (int line = 0; line < maxLines; line++) {
-            for (int i = 0; i < row.length; i++) {
-                String text = (line < wrappedColumns[i].length) ? wrappedColumns[i][line] : "";
-                System.out.printf("| %-" + columnWidths[i] + "s ", text);
-            }
-            System.out.println("|");
-        }
-    }
-
-    public String[] wrapText(String text, int width) {
-        int lines = (int) Math.ceil((double) text.length() / width);
-        String[] result = new String[lines];
-
-        for (int i = 0; i < lines; i++) {
-            int start = i * width;
-            int end = Math.min(start + width, text.length());
-            result[i] = text.substring(start, end);
-        }
-
-        return result;
-    }
-
-    public static void printSeparator(int[] columnWidths) {
-        for (int width : columnWidths) {
-            System.out.print("+-" + "-".repeat(width) + "-");
-        }
-        System.out.println("+");
-    }
-
-    public static void printRow(String[] row, int[] columnWidths) {
-        for (int i = 0; i < row.length; i++) {
-            System.out.printf("| %-" + columnWidths[i] + "s ", row[i]);
-        }
-        System.out.println("|");
     }
 
     public abstract void nhap();

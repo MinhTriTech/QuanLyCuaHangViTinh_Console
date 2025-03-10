@@ -1,8 +1,18 @@
+package Menu;
+
+import ActionClass.MuaHangAction;
+import List.DanhSachHoaDon;
+import List.DanhSachSanPham;
+import Class.SanPham;
+import Class.Laptop;
+import Class.PhuKien;
+import Class.TaiNgheLoa;
+import StaticMethod.StaticMethod;
+
 import java.io.*;
 import java.util.Arrays;
 
 public class menuKhachHang {
-    private static final String FILE_NAME_SP = "DanhSachSanPham.txt";
 
     public menuKhachHang(String maKh) {
         init(maKh);
@@ -23,7 +33,7 @@ public class menuKhachHang {
             System.out.println("3. Sua thong tin tai khoan");
             System.out.println("4. Dang xuat");
             System.out.print("Nhap:");
-            menu_2 = QuanLyCuaHang.sc.nextInt();
+            menu_2 = StaticMethod.sc.nextInt();
 
             if (menu_2 == 1) {
                 int checkMenu_2_1 = 1, menu_2_1;
@@ -34,12 +44,12 @@ public class menuKhachHang {
                     System.out.println("3. Tim san pham");
                     System.out.println("4. Thoat");
                     System.out.print("Nhap:");
-                    menu_2_1 = QuanLyCuaHang.sc.nextInt();
+                    menu_2_1 = StaticMethod.sc.nextInt();
 
                     if (menu_2_1 == 1) {
                         String checkMenu_2_1_1 = "", menu_2_1_1;
                         dsSanPham.xuat();
-                        QuanLyCuaHang.sc.nextLine();
+                        StaticMethod.sc.nextLine();
                         while (checkMenu_2_1_1 == "") {
                             System.out.println("Xem danh sach san pham theo:");
                             System.out.println("===Chon===");
@@ -53,7 +63,7 @@ public class menuKhachHang {
                             System.out.println("Nhap cac so ben tren de loc san pham:");
                             System.out.println("Hoac?");
                             System.out.println("Nhap ma san pham muon mua (Nhap s de xem gio hang | Nhap d de xoa san pham trong gio | Nhap a de thanh toan | Nhap e de thoat(Xoa tat ca san pham trong gio hang)):");
-                            menu_2_1_1 = QuanLyCuaHang.sc.nextLine();
+                            menu_2_1_1 = StaticMethod.sc.nextLine();
 
                             switch (menu_2_1_1) {
                                 case "1":
@@ -82,7 +92,7 @@ public class menuKhachHang {
                                         System.out.println("2. Tim kiem tong quat");
                                         System.out.println("3. Thoat");
                                         System.out.print("Nhap:");
-                                        menu_2_1_1_1 = QuanLyCuaHang.sc.nextInt();
+                                        menu_2_1_1_1 = StaticMethod.sc.nextInt();
 
                                         if (menu_2_1_1_1 == 1) {
                                             dsSanPham.timKiemTheoMaSp();
@@ -109,7 +119,7 @@ public class menuKhachHang {
                                         SanPham[] sanPhamTrongKhoConLai = new SanPham[0];
 
 //                                        Kiểm tra danh sách sản phẩm trong giỏ hàng
-                                        muaHangAction = SanPham.checkDsSanPhamTrongGio(dsSanPhamTrongGioHang);
+                                        muaHangAction = StaticMethod.checkDsSanPhamTrongGio(dsSanPhamTrongGioHang);
                                         sanPhamKhongDatDieuKien = Arrays.copyOf(muaHangAction.getDsSanPhamKhongHopLe(), muaHangAction.getDsSanPhamKhongHopLe().length);
                                         sanPhamTrongKhoConLai = Arrays.copyOf(muaHangAction.getDsSanPhamKhoConLai(), muaHangAction.getDsSanPhamKhoConLai().length);
 
@@ -119,7 +129,7 @@ public class menuKhachHang {
 //                                            Tiến hành trừ trực tiếp vào kho
 //                                            Ghi đè mảng sản phẩm còn lại lên file danh sách sản phẩm
                                             try {
-                                                File file = new File(FILE_NAME_SP);
+                                                File file = new File(StaticMethod.FILE_NAME_SP);
 
                                                 if (!file.exists()) {
                                                     file.createNewFile();
@@ -149,7 +159,7 @@ public class menuKhachHang {
 //                                            Tạo danh sách các sản phẩm tương ứng với mã hóa đơn vừa tạo
 
 //                                            Xuất hóa đơn
-                                            HoaDon.xuatHeaderHd();;
+                                            StaticMethod.xuatHeaderHd();;
                                             dsHoaDon.timKiemTheoMaHdBool(maHd).xuatThongTinHd();
 
 //                                            Xóa giỏ hàng (xóa mảng danh sách sản phẩm trong giỏ hàng)
@@ -160,7 +170,7 @@ public class menuKhachHang {
 //                                        Nếu không rỗng nghĩa là có nhiều hơn 1 sản phẩm không hợp lệ
                                         else {
                                             System.out.println("--Cac san pham ben duoi khong du trong kho, vui long sap xep lai gio hang");
-                                            SanPham.xuatHeaderSpCoStt();
+                                            StaticMethod.xuatHeaderSpCoStt();
                                             for (int i = 0; i < sanPhamKhongDatDieuKien.length; i++) {
                                                 sanPhamKhongDatDieuKien[i].xuatThongTinSpCoStt(String.valueOf(i + 1));
                                             }
@@ -168,7 +178,7 @@ public class menuKhachHang {
                                     }
                                     break;
                                 case "s":
-                                    SanPham.xuatHeaderSpCoStt();
+                                    StaticMethod.xuatHeaderSpCoStt();
                                     if(dsSanPhamTrongGioHang.length == 0) {
                                         System.out.println("--Gio hang trong");
                                     } else {
@@ -178,7 +188,7 @@ public class menuKhachHang {
                                     }
                                     break;
                                 case "d":
-                                    SanPham.xuatHeaderSpCoStt();
+                                    StaticMethod.xuatHeaderSpCoStt();
                                     if(dsSanPhamTrongGioHang.length == 0) {
                                         System.out.println("--Gio hang trong");
                                     } else {
@@ -196,7 +206,7 @@ public class menuKhachHang {
                                             } else {
                                                 System.out.println("--Khong tim thay.Nhap lai so thu tu trong gio muon xoa");
                                             }
-                                            stt = QuanLyCuaHang.sc.nextLine();}
+                                            stt = StaticMethod.sc.nextLine();}
                                         while(Integer.parseInt(stt) >= dsSanPhamTrongGioHang.length || Integer.parseInt(stt) <= 0);
 
                                         SanPham[] dsSanPhamTrongGioHangTemp = new SanPham[dsSanPhamTrongGioHang.length - 1];
@@ -215,7 +225,7 @@ public class menuKhachHang {
                                             dsSanPhamTrongGioHang[i] = dsSanPhamTrongGioHangTemp[i];
                                         }
 
-                                        SanPham.xuatHeaderSpCoStt();
+                                        StaticMethod.xuatHeaderSpCoStt();
                                         for (int i = 0; i < dsSanPhamTrongGioHang.length; i++) {
                                             dsSanPhamTrongGioHang[i].xuatThongTinSpCoStt(String.valueOf(i + 1));
                                         }
@@ -268,7 +278,7 @@ public class menuKhachHang {
                             System.out.println("2. Tim kiem tong quat");
                             System.out.println("3. Thoat");
                             System.out.print("Nhap:");
-                            menu_2_1_1 = QuanLyCuaHang.sc.nextInt();
+                            menu_2_1_1 = StaticMethod.sc.nextInt();
 
                             if (menu_2_1_1 == 1) {
                                 System.out.println("Khach hang tim kiem theo ma san pham");
@@ -294,7 +304,7 @@ public class menuKhachHang {
                     System.out.println("2. Tim kiem hoa don");
                     System.out.println("3. Thoat");
                     System.out.print("Nhap:");
-                    menu_2_2 = QuanLyCuaHang.sc.nextInt();
+                    menu_2_2 = StaticMethod.sc.nextInt();
 
                     if (menu_2_2 == 1) {
                         System.out.println("Khach hang xem tat ca hoa don cua minh");
@@ -307,7 +317,7 @@ public class menuKhachHang {
                             System.out.println("2. Tim kiem tong quat");
                             System.out.println("3. Thoat");
                             System.out.print("Nhap:");
-                            menu_2_2_1 = QuanLyCuaHang.sc.nextInt();
+                            menu_2_2_1 = StaticMethod.sc.nextInt();
 
                             if (menu_2_2_1 == 1) {
                                 System.out.println("Khach hang tim kiem hoa don cua minh theo ma");

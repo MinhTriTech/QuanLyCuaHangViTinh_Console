@@ -1,8 +1,11 @@
+package Class;
+
+import StaticMethod.StaticMethod;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Date;
 
 public class HoaDon {
     private String maHd, maKh, maKhuyenMai, tongTien, phuongThucThanhToan, ngayRaHd, trangThai;
@@ -117,7 +120,7 @@ public class HoaDon {
         try {
             String st;
             boolean check = false;
-            QuanLyCuaHang.sc.nextLine();
+            StaticMethod.sc.nextLine();
 
             BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_MGG));
 
@@ -126,7 +129,7 @@ public class HoaDon {
                 MaGiamGia mgg = new MaGiamGia(s[0],s[1],s[2],s[3],s[4]);
                 if(mgg.getMaChu().equals(maKm) && mgg.getTrangThai().equals("Hoat dong")) {
                     System.out.println("--Voi hoa don nay ban duoc giam " + mgg.tinhSoTienDuocGiam(Double.parseDouble(tongTien)) + " ban co muon su dung ma giam gia nay khong (Nhap Co hoac Khong de tiep tuc)?");
-                    String xacNhan = QuanLyCuaHang.sc.nextLine();
+                    String xacNhan = StaticMethod.sc.nextLine();
                     if(xacNhan.equals("Co")) {
                         check = true;
                     } else {
@@ -156,9 +159,11 @@ public class HoaDon {
         setMaKh(maKh);
         setTongTien(tongTien);
 
+        StaticMethod.sc.nextLine();
+
         do {
             System.out.print("Nhap ma khuyen mai(Nhan Enter de bo qua): ");
-            temp = QuanLyCuaHang.sc.nextLine();
+            temp = StaticMethod.sc.nextLine();
             if (temp.isEmpty()) {
                 break;
             }
@@ -176,7 +181,7 @@ public class HoaDon {
             System.out.println("1. Tien mat");
             System.out.println("2. Momo");
             System.out.println("3. The ngan hang");
-            temp = QuanLyCuaHang.sc.nextLine();
+            temp = StaticMethod.sc.nextLine();
         }
         while(Integer.parseInt(temp) > 3 && Integer.parseInt(temp) < 0);
         if(Integer.parseInt(temp) == 1) {
@@ -189,20 +194,11 @@ public class HoaDon {
 
         do {
             System.out.print("Nhap ngay tao hoa don(dinh dang dd-mm-yyyy): ");
-            temp = QuanLyCuaHang.sc.nextLine();}
+            temp = StaticMethod.sc.nextLine();}
         while(!checkNgayTaoHd(temp));
         setNgayRaHd(temp);
 
         setTrangThai("Hoat dong");
-    }
-
-    public static void xuatHeaderHd() {
-        int[] columnWidths = {10, 10, 15, 30, 20, 10, 10};
-        String[] headers = {"Ma HD", "Ma KH", "Ma KM", "Tong tien", "PTTT", "Ngay ra HD", "Trang thai"};
-
-        printSeparator(columnWidths);
-        printRow(headers, columnWidths);
-        printSeparator(columnWidths);
     }
 
     public void xuatThongTinHd() {
@@ -213,53 +209,8 @@ public class HoaDon {
                 getTrangThai()
         };
 
-        printMultiLineRow(values, columnWidths);
-        printSeparator(columnWidths);
-    }
-
-    public void printMultiLineRow(String[] row, int[] columnWidths) {
-        int maxLines = 1;
-        String[][] wrappedColumns = new String[row.length][];
-
-        for (int i = 0; i < row.length; i++) {
-            wrappedColumns[i] = wrapText(row[i], columnWidths[i]);
-            maxLines = Math.max(maxLines, wrappedColumns[i].length);
-        }
-
-        for (int line = 0; line < maxLines; line++) {
-            for (int i = 0; i < row.length; i++) {
-                String text = (line < wrappedColumns[i].length) ? wrappedColumns[i][line] : "";
-                System.out.printf("| %-" + columnWidths[i] + "s ", text);
-            }
-            System.out.println("|");
-        }
-    }
-
-    public String[] wrapText(String text, int width) {
-        int lines = (int) Math.ceil((double) text.length() / width);
-        String[] result = new String[lines];
-
-        for (int i = 0; i < lines; i++) {
-            int start = i * width;
-            int end = Math.min(start + width, text.length());
-            result[i] = text.substring(start, end);
-        }
-
-        return result;
-    }
-
-    public static void printSeparator(int[] columnWidths) {
-        for (int width : columnWidths) {
-            System.out.print("+-" + "-".repeat(width) + "-");
-        }
-        System.out.println("+");
-    }
-
-    public static void printRow(String[] row, int[] columnWidths) {
-        for (int i = 0; i < row.length; i++) {
-            System.out.printf("| %-" + columnWidths[i] + "s ", row[i]);
-        }
-        System.out.println("|");
+        StaticMethod.printMultiLineRow(values, columnWidths);
+        StaticMethod.printSeparator(columnWidths);
     }
 
     @Override

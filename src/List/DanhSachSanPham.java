@@ -1,29 +1,36 @@
+package List;
+
+import Interface.IDanhSach;
+import Class.SanPham;
+import Class.Laptop;
+import Class.PhuKien;
+import Class.TaiNgheLoa;
+import StaticMethod.StaticMethod;
+
 import java.io.*;
 import java.util.Arrays;
 
-public class DanhSachSanPham implements IDanhSach{
-    private static final String FILE_NAME_SP = "DanhSachSanPham.txt";
-
-    SanPham[] dsSanPham = new SanPham[1];
+public class DanhSachSanPham implements IDanhSach {
+    private SanPham[] dsSanPham = new SanPham[1];
 
     @Override
     public void them() {
         try {
-            File file = new File(FILE_NAME_SP);
+            File file = new File(StaticMethod.FILE_NAME_SP);
 
             if (!file.exists()) {
                 file.createNewFile();
             }
 
             System.out.println("Nhap so luong san pham can them: ");
-            int slTemp = QuanLyCuaHang.sc.nextInt();
+            int slTemp = StaticMethod.sc.nextInt();
             for (int i = 1; i<= slTemp; i++) {
                 System.out.println("===Chon loai san pham can them: ===");
                 System.out.println("1. Laptop");
                 System.out.println("2. Phu kien");
                 System.out.println("3. Tai nghe/Loa");
                 System.out.print("Nhap:");
-                int luaChonSp = QuanLyCuaHang.sc.nextInt();
+                int luaChonSp = StaticMethod.sc.nextInt();
 
                 if (luaChonSp == 1) {
                     BufferedWriter fr = new BufferedWriter(new FileWriter(file, true));
@@ -70,7 +77,7 @@ public class DanhSachSanPham implements IDanhSach{
     @Override
     public void sua() {
         try {
-            File file = new File(FILE_NAME_SP);
+            File file = new File(StaticMethod.FILE_NAME_SP);
 
             if (!file.exists()) {
                 file.createNewFile();
@@ -104,8 +111,8 @@ public class DanhSachSanPham implements IDanhSach{
                 boolean signal = false;
                 String maSp;
                 System.out.println("--Nhap ma san pham can sua--");
-                QuanLyCuaHang.sc.nextLine();
-                maSp = QuanLyCuaHang.sc.nextLine();
+                StaticMethod.sc.nextLine();
+                maSp = StaticMethod.sc.nextLine();
                 maSp = maSp.toUpperCase().trim();
 
                 BufferedWriter fr = new BufferedWriter(new FileWriter(file, false));
@@ -142,7 +149,7 @@ public class DanhSachSanPham implements IDanhSach{
     @Override
     public void xoa() {
         try {
-            File file = new File(FILE_NAME_SP);
+            File file = new File(StaticMethod.FILE_NAME_SP);
 
             if (!file.exists()) {
                 file.createNewFile();
@@ -177,8 +184,8 @@ public class DanhSachSanPham implements IDanhSach{
                 boolean signal = false;
                 String maSp;
                 System.out.println("--Nhap ma san pham can xoa--");
-                QuanLyCuaHang.sc.nextLine();
-                maSp = QuanLyCuaHang.sc.nextLine();
+                StaticMethod.sc.nextLine();
+                maSp = StaticMethod.sc.nextLine();
                 maSp = maSp.toUpperCase().trim();
 
                 for (int i = 0; i < dsSanPham.length; i++) {
@@ -212,9 +219,9 @@ public class DanhSachSanPham implements IDanhSach{
         try {
             String st;
             System.out.println("+--------------DANH SACH SAN PHAM-----------------+");
-            SanPham.xuatHeaderSp();
+            StaticMethod.xuatHeaderSp();
 
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_SP));
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
@@ -239,12 +246,14 @@ public class DanhSachSanPham implements IDanhSach{
         }
     }
 
+//    Các phương thức khác
+
     public void xuatTheoGiaThapDenCao() {
         try {
             System.out.println("+--------------DANH SACH SAN PHAM-----------------+");
-            SanPham.xuatHeaderSp();
+            StaticMethod.xuatHeaderSp();
 
-            File file = new File(FILE_NAME_SP);
+            File file = new File(StaticMethod.FILE_NAME_SP);
 
             if (!file.exists()) {
                 file.createNewFile();
@@ -303,9 +312,9 @@ public class DanhSachSanPham implements IDanhSach{
     public void xuatTheoGiaCaoDenThap() {
         try {
             System.out.println("+--------------DANH SACH SAN PHAM-----------------+");
-            SanPham.xuatHeaderSp();
+            StaticMethod.xuatHeaderSp();
 
-            File file = new File(FILE_NAME_SP);
+            File file = new File(StaticMethod.FILE_NAME_SP);
 
             if (!file.exists()) {
                 file.createNewFile();
@@ -365,9 +374,9 @@ public class DanhSachSanPham implements IDanhSach{
         try {
             String st;
             System.out.println("+--------------DANH SACH SAN PHAM-----------------+");
-            SanPham.xuatHeaderSp();
+            StaticMethod.xuatHeaderSp();
 
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_SP));
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
@@ -388,9 +397,9 @@ public class DanhSachSanPham implements IDanhSach{
         try {
             String st;
             System.out.println("+--------------DANH SACH SAN PHAM-----------------+");
-            SanPham.xuatHeaderSp();
+            StaticMethod.xuatHeaderSp();
 
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_SP));
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
@@ -411,9 +420,9 @@ public class DanhSachSanPham implements IDanhSach{
         try {
             String st;
             System.out.println("+--------------DANH SACH SAN PHAM-----------------+");
-            SanPham.xuatHeaderSp();
+            StaticMethod.xuatHeaderSp();
 
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_SP));
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
@@ -434,14 +443,14 @@ public class DanhSachSanPham implements IDanhSach{
         try {
             String st, maSp;
             boolean check = false;
-            QuanLyCuaHang.sc.nextLine();
+            StaticMethod.sc.nextLine();
             System.out.println("Nhap ma san pham ban muon tim:");
-            maSp = QuanLyCuaHang.sc.nextLine();
+            maSp = StaticMethod.sc.nextLine();
             maSp = maSp.toUpperCase().trim();
             System.out.println("+--------------KET QUA TIM KIEM-----------------+");
-            SanPham.xuatHeaderSp();
+            StaticMethod.xuatHeaderSp();
 
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_SP));
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
@@ -483,14 +492,14 @@ public class DanhSachSanPham implements IDanhSach{
         try {
             String st, thongTin;
             boolean check = false;
-            QuanLyCuaHang.sc.nextLine();
+            StaticMethod.sc.nextLine();
             System.out.println("Nhap thong tin san pham ban muon tim:");
-            thongTin = QuanLyCuaHang.sc.nextLine();
+            thongTin = StaticMethod.sc.nextLine();
             thongTin = thongTin.toUpperCase().trim();
             System.out.println("+--------------KET QUA TIM KIEM-----------------+");
-            SanPham.xuatHeaderSp();
+            StaticMethod.xuatHeaderSp();
 
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_SP));
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
@@ -542,7 +551,7 @@ public class DanhSachSanPham implements IDanhSach{
 
             maSp = maSp.toUpperCase().trim();
 
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_SP));
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
@@ -590,7 +599,7 @@ public class DanhSachSanPham implements IDanhSach{
 
             maSp = maSp.toUpperCase().trim();
 
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_SP));
 
             for (int i = 1; (st = br.readLine()) != null; i++) {
                 String s[] = st.split(";");
@@ -604,7 +613,7 @@ public class DanhSachSanPham implements IDanhSach{
                             } else {
                                 System.out.print("Nhap lai so luong san pham can mua khong duoc lon hon so luong hien co " + "(" + sp.getSoLuong() + " san pham):");
                             }
-                            soLuongSp = QuanLyCuaHang.sc.nextLine();}
+                            soLuongSp = StaticMethod.sc.nextLine();}
                         while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
 
                         spTemp = new Laptop(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], s[8],s[9]);
@@ -621,7 +630,7 @@ public class DanhSachSanPham implements IDanhSach{
                             } else {
                                 System.out.print("Nhap lai so luong san pham can mua khong duoc lon hon so luong hien co: ");
                             }
-                            soLuongSp = QuanLyCuaHang.sc.nextLine();}
+                            soLuongSp = StaticMethod.sc.nextLine();}
                         while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
 
                         spTemp = new PhuKien(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7],s[8]);
@@ -638,7 +647,7 @@ public class DanhSachSanPham implements IDanhSach{
                             } else {
                                 System.out.print("Nhap lai so luong san pham can mua khong duoc lon hon so luong hien co: ");
                             }
-                            soLuongSp = QuanLyCuaHang.sc.nextLine();}
+                            soLuongSp = StaticMethod.sc.nextLine();}
                         while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
 
                         spTemp = new TaiNgheLoa(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7],s[8]);

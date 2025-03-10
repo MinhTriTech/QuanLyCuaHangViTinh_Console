@@ -1,3 +1,10 @@
+package Menu;
+
+import List.DanhSachMaGiamGia;
+import List.DanhSachSanPham;
+import List.DanhSachTaiKhoan;
+import StaticMethod.StaticMethod;
+
 public class menuQuanLy {
     public menuQuanLy() {
         init();
@@ -18,7 +25,7 @@ public class menuQuanLy {
             System.out.println("5. Quan ly khuyen mai");
             System.out.println("6. Dang xuat");
             System.out.print("Nhap:");
-            menu_3 = QuanLyCuaHang.sc.nextInt();
+            menu_3 = StaticMethod.sc.nextInt();
 
             if (menu_3 == 1) {
                 int checkMenu_3_1 = 1, menu_3_1;
@@ -33,7 +40,7 @@ public class menuQuanLy {
                     System.out.println("7. Xuat san pham");
                     System.out.println("8. Thoat");
                     System.out.print("Nhap:");
-                    menu_3_1 = QuanLyCuaHang.sc.nextInt();
+                    menu_3_1 = StaticMethod.sc.nextInt();
 
                     if (menu_3_1 == 1) {
                         int checkMenu_3_1_2 = 1, menu_3_1_2;
@@ -45,7 +52,7 @@ public class menuQuanLy {
                             System.out.println("4. Theo danh muc");
                             System.out.println("5. Thoat");
                             System.out.print("Nhap:");
-                            menu_3_1_2 = QuanLyCuaHang.sc.nextInt();
+                            menu_3_1_2 = StaticMethod.sc.nextInt();
 
                             if (menu_3_1_2 == 1) {
                                 dsSanPham.xuat();
@@ -65,7 +72,7 @@ public class menuQuanLy {
                                     System.out.println("3. Tai nghe/Loa");
                                     System.out.println("4. Thoat");
                                     System.out.print("Nhap:");
-                                    menu_3_1_2_1 = QuanLyCuaHang.sc.nextInt();
+                                    menu_3_1_2_1 = StaticMethod.sc.nextInt();
 
                                     if (menu_3_1_2_1 == 1) {
                                         dsSanPham.xuatTheoDmLaptop();
@@ -103,7 +110,7 @@ public class menuQuanLy {
                             System.out.println("2. Tim kiem tong quat");
                             System.out.println("3. Thoat");
                             System.out.print("Nhap:");
-                            menu_3_1_1 = QuanLyCuaHang.sc.nextInt();
+                            menu_3_1_1 = StaticMethod.sc.nextInt();
 
                             if (menu_3_1_1 == 1) {
                                 dsSanPham.timKiemTheoMaSp();
@@ -137,7 +144,7 @@ public class menuQuanLy {
                     System.out.println("4. Xem lai hoa don da xoa");
                     System.out.println("5. Thoat");
                     System.out.print("Nhap:");
-                    menu_3_2 = QuanLyCuaHang.sc.nextInt();
+                    menu_3_2 = StaticMethod.sc.nextInt();
 
                     if (menu_3_2 == 1) {
                         System.out.println("Quan ly xem tat ca hoa don");
@@ -150,7 +157,7 @@ public class menuQuanLy {
                             System.out.println("2. Tim kiem tong quat");
                             System.out.println("3. Thoat");
                             System.out.print("Nhap:");
-                            menu_3_2_1 = QuanLyCuaHang.sc.nextInt();
+                            menu_3_2_1 = StaticMethod.sc.nextInt();
 
                             if (menu_3_2_1 == 1) {
                                 System.out.println("Quan ly tim kiem hoa don theo ma");
@@ -176,7 +183,7 @@ public class menuQuanLy {
                     System.out.println("2. Thong ke nhap/xuat");
                     System.out.println("3. Thoat");
                     System.out.print("Nhap:");
-                    menu_3_3 = QuanLyCuaHang.sc.nextInt();
+                    menu_3_3 = StaticMethod.sc.nextInt();
 
                     if (menu_3_3 == 1) {
                         int checkMenu_3_3_1 = 1, menu_3_3_1;
@@ -186,7 +193,7 @@ public class menuQuanLy {
                             System.out.println("2. Thong ke tu ngay den ngay");
                             System.out.println("3. Thoat");
                             System.out.print("Nhap:");
-                            menu_3_3_1 = QuanLyCuaHang.sc.nextInt();
+                            menu_3_3_1 = StaticMethod.sc.nextInt();
 
                             if (menu_3_3_1 == 1) {
                                 int checkMenu_3_3_1_1 = 1, menu_3_3_1_1;
@@ -196,7 +203,7 @@ public class menuQuanLy {
                                     System.out.println("2. Tong quat");
                                     System.out.println("3. Thoat");
                                     System.out.print("Nhap:");
-                                    menu_3_3_1_1 = QuanLyCuaHang.sc.nextInt();
+                                    menu_3_3_1_1 = StaticMethod.sc.nextInt();
 
                                     if (menu_3_3_1_1 == 1) {
                                         System.out.println("Quan ly thong ke so ban theo thang (ma san pham)");
@@ -217,7 +224,7 @@ public class menuQuanLy {
                                     System.out.println("2. Tong quat");
                                     System.out.println("3. Thoat");
                                     System.out.print("Nhap:");
-                                    menu_3_3_1_2 = QuanLyCuaHang.sc.nextInt();
+                                    menu_3_3_1_2 = StaticMethod.sc.nextInt();
 
                                     if (menu_3_3_1_2 == 1) {
                                         System.out.println("Quan ly thong ke so ban tu ngay den ngay (ma san pham)");
@@ -243,7 +250,7 @@ public class menuQuanLy {
                             System.out.println("2. Thong ke tu ngay den ngay");
                             System.out.println("3. Thoat");
                             System.out.print("Nhap:");
-                            menu_3_3_2 = QuanLyCuaHang.sc.nextInt();
+                            menu_3_3_2 = StaticMethod.sc.nextInt();
 
                             if (menu_3_3_2 == 1) {
                                 int checkMenu_3_3_2_1 = 1, menu_3_3_2_1;
@@ -253,7 +260,7 @@ public class menuQuanLy {
                                     System.out.println("2. Tong quat");
                                     System.out.println("3. Thoat");
                                     System.out.print("Nhap:");
-                                    menu_3_3_2_1 = QuanLyCuaHang.sc.nextInt();
+                                    menu_3_3_2_1 = StaticMethod.sc.nextInt();
 
                                     if (menu_3_3_2_1 == 1) {
                                         System.out.println("Quan ly thong ke nhap/xuat theo thang (ma san pham)");
@@ -274,7 +281,7 @@ public class menuQuanLy {
                                     System.out.println("2. Tong quat");
                                     System.out.println("3. Thoat");
                                     System.out.print("Nhap:");
-                                    menu_3_3_2_2 = QuanLyCuaHang.sc.nextInt();
+                                    menu_3_3_2_2 = StaticMethod.sc.nextInt();
 
                                     if (menu_3_3_2_2 == 1) {
                                         System.out.println("Quan ly thong ke nhap/xuat tu ngay den ngay (ma san pham)");
@@ -308,7 +315,7 @@ public class menuQuanLy {
                     System.out.println("5. Tim kiem tai khoan");
                     System.out.println("6. Thoat");
                     System.out.print("Nhap:");
-                    menu_3_4 = QuanLyCuaHang.sc.nextInt();
+                    menu_3_4 = StaticMethod.sc.nextInt();
 
                     if (menu_3_4 == 1) {
                         int checkMenu_3_4_3 = 1, menu_3_4_3;
@@ -319,7 +326,7 @@ public class menuQuanLy {
                             System.out.println("3. Theo thu tu khach hang - quan ly");
                             System.out.println("4. Thoat");
                             System.out.print("Nhap:");
-                            menu_3_4_3 = QuanLyCuaHang.sc.nextInt();
+                            menu_3_4_3 = StaticMethod.sc.nextInt();
 
                             if (menu_3_4_3 == 1) {
                                 dsTaiKhoan.xuat();
@@ -343,7 +350,7 @@ public class menuQuanLy {
                             System.out.println("2. Tai khoan quan ly");
                             System.out.println("3. Thoat");
                             System.out.print("Nhap:");
-                            menu_3_4_1 = QuanLyCuaHang.sc.nextInt();
+                            menu_3_4_1 = StaticMethod.sc.nextInt();
 
                             if (menu_3_4_1 == 1) {
                                 dsTaiKhoan.dangKyKh();
@@ -370,7 +377,7 @@ public class menuQuanLy {
                             System.out.println("2. Tim kiem tong quat");
                             System.out.println("3. Thoat");
                             System.out.print("Nhap:");
-                            menu_3_4_2 = QuanLyCuaHang.sc.nextInt();
+                            menu_3_4_2 = StaticMethod.sc.nextInt();
 
                             if (menu_3_4_2 == 1) {
                                 dsTaiKhoan.timKiemTheoMaTk();
@@ -400,7 +407,7 @@ public class menuQuanLy {
                     System.out.println("6. Cai dat ma khuyen mai theo san pham");
                     System.out.println("7. Thoat");
                     System.out.print("Nhap:");
-                    menu_3_5 = QuanLyCuaHang.sc.nextInt();
+                    menu_3_5 = StaticMethod.sc.nextInt();
                     if (menu_3_5 == 1) {
                         int checkMenu_3_4_3 = 1, menu_3_4_3;
                         while (checkMenu_3_4_3 == 1) {
@@ -410,7 +417,7 @@ public class menuQuanLy {
                             System.out.println("3. Theo thu tu khach hang - quan ly");
                             System.out.println("4. Thoat");
                             System.out.print("Nhap:");
-                            menu_3_4_3 = QuanLyCuaHang.sc.nextInt();
+                            menu_3_4_3 = StaticMethod.sc.nextInt();
 
                             if (menu_3_4_3 == 1) {
                                 dsTaiKhoan.xuat();
