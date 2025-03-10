@@ -103,6 +103,7 @@ public class menuKhachHang {
                                         System.out.println("--Gio hang trong");
                                     } else {
                                         Double tongTien = 0.0;
+                                        String tongTienDaLamTron = "";
                                         MuaHangAction muaHangAction = new MuaHangAction();
                                         SanPham[] sanPhamKhongDatDieuKien = new SanPham[0];
                                         SanPham[] sanPhamTrongKhoConLai = new SanPham[0];
@@ -136,8 +137,12 @@ public class menuKhachHang {
 //                                            Tạo hóa đơn
                                             for (int i = 0; i < dsSanPhamTrongGioHang.length; i++) {
                                                 tongTien += Double.parseDouble(dsSanPhamTrongGioHang[i].getGia());
+                                                tongTienDaLamTron = String.format("%.2f", tongTien);
                                             }
-                                            String maHd = dsHoaDon.themHd(maKh, String.valueOf(tongTien));
+
+//                                            Trừ số tiền mã khuyến mãi
+
+                                            String maHd = dsHoaDon.themHd(maKh, tongTienDaLamTron);
 
 //                                            Tạo phiếu xuất đối tượng là khách hàng
 

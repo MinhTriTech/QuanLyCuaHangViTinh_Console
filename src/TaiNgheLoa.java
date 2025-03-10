@@ -2,8 +2,8 @@ public class TaiNgheLoa extends SanPham{
     public TaiNgheLoa() {
     }
 
-    public TaiNgheLoa(String maSp, String tenSp, String soLuong, String gia, String moTa, String mauSac, String khuyenMai, String loaiSp) {
-        super(maSp, tenSp, soLuong, gia, moTa, mauSac, khuyenMai, loaiSp);
+    public TaiNgheLoa(String maSp, String tenSp, String soLuong, String giaBanDau, String moTa, String mauSac, String loaiSp, String khuyenMai, String gia) {
+        super(maSp, tenSp, soLuong, gia, moTa, mauSac, khuyenMai, loaiSp, giaBanDau);
     }
 
     @Override
@@ -24,10 +24,10 @@ public class TaiNgheLoa extends SanPham{
         setSoLuong(temp.trim());
 
         do {
-            System.out.print("Nhap gia: ");
+            System.out.print("Nhap gia ban dau: ");
             temp = QuanLyCuaHang.sc.nextLine();}
         while(!checkGia(temp.trim()));
-        setGia(temp.trim());
+        setGiaBanDau(temp.trim());
 
         System.out.print("Nhap mo ta: ");
         temp = QuanLyCuaHang.sc.nextLine();
@@ -38,10 +38,12 @@ public class TaiNgheLoa extends SanPham{
         setMauSac(temp.trim());
 
         do {
-            System.out.print("Nhap gia khuyen mai: ");
+            System.out.print("Nhap % khuyen mai: ");
             temp = QuanLyCuaHang.sc.nextLine();}
-        while(!checkGiaKm(temp.trim()));
+        while(!checkKm(temp.trim()));
         setKhuyenMai(temp.trim());
+
+        setGia(tinhGia(getGiaBanDau(), getKhuyenMai()));
 
         setLoaiSp("TAINGHELOA");
     }
@@ -66,7 +68,7 @@ public class TaiNgheLoa extends SanPham{
         }
         while(!checkGia(temp.trim()));
         if(checkGiaNoPrint(temp.trim())) {
-            setGia(temp.trim());
+            setGiaBanDau(temp.trim());
         }
 
         System.out.print("Nhap mo ta moi(Nhan Enter de giu thong tin cu): ");
@@ -86,11 +88,10 @@ public class TaiNgheLoa extends SanPham{
 
     @Override
     public void xuatThongTinSp() {
-        int[] columnWidths = {10, 20, 10, 10, 30, 10, 12, 15, 10};
+        int[] columnWidths = {10, 20, 10, 10, 30, 10, 15, 12, 20, 40};
         String[] values = {
-                getMaSp(), getTenSp(), getSoLuong(),
-                getGia(), getMoTa(), getMauSac(),
-                getKhuyenMai(), getLoaiSp(), ""
+                getMaSp(),getTenSp(),getSoLuong(),getGiaBanDau(),getMoTa(),
+                getMauSac(),getLoaiSp(),getKhuyenMai(),getGia(),"Khong co thong tin ve san pham nay"
         };
 
         printMultiLineRow(values, columnWidths);
@@ -99,11 +100,10 @@ public class TaiNgheLoa extends SanPham{
 
     @Override
     public void xuatThongTinSpCoStt(String soTt) {
-        int[] columnWidths = {10, 10, 20, 10, 10, 30, 10, 12, 15, 10};
+        int[] columnWidths = {10, 20, 10, 10, 30, 10, 15, 12, 20, 40};
         String[] values = {
-                soTt, getMaSp(), getTenSp(), getSoLuong(),
-                getGia(), getMoTa(), getMauSac(),
-                getKhuyenMai(), getLoaiSp(), ""
+                getMaSp(),getTenSp(),getSoLuong(),getGiaBanDau(),getMoTa(),
+                getMauSac(),getLoaiSp(),getKhuyenMai(),getGia(),"Khong co thong tin ve san pham nay"
         };
 
         printMultiLineRow(values, columnWidths);

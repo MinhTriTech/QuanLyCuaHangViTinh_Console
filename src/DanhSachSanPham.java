@@ -90,14 +90,14 @@ public class DanhSachSanPham implements IDanhSach{
 
                 for (int i = 0; i < dsSanPham.length; i++) {
                     String s[] = ft.readLine().split(";");
-                    if(s[7].equals("LAPTOP")) {
-                        dsSanPham[i] = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
+                    if(s[6].equals("LAPTOP")) {
+                        dsSanPham[i] = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
                     }
-                    if(s[7].equals("PHUKIEN")) {
-                        dsSanPham[i] = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(s[6].equals("PHUKIEN")) {
+                        dsSanPham[i] = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     }
-                    if(s[7].equals("TAINGHELOA")) {
-                        dsSanPham[i] = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(s[6].equals("TAINGHELOA")) {
+                        dsSanPham[i] = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     }
                 }
 
@@ -162,14 +162,14 @@ public class DanhSachSanPham implements IDanhSach{
 
                 for (int i = 0; i < dsSanPham.length; i++) {
                     String s[] = ft.readLine().split(";");
-                    if(s[7].equals("LAPTOP")) {
-                        dsSanPham[i] = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
+                    if(s[6].equals("LAPTOP")) {
+                        dsSanPham[i] = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
                     }
-                    if(s[7].equals("PHUKIEN")) {
-                        dsSanPham[i] = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(s[6].equals("PHUKIEN")) {
+                        dsSanPham[i] = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     }
-                    if(s[7].equals("TAINGHELOA")) {
-                        dsSanPham[i] = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(s[6].equals("TAINGHELOA")) {
+                        dsSanPham[i] = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     }
                 }
 
@@ -218,16 +218,16 @@ public class DanhSachSanPham implements IDanhSach{
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
-                if (s[7].equals("LAPTOP")) {
-                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
+                if (s[6].equals("LAPTOP")) {
+                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
                     sp.xuatThongTinSp();
                 }
-                if (s[7].equals("PHUKIEN")) {
-                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                if (s[6].equals("PHUKIEN")) {
+                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     sp.xuatThongTinSp();
                 }
-                if (s[7].equals("TAINGHELOA")) {
-                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                if (s[6].equals("TAINGHELOA")) {
+                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     sp.xuatThongTinSp();
                 }
             }
@@ -264,14 +264,14 @@ public class DanhSachSanPham implements IDanhSach{
 
                 for (int i = 0; i < dsSanPham.length; i++) {
                     String s[] = ft.readLine().split(";");
-                    if(s[7].equals("LAPTOP")) {
-                        dsSanPham[i] = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
+                    if(s[6].equals("LAPTOP")) {
+                        dsSanPham[i] = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
                     }
-                    if(s[7].equals("PHUKIEN")) {
-                        dsSanPham[i] = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(s[6].equals("PHUKIEN")) {
+                        dsSanPham[i] = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     }
-                    if(s[7].equals("TAINGHELOA")) {
-                        dsSanPham[i] = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(s[6].equals("TAINGHELOA")) {
+                        dsSanPham[i] = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     }
                 }
 
@@ -325,14 +325,14 @@ public class DanhSachSanPham implements IDanhSach{
 
                 for (int i = 0; i < dsSanPham.length; i++) {
                     String s[] = ft.readLine().split(";");
-                    if(s[7].equals("LAPTOP")) {
-                        dsSanPham[i] = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
+                    if(s[6].equals("LAPTOP")) {
+                        dsSanPham[i] = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
                     }
-                    if(s[7].equals("PHUKIEN")) {
-                        dsSanPham[i] = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(s[6].equals("PHUKIEN")) {
+                        dsSanPham[i] = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     }
-                    if(s[7].equals("TAINGHELOA")) {
-                        dsSanPham[i] = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(s[6].equals("TAINGHELOA")) {
+                        dsSanPham[i] = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     }
                 }
 
@@ -371,8 +371,8 @@ public class DanhSachSanPham implements IDanhSach{
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
-                if (s[7].equals("LAPTOP")) {
-                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
+                if (s[6].equals("LAPTOP")) {
+                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
                     sp.xuatThongTinSp();
                 }
             }
@@ -394,8 +394,8 @@ public class DanhSachSanPham implements IDanhSach{
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
-                if (s[7].equals("PHUKIEN")) {
-                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                if (s[6].equals("PHUKIEN")) {
+                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     sp.xuatThongTinSp();
                 }
             }
@@ -417,8 +417,8 @@ public class DanhSachSanPham implements IDanhSach{
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
-                if (s[7].equals("TAINGHELOA")) {
-                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                if (s[6].equals("TAINGHELOA")) {
+                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     sp.xuatThongTinSp();
                 }
             }
@@ -445,22 +445,22 @@ public class DanhSachSanPham implements IDanhSach{
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
-                if(s[7].equals("LAPTOP")) {
-                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
+                if(s[6].equals("LAPTOP")) {
+                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
                     if(sp.getMaSp().equals(maSp)) {
                         check = true;
                         sp.xuatThongTinSp();
                     }
                 }
-                if(s[7].equals("PHUKIEN")) {
-                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                if(s[6].equals("PHUKIEN")) {
+                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     if(sp.getMaSp().equals(maSp)) {
                         check = true;
                         sp.xuatThongTinSp();
                     }
                 }
-                if(s[7].equals("TAINGHELOA")) {
-                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                if(s[6].equals("TAINGHELOA")) {
+                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     if(sp.getMaSp().equals(maSp)) {
                         check = true;
                         sp.xuatThongTinSp();
@@ -494,8 +494,8 @@ public class DanhSachSanPham implements IDanhSach{
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
-                if(s[7].equals("LAPTOP")) {
-                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
+                if(s[6].equals("LAPTOP")) {
+                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
                     if(sp.getMaSp().contains(thongTin) || sp.getTenSp().contains(thongTin)
                             || sp.getGia().contains(thongTin) || sp.getMoTa().contains(thongTin)
                             || sp.getMauSac().contains(thongTin) || sp.getLoaiSp().contains(thongTin)
@@ -504,8 +504,8 @@ public class DanhSachSanPham implements IDanhSach{
                         sp.xuatThongTinSp();
                     }
                 }
-                if(s[7].equals("PHUKIEN")) {
-                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                if(s[6].equals("PHUKIEN")) {
+                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     if(sp.getMaSp().contains(thongTin) || sp.getTenSp().contains(thongTin)
                             || sp.getGia().contains(thongTin) || sp.getMoTa().contains(thongTin)
                             || sp.getMauSac().contains(thongTin) || sp.getLoaiSp().contains(thongTin)) {
@@ -513,8 +513,8 @@ public class DanhSachSanPham implements IDanhSach{
                         sp.xuatThongTinSp();
                     }
                 }
-                if(s[7].equals("TAINGHELOA")) {
-                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                if(s[6].equals("TAINGHELOA")) {
+                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     if(sp.getMaSp().contains(thongTin) || sp.getTenSp().contains(thongTin)
                             || sp.getGia().contains(thongTin) || sp.getMoTa().contains(thongTin)
                             || sp.getMauSac().contains(thongTin) || sp.getLoaiSp().contains(thongTin)) {
@@ -546,22 +546,22 @@ public class DanhSachSanPham implements IDanhSach{
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
-                if(s[7].equals("LAPTOP")) {
-                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
+                if(s[6].equals("LAPTOP")) {
+                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
                     if(sp.getMaSp().equals(maSp)) {
                         check = true;
                         return true;
                     }
                 }
-                if(s[7].equals("PHUKIEN")) {
-                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                if(s[6].equals("PHUKIEN")) {
+                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     if(sp.getMaSp().equals(maSp)) {
                         check = true;
                         return true;
                     }
                 }
-                if(s[7].equals("TAINGHELOA")) {
-                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                if(s[6].equals("TAINGHELOA")) {
+                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     if(sp.getMaSp().equals(maSp)) {
                         check = true;
                         return true;
@@ -594,8 +594,8 @@ public class DanhSachSanPham implements IDanhSach{
 
             for (int i = 1; (st = br.readLine()) != null; i++) {
                 String s[] = st.split(";");
-                if (s[7].equals("LAPTOP")) {
-                    Laptop sp = new Laptop(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], s[8]);
+                if (s[6].equals("LAPTOP")) {
+                    Laptop sp = new Laptop(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], s[8],s[9]);
                     if (sp.getMaSp().equals(maSp)) {
                         do {
                             if(checkToast) {
@@ -607,12 +607,12 @@ public class DanhSachSanPham implements IDanhSach{
                             soLuongSp = QuanLyCuaHang.sc.nextLine();}
                         while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
 
-                        spTemp = new Laptop(s[0], s[1], soLuongSp, s[3], s[4], s[5], s[6], s[7], s[8]);
+                        spTemp = new Laptop(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], s[8],s[9]);
                         return spTemp;
                     }
                 }
-                if (s[7].equals("PHUKIEN")) {
-                    PhuKien sp = new PhuKien(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7]);
+                if (s[6].equals("PHUKIEN")) {
+                    PhuKien sp = new PhuKien(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7],s[8]);
                     if (sp.getMaSp().equals(maSp)) {
                         do {
                             if(checkToast) {
@@ -624,12 +624,12 @@ public class DanhSachSanPham implements IDanhSach{
                             soLuongSp = QuanLyCuaHang.sc.nextLine();}
                         while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
 
-                        spTemp = new PhuKien(s[0], s[1], soLuongSp, s[3], s[4], s[5], s[6], s[7]);
+                        spTemp = new PhuKien(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7],s[8]);
                         return spTemp;
                     }
                 }
-                if (s[7].equals("TAINGHELOA")) {
-                    TaiNgheLoa sp = new TaiNgheLoa(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7]);
+                if (s[6].equals("TAINGHELOA")) {
+                    TaiNgheLoa sp = new TaiNgheLoa(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7],s[8]);
                     if (sp.getMaSp().equals(maSp)) {
                         do {
                             if(checkToast) {
@@ -641,7 +641,7 @@ public class DanhSachSanPham implements IDanhSach{
                             soLuongSp = QuanLyCuaHang.sc.nextLine();}
                         while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
 
-                        spTemp = new TaiNgheLoa(s[0], s[1], soLuongSp, s[3], s[4], s[5], s[6], s[7]);
+                        spTemp = new TaiNgheLoa(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7],s[8]);
                         return spTemp;
                     }
                 }

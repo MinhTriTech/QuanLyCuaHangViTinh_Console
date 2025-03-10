@@ -2,14 +2,14 @@ import java.io.*;
 import java.util.Arrays;
 
 public abstract class SanPham {
-    private String maSp, tenSp, soLuong, gia, moTa, mauSac, khuyenMai, loaiSp;
+    private String maSp, tenSp, soLuong, gia, moTa, mauSac, khuyenMai, loaiSp, giaBanDau;
 
     private static final String FILE_NAME_SP = "DanhSachSanPham.txt";
 
     public SanPham() {
     }
 
-    public SanPham(String maSp, String tenSp, String soLuong, String gia, String moTa, String mauSac, String khuyenMai, String loaiSp) {
+    public SanPham(String maSp, String tenSp, String soLuong, String giaBanDau, String moTa, String mauSac, String loaiSp, String khuyenMai, String gia) {
         this.maSp = maSp;
         this.tenSp = tenSp;
         this.soLuong = soLuong;
@@ -18,6 +18,7 @@ public abstract class SanPham {
         this.mauSac = mauSac;
         this.khuyenMai = khuyenMai;
         this.loaiSp = loaiSp;
+        this.giaBanDau = giaBanDau;
     }
 
     public String getMaSp() {
@@ -84,7 +85,15 @@ public abstract class SanPham {
         this.loaiSp = loaiSp;
     }
 
-//    Các phương thức
+    public String getGiaBanDau() {
+        return giaBanDau;
+    }
+
+    public void setGiaBanDau(String giaBanDau) {
+        this.giaBanDau = giaBanDau;
+    }
+
+    //    Các phương thức
 
     public void setRandomId() {
         String lastId = "SP00000";
@@ -162,7 +171,7 @@ public abstract class SanPham {
         }
     }
 
-    public boolean checkGiaKm(String string) {
+    public boolean checkKm(String string) {
         if (string == null || string.isEmpty()) {
             System.out.println("Vui long nhap lai phan tram khuyen mai !!!");
             return false;
@@ -181,9 +190,16 @@ public abstract class SanPham {
         }
     }
 
+    public String tinhGia(String gia, String khuyenMai) {
+        double giaLast = 0.0;
+        giaLast = Double.parseDouble(gia) - (Double.parseDouble(gia) * Double.parseDouble(khuyenMai) / 100);
+        String ketQua = String.format("%.2f", giaLast);
+        return ketQua;
+    }
+
     public static void xuatHeaderSp() {
-        int[] columnWidths = {10, 20, 10, 10, 30, 10, 12, 15, 10};
-        String[] headers = {"Ma SP", "Ten SP", "So luong", "Gia", "Mo ta", "Mau sac", "Khuyen mai", "Loai SP", "Dung luong"};
+        int[] columnWidths = {10, 20, 10, 10, 30, 10, 15, 12, 20, 40};
+        String[] headers = {"Ma SP", "Ten SP", "So luong", "Gia", "Mo ta", "Mau sac", "Loai SP", "Khuyen mai", "Gia sau khuyen mai", "Dung luong"};
 
         printSeparator(columnWidths);
         printRow(headers, columnWidths);
@@ -191,8 +207,8 @@ public abstract class SanPham {
     }
 
     public static void xuatHeaderSpCoStt() {
-        int[] columnWidths = {10, 10, 20, 10, 10, 30, 10, 12, 15, 10};
-        String[] headers = {"STT", "Ma SP", "Ten SP", "So luong", "Gia", "Mo ta", "Mau sac", "Khuyen mai", "Loai SP", "Dung luong"};
+        int[] columnWidths = {10, 20, 10, 10, 30, 10, 15, 12, 20, 40};
+        String[] headers ={"Ma SP", "Ten SP", "So luong", "Gia", "Mo ta", "Mau sac", "Loai SP", "Khuyen mai", "Gia sau khuyen mai", "Dung luong"};
 
         printSeparator(columnWidths);
         printRow(headers, columnWidths);
@@ -270,14 +286,14 @@ public abstract class SanPham {
 
                 for (int i = 0; i < sanPhamSanCo.length; i++) {
                     String s[] = ft.readLine().split(";");
-                    if(s[7].equals("LAPTOP")) {
-                        sanPhamSanCo[i] = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
+                    if(s[6].equals("LAPTOP")) {
+                        sanPhamSanCo[i] = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
                     }
-                    if(s[7].equals("PHUKIEN")) {
-                        sanPhamSanCo[i] = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(s[6].equals("PHUKIEN")) {
+                        sanPhamSanCo[i] = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     }
-                    if(s[7].equals("TAINGHELOA")) {
-                        sanPhamSanCo[i] = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(s[6].equals("TAINGHELOA")) {
+                        sanPhamSanCo[i] = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     }
                 }
 
@@ -290,7 +306,7 @@ public abstract class SanPham {
             e.printStackTrace();
         }
 
-//        Thực hiện danh sách sản phẩm hiện tại
+//        Thực hiện kiểm tra danh sách sản phẩm hiện tại
         for (int i = 0; i < dsSanPham.length; i++) {
             for (int j = 0; j < sanPhamSanCo.length; j++) {
                 if(dsSanPham[i].getMaSp().equals(sanPhamSanCo[j].getMaSp())) {
@@ -339,10 +355,11 @@ public abstract class SanPham {
         return  maSp + ";" +
                 tenSp + ";" +
                 soLuong + ";" +
-                gia + ";" +
+                giaBanDau + ";" +
                 moTa + ";" +
                 mauSac + ";" +
+                loaiSp + ";" +
                 khuyenMai + ";" +
-                loaiSp;
+                gia;
     }
 }

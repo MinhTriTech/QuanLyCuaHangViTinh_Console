@@ -4,8 +4,8 @@ public class Laptop extends SanPham{
     public Laptop() {
     }
 
-    public Laptop(String maSp, String tenSp, String soLuong, String gia, String moTa, String mauSac, String khuyenMai, String loaiSp, String dungLuong) {
-        super(maSp, tenSp, soLuong, gia, moTa, mauSac, khuyenMai, loaiSp);
+    public Laptop(String maSp, String tenSp, String soLuong, String gia, String moTa, String mauSac, String khuyenMai, String loaiSp, String giaBanDau, String dungLuong) {
+        super(maSp, tenSp, soLuong, gia, moTa, mauSac, khuyenMai, loaiSp, giaBanDau);
         this.dungLuong = dungLuong;
     }
 
@@ -35,10 +35,10 @@ public class Laptop extends SanPham{
         setSoLuong(temp.trim());
 
         do {
-            System.out.print("Nhap gia: ");
+            System.out.print("Nhap gia ban dau: ");
             temp = QuanLyCuaHang.sc.nextLine();}
         while(!checkGia(temp.trim()));
-        setGia(temp.trim());
+        setGiaBanDau(temp.trim());
 
         System.out.print("Nhap mo ta: ");
         temp = QuanLyCuaHang.sc.nextLine();
@@ -49,14 +49,16 @@ public class Laptop extends SanPham{
         setMauSac(temp.trim());
 
         do {
-            System.out.print("Nhap gia khuyen mai: ");
+            System.out.print("Nhap % khuyen mai: ");
             temp = QuanLyCuaHang.sc.nextLine();}
-        while(!checkGiaKm(temp.trim()));
+        while(!checkKm(temp.trim()));
         setKhuyenMai(temp.trim());
 
         System.out.print("Nhap dung luong: ");
         temp = QuanLyCuaHang.sc.nextLine();
         setDungLuong(temp.trim());
+
+        setGia(tinhGia(getGiaBanDau(), getKhuyenMai()));
 
         setLoaiSp("LAPTOP");
     }
@@ -81,7 +83,7 @@ public class Laptop extends SanPham{
         }
         while(!checkGia(temp.trim()));
         if(checkGiaNoPrint(temp.trim())) {
-            setGia(temp.trim());
+            setGiaBanDau(temp.trim());
         }
 
 
@@ -109,11 +111,10 @@ public class Laptop extends SanPham{
 
     @Override
     public void xuatThongTinSp() {
-        int[] columnWidths = {10, 20, 10, 10, 30, 10, 12, 15, 10};
+        int[] columnWidths = {10, 20, 10, 10, 30, 10, 15, 12, 20, 40};
         String[] values = {
-                getMaSp(), getTenSp(), getSoLuong(),
-                getGia(), getMoTa(), getMauSac(),
-                getKhuyenMai(), getLoaiSp(), getDungLuong()
+                getMaSp(),getTenSp(),getSoLuong(),getGiaBanDau(),getMoTa(),
+                getMauSac(),getLoaiSp(),getKhuyenMai(),getGia(),getDungLuong()
         };
 
         printMultiLineRow(values, columnWidths);
@@ -122,11 +123,10 @@ public class Laptop extends SanPham{
 
     @Override
     public void xuatThongTinSpCoStt(String soTt) {
-        int[] columnWidths = {10, 10, 20, 10, 10, 30, 10, 12, 15, 10};
+        int[] columnWidths = {10, 20, 10, 10, 30, 10, 15, 12, 20, 40};
         String[] values = {
-                soTt, getMaSp(), getTenSp(), getSoLuong(),
-                getGia(), getMoTa(), getMauSac(),
-                getKhuyenMai(), getLoaiSp(), getDungLuong()
+                soTt, getMaSp(),getTenSp(),getSoLuong(),getGiaBanDau(),getMoTa(),
+                getMauSac(),getLoaiSp(),getKhuyenMai(),getGia(),getDungLuong()
         };
 
         printMultiLineRow(values, columnWidths);
