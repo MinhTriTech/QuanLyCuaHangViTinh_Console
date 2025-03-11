@@ -604,7 +604,7 @@ public class DanhSachSanPham implements IDanhSach {
             for (int i = 1; (st = br.readLine()) != null; i++) {
                 String s[] = st.split(";");
                 if (s[6].equals("LAPTOP")) {
-                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
+                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9],s[10]);
                     if (sp.getMaSp().equals(maSp)) {
                         do {
                             if(checkToast) {
@@ -616,12 +616,12 @@ public class DanhSachSanPham implements IDanhSach {
                             soLuongSp = StaticMethod.sc.nextLine();}
                         while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
 
-                        spTemp = new Laptop(s[0],s[1],soLuongSp,s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
+                        spTemp = new Laptop(s[0],s[1],soLuongSp,s[3],s[4],s[5],s[6],s[7],s[8],s[9],s[10]);
                         return spTemp;
                     }
                 }
                 if (s[6].equals("PHUKIEN")) {
-                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
+                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
                     if (sp.getMaSp().equals(maSp)) {
                         do {
                             if(checkToast) {
@@ -633,12 +633,12 @@ public class DanhSachSanPham implements IDanhSach {
                             soLuongSp = StaticMethod.sc.nextLine();}
                         while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
 
-                        spTemp = new PhuKien(s[0],s[1],soLuongSp,s[3],s[4],s[5],s[6],s[7],s[8]);
+                        spTemp = new PhuKien(s[0],s[1],soLuongSp,s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
                         return spTemp;
                     }
                 }
                 if (s[6].equals("TAINGHELOA")) {
-                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
+                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
                     if (sp.getMaSp().equals(maSp)) {
                         do {
                             if(checkToast) {
@@ -650,7 +650,7 @@ public class DanhSachSanPham implements IDanhSach {
                             soLuongSp = StaticMethod.sc.nextLine();}
                         while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
 
-                        spTemp = new TaiNgheLoa(s[0], s[1], soLuongSp, s[3], s[4], s[5], s[6], s[7],s[8]);
+                        spTemp = new TaiNgheLoa(s[0], s[1], soLuongSp, s[3], s[4], s[5], s[6], s[7],s[8],s[9]);
                         return spTemp;
                     }
                 }

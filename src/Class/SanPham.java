@@ -226,6 +226,7 @@ public abstract class SanPham implements IRandomId {
     public abstract void nhapDeSua();
     public abstract void xuatThongTinSp();
     public abstract void xuatThongTinSpCoStt(String soTt);
+    public abstract void xuatThongTinSpCoGiaVon();
 
     @Override
     public String toString() {
@@ -238,5 +239,18 @@ public abstract class SanPham implements IRandomId {
                 loaiSp + ";" +
                 khuyenMai + ";" +
                 gia;
+    }
+
+    public String toStringGiaVon() {
+        return  maSp + ";" +
+                tenSp + ";" +
+                soLuong + ";" +
+                giaBanDau + ";" +
+                moTa + ";" +
+                mauSac + ";" +
+                loaiSp + ";" +
+                khuyenMai + ";" +
+                gia + ";" +
+                giaVon;
     }
 }

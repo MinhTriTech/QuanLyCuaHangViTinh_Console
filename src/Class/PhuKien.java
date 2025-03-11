@@ -125,7 +125,24 @@ public class PhuKien extends SanPham {
     }
 
     @Override
+    public void xuatThongTinSpCoGiaVon() {
+        int[] columnWidths = {10, 20, 10, 10, 30, 10, 15, 12, 20, 20, 40};
+        String[] values = {
+                getMaSp(),getTenSp(),getSoLuong(),getGiaBanDau(),getMoTa(),
+                getMauSac(),getLoaiSp(),getKhuyenMai(),getGia(),getGiaVon(),"Khong co thong tin ve san pham nay"
+        };
+
+        StaticMethod.printMultiLineRow(values, columnWidths);
+        StaticMethod.printSeparator(columnWidths);
+    }
+
+    @Override
     public String toString() {
         return super.toString();
+    }
+
+    @Override
+    public String toStringGiaVon() {
+        return  super.toStringGiaVon();
     }
 }

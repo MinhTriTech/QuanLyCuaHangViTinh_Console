@@ -2,6 +2,7 @@ package Menu;
 
 import ActionClass.MuaHangAction;
 import List.DanhSachHoaDon;
+import List.DanhSachPhieuXuat;
 import List.DanhSachSanPham;
 import Class.SanPham;
 import Class.Laptop;
@@ -24,6 +25,7 @@ public class menuKhachHang {
         DanhSachSanPham dsSanPham = new DanhSachSanPham();
         DanhSachHoaDon dsHoaDon = new DanhSachHoaDon();
         DanhSachSanPhamDaXuat dsSanPhamDaXuat = new DanhSachSanPhamDaXuat();
+        DanhSachPhieuXuat dsPhieuXuat = new DanhSachPhieuXuat();
 
         SanPham[] dsSanPhamTrongGioHang = new SanPham[0];
         SanPham[] dsSanPhamHienTai = new SanPham[1];
@@ -139,7 +141,7 @@ public class menuKhachHang {
                                                 BufferedWriter fr = new BufferedWriter(new FileWriter(file, false));
 
                                                 for (int i = 0; i < sanPhamTrongKhoConLai.length; i++) {
-                                                    fr.write(sanPhamTrongKhoConLai[i].toString());
+                                                    fr.write(sanPhamTrongKhoConLai[i].toStringGiaVon());
                                                     fr.newLine();
                                                 }
                                                 fr.close();
@@ -152,14 +154,15 @@ public class menuKhachHang {
                                                 tongTienDaLamTron = String.format("%.2f", tongTien);
                                             }
 
+
 //                                            Trừ số tiền mã khuyến mãi
-
                                             String maHd = dsHoaDon.themHd(maKh, tongTienDaLamTron);
-
-//                                            Tạo phiếu xuất đối tượng là khách hàng
 
 //                                            Thêm các sản phẩm hợp lệ vào file sản phẫm đã xuất
                                             dsSanPhamDaXuat.themDanhSachVaoFile(dsSanPhamTrongGioHang, maHd);
+
+//                                            Tạo phiếu xuất đối tượng là khách hàng
+                                            dsPhieuXuat.themPx(maHd, maKh);
 
 //                                            Xuất hóa đơn
                                             StaticMethod.xuatHeaderHd();

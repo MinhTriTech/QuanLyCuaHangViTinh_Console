@@ -32,7 +32,6 @@ public class DanhSachSanPhamDaXuat implements IDanhSach {
     }
 
     public void themDanhSachVaoFile(SanPham[] dsSanPham, String maHd) {
-        SanPham[] dsSanPhamTemp = new SanPham[0];
         try {
             File file = new File(StaticMethod.FILE_NAME_SPDX);
 
@@ -40,36 +39,19 @@ public class DanhSachSanPhamDaXuat implements IDanhSach {
                 file.createNewFile();
             }
 
-            dsSanPhamTemp = Arrays.copyOf(dsSanPhamTemp, dsSanPham.length);
-
-            BufferedReader ft = new BufferedReader(new FileReader(file));
-
-            for (int i = 0; i < dsSanPhamTemp.length; i++) {
-                dsSanPhamTemp[i] = dsSanPham[i];
-                if (dsSanPham[i] instanceof Laptop) {
-                    Laptop temp = (Laptop) dsSanPhamTemp[i];
-                }
-                if (dsSanPham[i] instanceof PhuKien) {
-                    PhuKien temp = (PhuKien) dsSanPhamTemp[i];
-                }
-                if (dsSanPham[i] instanceof TaiNgheLoa) {
-                    TaiNgheLoa temp = (TaiNgheLoa) dsSanPhamTemp[i];
-                }
-            }
-
             BufferedWriter fr = new BufferedWriter(new FileWriter(file, true));
 
-            for (int i = 0; i < dsSanPhamTemp.length; i++) {
-                if (dsSanPhamTemp[i] instanceof PhuKien || dsSanPhamTemp[i] instanceof TaiNgheLoa) {
-                    fr.write(dsSanPhamTemp[i].toString() + ";" + "Khong co dung luong" + ";" + maHd);
-                } else {
-                    fr.write(dsSanPhamTemp[i].toString() + ";" + maHd);
+            for (SanPham sp : dsSanPham) {
+                if (sp instanceof Laptop) {
+                    Laptop laptop = (Laptop) sp;
+                    fr.write(laptop.toString() + ";" + maHd);
+                } else if (sp instanceof PhuKien || sp instanceof TaiNgheLoa) {
+                    fr.write(sp.toString() + ";" + "Khong co dung luong" + ";" + maHd);
                 }
                 fr.newLine();
             }
 
             fr.close();
-            ft.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

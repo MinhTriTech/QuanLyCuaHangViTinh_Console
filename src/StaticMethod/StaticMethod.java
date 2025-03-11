@@ -20,6 +20,7 @@ public class StaticMethod {
     public static final String FILE_NAME_TK = "DanhSachTaiKhoan.txt";
     public static final String FILE_NAME_HD = "DanhSachHoaDon.txt";
     public static final String FILE_NAME_SPDX = "DanhSachSanPhamDaXuat.txt";
+    public static final String FILE_NAME_PX = "DanhSachPhieuXuat.txt";
 
     public static void printMultiLineRow(String[] row, int[] columnWidths) {
         int maxLines = 1;
@@ -138,13 +139,13 @@ public class StaticMethod {
                 for (int i = 0; i < sanPhamSanCo.length; i++) {
                     String s[] = ft.readLine().split(";");
                     if(s[6].equals("LAPTOP")) {
-                        sanPhamSanCo[i] = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
+                        sanPhamSanCo[i] = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9],s[10]);
                     }
                     if(s[6].equals("PHUKIEN")) {
-                        sanPhamSanCo[i] = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
+                        sanPhamSanCo[i] = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
                     }
                     if(s[6].equals("TAINGHELOA")) {
-                        sanPhamSanCo[i] = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
+                        sanPhamSanCo[i] = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
                     }
                 }
 
@@ -195,5 +196,42 @@ public class StaticMethod {
         MuaHangAction muaHangAction = new MuaHangAction(sanPhamKhongDatDieuKien, sanPhamSanCo);
 
         return muaHangAction;
+    }
+
+    public static String layTienVonSp(String maSp) {
+        String temp = "";
+        try {
+            String st;
+
+            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_SP));
+
+            for(int i=1; (st = br.readLine()) != null ; i++) {
+                String s[] = st.split(";");
+                if(s[6].equals("LAPTOP")) {
+                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9],s[10]);
+                    if(sp.getMaSp().equals(maSp)) {
+                        return sp.getGiaVon();
+                    }
+                }
+                if(s[6].equals("PHUKIEN")) {
+                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
+                    if(sp.getMaSp().equals(maSp)) {
+                        return sp.getGiaVon();
+                    }
+                }
+                if(s[6].equals("TAINGHELOA")) {
+                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
+                    if(sp.getMaSp().equals(maSp)) {
+                        return sp.getGiaVon();
+                    }
+                }
+            }
+
+            br.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return temp;
     }
 }
