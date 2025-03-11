@@ -207,7 +207,7 @@ public class DanhSachSanPham implements IDanhSach {
                 ft.close();
                 fw.close();
             } else {
-                System.out.println("-Dan sach dang trong vui long them san pham de thuc hien thao tac-");
+                System.out.println("-Danh sach dang trong vui long them san pham de thuc hien thao tac-");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -301,7 +301,7 @@ public class DanhSachSanPham implements IDanhSach {
                 ft.close();
                 fw.close();
             } else {
-                System.out.println("-Dan sach dang trong vui long them san pham de thuc hien thao tac-");
+                System.out.println("-Danh sach dang trong vui long them san pham de thuc hien thao tac-");
             }
 
         } catch (Exception e) {
@@ -495,7 +495,7 @@ public class DanhSachSanPham implements IDanhSach {
             StaticMethod.sc.nextLine();
             System.out.println("Nhap thong tin san pham ban muon tim:");
             thongTin = StaticMethod.sc.nextLine();
-            thongTin = thongTin.toUpperCase().trim();
+            thongTin = thongTin.toLowerCase().trim();
             System.out.println("+--------------KET QUA TIM KIEM-----------------+");
             StaticMethod.xuatHeaderSp();
 
@@ -505,28 +505,28 @@ public class DanhSachSanPham implements IDanhSach {
                 String s[] = st.split(";");
                 if(s[6].equals("LAPTOP")) {
                     Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
-                    if(sp.getMaSp().contains(thongTin) || sp.getTenSp().contains(thongTin)
-                            || sp.getGia().contains(thongTin) || sp.getMoTa().contains(thongTin)
-                            || sp.getMauSac().contains(thongTin) || sp.getLoaiSp().contains(thongTin)
-                            || sp.getDungLuong().contains(thongTin)) {
+                    if(sp.getMaSp().contains(thongTin) || sp.getTenSp().toLowerCase().contains(thongTin)
+                            || sp.getGia().contains(thongTin) || sp.getMoTa().toLowerCase().contains(thongTin)
+                            || sp.getMauSac().toLowerCase().contains(thongTin) || sp.getLoaiSp().toLowerCase().contains(thongTin)
+                            || sp.getDungLuong().toLowerCase().contains(thongTin)) {
                         check = true;
                         sp.xuatThongTinSp();
                     }
                 }
                 if(s[6].equals("PHUKIEN")) {
                     PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
-                    if(sp.getMaSp().contains(thongTin) || sp.getTenSp().contains(thongTin)
-                            || sp.getGia().contains(thongTin) || sp.getMoTa().contains(thongTin)
-                            || sp.getMauSac().contains(thongTin) || sp.getLoaiSp().contains(thongTin)) {
+                    if(sp.getMaSp().contains(thongTin) || sp.getTenSp().toLowerCase().contains(thongTin)
+                            || sp.getGia().contains(thongTin) || sp.getMoTa().toLowerCase().contains(thongTin)
+                            || sp.getMauSac().toLowerCase().contains(thongTin) || sp.getLoaiSp().toLowerCase().contains(thongTin)) {
                         check = true;
                         sp.xuatThongTinSp();
                     }
                 }
                 if(s[6].equals("TAINGHELOA")) {
                     TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
-                    if(sp.getMaSp().contains(thongTin) || sp.getTenSp().contains(thongTin)
-                            || sp.getGia().contains(thongTin) || sp.getMoTa().contains(thongTin)
-                            || sp.getMauSac().contains(thongTin) || sp.getLoaiSp().contains(thongTin)) {
+                    if(sp.getMaSp().contains(thongTin) || sp.getTenSp().toLowerCase().contains(thongTin)
+                            || sp.getGia().contains(thongTin) || sp.getMoTa().toLowerCase().contains(thongTin)
+                            || sp.getMauSac().toLowerCase().contains(thongTin) || sp.getLoaiSp().toLowerCase().contains(thongTin)) {
                         check = true;
                         sp.xuatThongTinSp();
                     }
@@ -604,7 +604,7 @@ public class DanhSachSanPham implements IDanhSach {
             for (int i = 1; (st = br.readLine()) != null; i++) {
                 String s[] = st.split(";");
                 if (s[6].equals("LAPTOP")) {
-                    Laptop sp = new Laptop(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], s[8],s[9]);
+                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
                     if (sp.getMaSp().equals(maSp)) {
                         do {
                             if(checkToast) {
@@ -616,12 +616,12 @@ public class DanhSachSanPham implements IDanhSach {
                             soLuongSp = StaticMethod.sc.nextLine();}
                         while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
 
-                        spTemp = new Laptop(s[0], s[1], soLuongSp, s[3], s[4], s[5], s[6], s[7], s[8],s[9]);
+                        spTemp = new Laptop(s[0],s[1],soLuongSp,s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
                         return spTemp;
                     }
                 }
                 if (s[6].equals("PHUKIEN")) {
-                    PhuKien sp = new PhuKien(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7],s[8]);
+                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     if (sp.getMaSp().equals(maSp)) {
                         do {
                             if(checkToast) {
@@ -633,12 +633,12 @@ public class DanhSachSanPham implements IDanhSach {
                             soLuongSp = StaticMethod.sc.nextLine();}
                         while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
 
-                        spTemp = new PhuKien(s[0], s[1], soLuongSp, s[3], s[4], s[5], s[6], s[7],s[8]);
+                        spTemp = new PhuKien(s[0],s[1],soLuongSp,s[3],s[4],s[5],s[6],s[7],s[8]);
                         return spTemp;
                     }
                 }
                 if (s[6].equals("TAINGHELOA")) {
-                    TaiNgheLoa sp = new TaiNgheLoa(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7],s[8]);
+                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
                     if (sp.getMaSp().equals(maSp)) {
                         do {
                             if(checkToast) {

@@ -1,10 +1,11 @@
 package Class;
 
+import Interface.IRandomId;
 import StaticMethod.StaticMethod;
 
 import java.io.*;
 
-public abstract class TaiKhoan {
+public abstract class TaiKhoan implements IRandomId {
     private String maTk;
     private String tenDn;
     private String matKhau;
@@ -73,6 +74,7 @@ public abstract class TaiKhoan {
                 + quyenTk;
     }
 
+    @Override
     public void setRandomId() {
         String lastId = "TK00000";
         File file = new File(StaticMethod.FILE_NAME_TK);

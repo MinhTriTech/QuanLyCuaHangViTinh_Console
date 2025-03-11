@@ -1,26 +1,40 @@
 package Class;
 
+import Interface.IRandomId;
 import StaticMethod.StaticMethod;
 
 import java.io.*;
 import java.util.Arrays;
 
-public abstract class SanPham {
-    private String maSp, tenSp, soLuong, gia, moTa, mauSac, khuyenMai, loaiSp, giaBanDau;
+public abstract class SanPham implements IRandomId {
+    private String maSp, tenSp, soLuong, giaBanDau, moTa, mauSac, loaiSp, khuyenMai, gia, giaVon;
 
     public SanPham() {
+    }
+
+    public SanPham(String maSp, String tenSp, String soLuong, String giaBanDau, String moTa, String mauSac, String loaiSp, String khuyenMai, String gia, String giaVon) {
+        this.maSp = maSp;
+        this.tenSp = tenSp;
+        this.soLuong = soLuong;
+        this.giaBanDau = giaBanDau;
+        this.moTa = moTa;
+        this.mauSac = mauSac;
+        this.loaiSp = loaiSp;
+        this.khuyenMai = khuyenMai;
+        this.gia = gia;
+        this.giaVon = giaVon;
     }
 
     public SanPham(String maSp, String tenSp, String soLuong, String giaBanDau, String moTa, String mauSac, String loaiSp, String khuyenMai, String gia) {
         this.maSp = maSp;
         this.tenSp = tenSp;
         this.soLuong = soLuong;
-        this.gia = gia;
+        this.giaBanDau = giaBanDau;
         this.moTa = moTa;
         this.mauSac = mauSac;
-        this.khuyenMai = khuyenMai;
         this.loaiSp = loaiSp;
-        this.giaBanDau = giaBanDau;
+        this.khuyenMai = khuyenMai;
+        this.gia = gia;
     }
 
     public String getMaSp() {
@@ -95,8 +109,17 @@ public abstract class SanPham {
         this.giaBanDau = giaBanDau;
     }
 
+    public String getGiaVon() {
+        return giaVon;
+    }
+
+    public void setGiaVon(String giaVon) {
+        this.giaVon = giaVon;
+    }
+
     //    Các phương thức
 
+    @Override
     public void setRandomId() {
         String lastId = "SP00000";
         File file = new File(StaticMethod.FILE_NAME_SP);

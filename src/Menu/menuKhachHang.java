@@ -7,6 +7,7 @@ import Class.SanPham;
 import Class.Laptop;
 import Class.PhuKien;
 import Class.TaiNgheLoa;
+import List.DanhSachSanPhamDaXuat;
 import StaticMethod.StaticMethod;
 
 import java.io.*;
@@ -22,6 +23,7 @@ public class menuKhachHang {
         int checkMenu_2 = 1, menu_2;
         DanhSachSanPham dsSanPham = new DanhSachSanPham();
         DanhSachHoaDon dsHoaDon = new DanhSachHoaDon();
+        DanhSachSanPhamDaXuat dsSanPhamDaXuat = new DanhSachSanPhamDaXuat();
 
         SanPham[] dsSanPhamTrongGioHang = new SanPham[0];
         SanPham[] dsSanPhamHienTai = new SanPham[1];
@@ -156,11 +158,16 @@ public class menuKhachHang {
 
 //                                            Tạo phiếu xuất đối tượng là khách hàng
 
-//                                            Tạo danh sách các sản phẩm tương ứng với mã hóa đơn vừa tạo
+//                                            Thêm các sản phẩm hợp lệ vào file sản phẫm đã xuất
+                                            dsSanPhamDaXuat.themDanhSachVaoFile(dsSanPhamTrongGioHang, maHd);
 
 //                                            Xuất hóa đơn
-                                            StaticMethod.xuatHeaderHd();;
+                                            StaticMethod.xuatHeaderHd();
                                             dsHoaDon.timKiemTheoMaHdBool(maHd).xuatThongTinHd();
+
+//                                            Hiển thị chi tiết hóa đơn
+                                            System.out.println("+--------------CHI TIET HOA DON-----------------+");
+                                            dsSanPhamDaXuat.xuatChiTietHoaDon(maHd);
 
 //                                            Xóa giỏ hàng (xóa mảng danh sách sản phẩm trong giỏ hàng)
                                             dsSanPhamTrongGioHang = new SanPham[0];
@@ -207,7 +214,7 @@ public class menuKhachHang {
                                                 System.out.println("--Khong tim thay.Nhap lai so thu tu trong gio muon xoa");
                                             }
                                             stt = StaticMethod.sc.nextLine();}
-                                        while(Integer.parseInt(stt) >= dsSanPhamTrongGioHang.length || Integer.parseInt(stt) <= 0);
+                                        while(Integer.parseInt(stt) > dsSanPhamTrongGioHang.length || Integer.parseInt(stt) <= 0);
 
                                         SanPham[] dsSanPhamTrongGioHangTemp = new SanPham[dsSanPhamTrongGioHang.length - 1];
 
@@ -225,6 +232,8 @@ public class menuKhachHang {
                                             dsSanPhamTrongGioHang[i] = dsSanPhamTrongGioHangTemp[i];
                                         }
 
+                                        System.out.println("--Xoa san pham thu " + stt + " thanh cong");
+
                                         StaticMethod.xuatHeaderSpCoStt();
                                         for (int i = 0; i < dsSanPhamTrongGioHang.length; i++) {
                                             dsSanPhamTrongGioHang[i].xuatThongTinSpCoStt(String.valueOf(i + 1));
@@ -233,6 +242,7 @@ public class menuKhachHang {
                                     break;
                                 default:
                                     if(dsSanPham.timKiemTheoMaSpBool(menu_2_1_1)) {
+//                                        Tăng số lượng phần tử của mảng danh sách sản phẩm trong giỏ
                                         SanPham[] dsSanPhamTrongGioHangTemp = new SanPham[dsSanPhamTrongGioHang.length + 1];
 
                                         for (int i = 0; i < dsSanPhamTrongGioHang.length; i++) {
@@ -245,6 +255,7 @@ public class menuKhachHang {
                                             dsSanPhamTrongGioHang[i] = dsSanPhamTrongGioHangTemp[i];
                                         }
 
+//                                        Thêm sản phẩm mới vào giỏ hàng
                                         dsSanPhamTrongGioHang[dsSanPhamTrongGioHang.length-1] = dsSanPham.themSanPhamVaoGioHang(menu_2_1_1);
 
                                         if(dsSanPhamTrongGioHang[dsSanPhamTrongGioHang.length-1] instanceof Laptop) {
@@ -260,6 +271,16 @@ public class menuKhachHang {
                                         }
 
                                         System.out.println("--Them san pham vao gio hang thanh cong");
+
+//                                        Hiển thị giỏ hàng hiện tại
+                                        StaticMethod.xuatHeaderSpCoStt();
+                                        if(dsSanPhamTrongGioHang.length == 0) {
+                                            System.out.println("--Gio hang trong");
+                                        } else {
+                                            for (int i = 0; i < dsSanPhamTrongGioHang.length; i++) {
+                                                dsSanPhamTrongGioHang[i].xuatThongTinSpCoStt(String.valueOf(i + 1));
+                                            }
+                                        }
                                     } else {
                                         System.out.println("--Khong tim thay ma san pham");
                                     }

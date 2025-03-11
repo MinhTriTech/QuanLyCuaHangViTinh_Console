@@ -1,17 +1,17 @@
 package Class;
 
+import Interface.IRandomId;
 import StaticMethod.StaticMethod;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
-public class HoaDon {
+public class HoaDon implements IRandomId {
     private String maHd, maKh, maKhuyenMai, tongTien, tongTienBanDau, phuongThucThanhToan, ngayRaHd, trangThai;
-
-    private static final String FILE_NAME_HD = "DanhSachHoaDon.txt";
-    private static final String FILE_NAME_MGG = "DanhSachMaGiamGia.txt";
 
     public HoaDon() {
     }
@@ -93,9 +93,10 @@ public class HoaDon {
 
     //    Các phương thức
 
+    @Override
     public void setRandomId() {
         String lastId = "HD00000";
-        File file = new File(FILE_NAME_HD);
+        File file = new File(StaticMethod.FILE_NAME_HD);
 
         if (file.exists()) {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -129,9 +130,9 @@ public class HoaDon {
         try {
             String st;
             boolean check = false;
-            StaticMethod.sc.nextLine();
+            boolean checkYesNo = false;
 
-            BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_MGG));
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_MGG));
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
@@ -146,13 +147,15 @@ public class HoaDon {
                         xacNhan = StaticMethod.sc.nextLine();
                         if(xacNhan.equals("Co")) {
                             check = true;
+                            checkYesNo = true;
                             double tongTienConLai = Double.parseDouble(getTongTienBanDau()) - mgg.tinhSoTienDuocGiam(Double.parseDouble(tongTien));
                             tongTienConLaiDaLamTron = String.format("%.2f", tongTienConLai);
                             setTongTien(tongTienConLaiDaLamTron);
                             break;
                         }
                         if(xacNhan.equals("Khong")) {
-                            check = false;
+                            check = true;
+                            checkYesNo = false;
                             break;
                         }
                     }
@@ -166,7 +169,7 @@ public class HoaDon {
                 System.out.println("--Khong tim thay ma giam gia tuong ung");
             }
 
-            return check;
+            return checkYesNo;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -175,13 +178,11 @@ public class HoaDon {
     }
 
     public void nhap(String maKh, String tongTien) {
-        String temp;
+        String temp, tongTienConLaiDaLamTron;
         setRandomId();
 
         setMaKh(maKh);
         setTongTienBanDau(tongTien);
-
-        StaticMethod.sc.nextLine();
 
         do {
             System.out.print("Nhap ma khuyen mai(Nhan Enter de bo qua): ");
@@ -193,6 +194,9 @@ public class HoaDon {
         while(!checkMaKm(temp, tongTien));
         if (temp.isEmpty()) {
             setMaKhuyenMai("Khong su dung");
+            double tongTienConLai = Double.parseDouble(getTongTienBanDau()) - Double.parseDouble("0.0");
+            tongTienConLaiDaLamTron = String.format("%.2f", tongTienConLai);
+            setTongTien(tongTienConLaiDaLamTron);
         } else {
             setMaKhuyenMai(temp);
         }
@@ -215,10 +219,21 @@ public class HoaDon {
         }
 
         do {
-            System.out.print("Nhap ngay tao hoa don(dinh dang dd-mm-yyyy): ");
-            temp = StaticMethod.sc.nextLine();}
+            System.out.print("Nhap ngay tao hoa don(dinh dang dd-mm-yyyy)(Nhan Enter de lay ngay thang nam hien tai): ");
+            temp = StaticMethod.sc.nextLine();
+            if (temp.isEmpty()) {
+                break;
+            }
+        }
         while(!checkNgayTaoHd(temp));
-        setNgayRaHd(temp);
+        if (temp.isEmpty()) {
+            LocalDate today = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            String formattedDate = today.format(formatter);
+            setNgayRaHd(formattedDate);
+        } else {
+            setNgayRaHd(temp);
+        }
 
         setTrangThai("Hoat dong");
     }

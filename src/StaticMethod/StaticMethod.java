@@ -19,6 +19,7 @@ public class StaticMethod {
     public static final String FILE_NAME_MGG = "DanhSachMaGiamGia.txt";
     public static final String FILE_NAME_TK = "DanhSachTaiKhoan.txt";
     public static final String FILE_NAME_HD = "DanhSachHoaDon.txt";
+    public static final String FILE_NAME_SPDX = "DanhSachSanPhamDaXuat.txt";
 
     public static void printMultiLineRow(String[] row, int[] columnWidths) {
         int maxLines = 1;
@@ -93,8 +94,8 @@ public class StaticMethod {
     }
 
     public static void xuatHeaderSpCoStt() {
-        int[] columnWidths = {10, 20, 10, 10, 30, 10, 15, 12, 20, 40};
-        String[] headers ={"Ma SP", "Ten SP", "So luong", "Gia", "Mo ta", "Mau sac", "Loai SP", "Khuyen mai", "Gia sau khuyen mai", "Dung luong"};
+        int[] columnWidths = {10, 10, 20, 10, 10, 30, 10, 15, 12, 20, 40};
+        String[] headers ={"STT","Ma SP", "Ten SP", "So luong", "Gia", "Mo ta", "Mau sac", "Loai SP", "Khuyen mai", "Gia sau khuyen mai", "Dung luong"};
 
         printSeparator(columnWidths);
         printRow(headers, columnWidths);
@@ -161,13 +162,8 @@ public class StaticMethod {
             for (int j = 0; j < sanPhamSanCo.length; j++) {
                 if(dsSanPham[i].getMaSp().equals(sanPhamSanCo[j].getMaSp())) {
 
-                    System.out.println(sanPhamSanCo[j].getSoLuong());
-                    System.out.println(dsSanPham[j].getSoLuong());
-
 //                    Kiểm tra sau khi trừ có không hợp lệ không
                     if (Integer.parseInt(sanPhamSanCo[j].getSoLuong()) - Integer.parseInt(dsSanPham[i].getSoLuong()) < 0) {
-
-
 
 //                        Nếu không hợp lệ thì gán số lượng mới và thêm sản phẩm vào danh sách không hợp lệ
                         sanPhamSanCo[j].setSoLuong(String.valueOf(Integer.parseInt(sanPhamSanCo[j].getSoLuong()) - Integer.parseInt(dsSanPham[i].getSoLuong())));

@@ -6,12 +6,17 @@ public class PhuKien extends SanPham {
     public PhuKien() {
     }
 
-    public PhuKien(String maSp, String tenSp, String soLuong, String gia, String moTa, String mauSac, String khuyenMai, String loaiSp, String giaBanDau) {
-        super(maSp, tenSp, soLuong, gia, moTa, mauSac, khuyenMai, loaiSp, giaBanDau);
+    public PhuKien(String maSp, String tenSp, String soLuong, String giaBanDau, String moTa, String mauSac, String loaiSp, String khuyenMai, String gia, String giaVon) {
+        super(maSp, tenSp, soLuong, giaBanDau, moTa, mauSac, loaiSp, khuyenMai, gia, giaVon);
     }
 
-//    Các phương thức
+    public PhuKien(String maSp, String tenSp, String soLuong, String giaBanDau, String moTa, String mauSac, String loaiSp, String khuyenMai, String gia) {
+        super(maSp, tenSp, soLuong, giaBanDau, moTa, mauSac, loaiSp, khuyenMai, gia);
+    }
 
+    //    Các phương thức
+
+    //    Nhập chỉ nhập được tên, số lượng, giá ban đầu, mô tả, màu sắc, % khuyến mãi, dung lượng mới
     @Override
     public void nhap() {
         String temp;
@@ -54,6 +59,7 @@ public class PhuKien extends SanPham {
         setLoaiSp("PHUKIEN");
     }
 
+    //    Sửa chỉ sửa được tên mới, giá ban đầu mới, mô tả mới, màu sắc mới, dung lượng mới
     @Override
     public void nhapDeSua() {
         String temp;
@@ -90,6 +96,8 @@ public class PhuKien extends SanPham {
         } else {
             setMauSac(temp.trim());
         }
+
+        setGia(tinhGia(getGiaBanDau(), getKhuyenMai()));
     }
 
     @Override
@@ -106,9 +114,9 @@ public class PhuKien extends SanPham {
 
     @Override
     public void xuatThongTinSpCoStt(String soTt) {
-        int[] columnWidths = {10, 20, 10, 10, 30, 10, 15, 12, 20, 40};
+        int[] columnWidths = {10, 10, 20, 10, 10, 30, 10, 15, 12, 20, 40};
         String[] values = {
-                getMaSp(),getTenSp(),getSoLuong(),getGiaBanDau(),getMoTa(),
+                soTt, getMaSp(),getTenSp(),getSoLuong(),getGiaBanDau(),getMoTa(),
                 getMauSac(),getLoaiSp(),getKhuyenMai(),getGia(),"Khong co thong tin ve san pham nay"
         };
 
