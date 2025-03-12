@@ -154,6 +154,39 @@ public class KhachHang extends TaiKhoan {
     }
 
     @Override
+    public void nhapDeCapNhatMatKhau() {
+        String temp, mkMoiConf;
+        boolean checkMk = true, checkMk2 = true;
+
+        do {
+            if (checkMk) {
+                System.out.print("Nhap mat khau cu: ");
+                checkMk = false;
+            } else {
+                System.out.print("Khong trung khop!Vui long nhap lai: ");
+            }
+            temp = StaticMethod.sc.nextLine();
+        }
+        while(!temp.equals(getMatKhau()));
+
+        System.out.print("Nhap mat khau moi: ");
+        mkMoiConf = StaticMethod.sc.nextLine();
+
+        do {
+            if (checkMk2) {
+                System.out.print("Nhap lai mat khau moi: ");
+                checkMk2 = false;
+            } else {
+                System.out.print("Khong trung khop!Vui long nhap lai: ");
+            }
+            temp = StaticMethod.sc.nextLine();
+        }
+        while(!temp.equals(mkMoiConf));
+
+        setMatKhau(temp);
+    }
+
+    @Override
     public String toString() {
         return super.toString() + ";"
                 + soDienThoai + ";"

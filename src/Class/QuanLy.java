@@ -83,4 +83,9 @@ public class QuanLy extends TaiKhoan {
         StaticMethod.printMultiLineRow(values, columnWidths);
         StaticMethod.printSeparator(columnWidths);
     }
+
+    @Override
+    public void nhapDeCapNhatMatKhau() {
+
+    }
 }

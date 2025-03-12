@@ -4,11 +4,14 @@ import Class.SanPham;
 import Class.Laptop;
 import Class.PhuKien;
 import Class.TaiNgheLoa;
+import Class.TaiKhoan;
+import Class.KhachHang;
+import Class.QuanLy;
 import ActionClass.MuaHangAction;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -21,6 +24,8 @@ public class StaticMethod {
     public static final String FILE_NAME_HD = "DanhSachHoaDon.txt";
     public static final String FILE_NAME_SPDX = "DanhSachSanPhamDaXuat.txt";
     public static final String FILE_NAME_PX = "DanhSachPhieuXuat.txt";
+
+    public static TaiKhoan[] dsTaiKhoanStatic = new TaiKhoan[0];
 
     public static void printMultiLineRow(String[] row, int[] columnWidths) {
         int maxLines = 1;
@@ -233,5 +238,78 @@ public class StaticMethod {
             e.printStackTrace();
         }
         return temp;
+    }
+
+    public static LocalDate chuyenChuoiThanhFormatDate(String dateStr) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return LocalDate.parse(dateStr, formatter);
+    }
+
+    public static int soSanhNgay(String chuoi1, String chuoi2) {
+        LocalDate date1 = chuyenChuoiThanhFormatDate(chuoi1);
+        LocalDate date2 = chuyenChuoiThanhFormatDate(chuoi2);
+        return date1.compareTo(date2);
+    }
+
+    public static void doiMatKhauTaiKhoan(String maTk) {
+        try {
+            File file = new File(StaticMethod.FILE_NAME_TK);
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            int count = 0;
+
+            BufferedReader fw = new BufferedReader(new FileReader(file));
+            while (fw.readLine() != null) {
+                count++;
+            }
+
+            if(count > 0) {
+                dsTaiKhoanStatic = Arrays.copyOf(dsTaiKhoanStatic, count);
+
+                boolean signal = false;
+
+                BufferedReader ft = new BufferedReader(new FileReader(file));
+
+                for (int i = 0; i < dsTaiKhoanStatic.length; i++) {
+                    String s[] = ft.readLine().split(";");
+                    if(s[4].equals("KH")) {
+                        dsTaiKhoanStatic[i] = new KhachHang(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7]);
+                    } else {
+                        dsTaiKhoanStatic[i] = new QuanLy(s[0], s[1], s[2], s[3], s[4]);
+                    }
+                }
+
+                BufferedWriter fr = new BufferedWriter(new FileWriter(file, false));
+
+                for (int i = 0; i < dsTaiKhoanStatic.length; i++) {
+                    if(!dsTaiKhoanStatic[i].getMaTk().equals(maTk)) {
+                        fr.write(dsTaiKhoanStatic[i].toString());
+                        fr.newLine();
+                    } else{
+                        dsTaiKhoanStatic[i].nhapDeCapNhatMatKhau();
+                        fr.write(dsTaiKhoanStatic[i].toString());
+                        fr.newLine();
+                        signal = true;
+                    }
+                }
+
+                if(signal) {
+                    System.out.println("-Cap nhat mat khau thanh cong-");
+                } else {
+                    System.out.println("-That bai-");
+                }
+
+                fr.close();
+                ft.close();
+                fw.close();
+            } else {
+                System.out.println("-Danh sach dang trong vui long them tai khoan de thuc hien thao tac-");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

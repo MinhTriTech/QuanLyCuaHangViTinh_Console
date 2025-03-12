@@ -134,4 +134,5 @@ public abstract class TaiKhoan implements IRandomId {
     public abstract void nhap();
     public abstract void nhapDeSua();
     public abstract void xuatThongTinTk();
+    public abstract void nhapDeCapNhatMatKhau();
 }
