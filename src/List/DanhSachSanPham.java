@@ -443,7 +443,6 @@ public class DanhSachSanPham implements IDanhSach {
         try {
             String st, maSp;
             boolean check = false;
-            StaticMethod.sc.nextLine();
             System.out.println("Nhap ma san pham ban muon tim:");
             maSp = StaticMethod.sc.nextLine();
             maSp = maSp.toUpperCase().trim();
@@ -492,7 +491,6 @@ public class DanhSachSanPham implements IDanhSach {
         try {
             String st, thongTin;
             boolean check = false;
-            StaticMethod.sc.nextLine();
             System.out.println("Nhap thong tin san pham ban muon tim:");
             thongTin = StaticMethod.sc.nextLine();
             thongTin = thongTin.toLowerCase().trim();
@@ -628,7 +626,7 @@ public class DanhSachSanPham implements IDanhSach {
                                 System.out.print("Nhap so luong san pham can mua: ");
                                 checkToast = false;
                             } else {
-                                System.out.print("Nhap lai so luong san pham can mua khong duoc lon hon so luong hien co: ");
+                                System.out.print("Nhap lai so luong san pham can mua khong duoc lon hon so luong hien co: " + "(" + sp.getSoLuong() + " san pham):");
                             }
                             soLuongSp = StaticMethod.sc.nextLine();}
                         while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
@@ -645,7 +643,7 @@ public class DanhSachSanPham implements IDanhSach {
                                 System.out.print("Nhap so luong san pham can mua: ");
                                 checkToast = false;
                             } else {
-                                System.out.print("Nhap lai so luong san pham can mua khong duoc lon hon so luong hien co: ");
+                                System.out.print("Nhap lai so luong san pham can mua khong duoc lon hon so luong hien co: " + "(" + sp.getSoLuong() + " san pham):");
                             }
                             soLuongSp = StaticMethod.sc.nextLine();}
                         while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));

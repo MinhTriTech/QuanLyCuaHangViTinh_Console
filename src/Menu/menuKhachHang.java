@@ -67,7 +67,7 @@ public class menuKhachHang {
                                     System.out.println("7. Tim kiem san pham");
                                     System.out.println("Nhap cac so ben tren de loc san pham:");
                                     System.out.println("Hoac?");
-                                    System.out.println("Nhap ma san pham muon mua (Nhap s de xem gio hang | Nhap d de xoa san pham trong gio | Nhap a de thanh toan | Nhap e de thoat(Xoa tat ca san pham trong gio hang)):");
+                                    System.out.println("Nhap ma san pham muon mua (Nhap s de xem gio hang | Nhap d de xoa san pham trong gio | Nhap a de thanh toan | Nhap e de thoat):");
                                     menu_2_1_1 = StaticMethod.sc.nextLine();
 
                                     switch (menu_2_1_1) {
@@ -110,7 +110,7 @@ public class menuKhachHang {
                                                         checkMenu_2_1_1_1 = "0";
                                                         break;
                                                     default:
-                                                        System.out.println("Lua chon khong hop le");
+                                                        System.out.println("--Lua chon khong hop le");
                                                         break;
                                                 }
                                             }
@@ -339,7 +339,7 @@ public class menuKhachHang {
                                             checkMenu_2_1_3 = "0";;
                                             break;
                                         default:
-                                            System.out.println("Lua chon khong hop le");
+                                            System.out.println("--Lua chon khong hop le");
                                             break;
                                     }
                                 }
@@ -365,7 +365,7 @@ public class menuKhachHang {
                                             checkMenu_2_1_2 = "0";
                                             break;
                                         default:
-                                            System.out.println("Lua chon khong hop le");
+                                            System.out.println("--Lua chon khong hop le");
                                             break;
                                     }
                                 }
@@ -374,7 +374,7 @@ public class menuKhachHang {
                                 checkMenu_2_1 = "0";
                                 break;
                             default:
-                                System.out.println("Lua chon khong hop le");
+                                System.out.println("--Lua chon khong hop le");
                                 break;
                         }
                     }
@@ -424,7 +424,7 @@ public class menuKhachHang {
                                             checkMenu_2_2_2 = "0";
                                             break;
                                         default:
-                                            System.out.println("Lua chon khong hop le");
+                                            System.out.println("--Lua chon khong hop le");
                                             break;
                                     }
                                 }
@@ -450,7 +450,7 @@ public class menuKhachHang {
                                             checkMenu_2_2_1 = "0";
                                             break;
                                         default:
-                                            System.out.println("Lua chon khong hop le");
+                                            System.out.println("--Lua chon khong hop le");
                                             break;
                                     }
                                 }
@@ -459,7 +459,7 @@ public class menuKhachHang {
                                 checkMenu_2_2 = "0";
                                 break;
                             default:
-                                System.out.println("Lua chon khong hop le");
+                                System.out.println("--Lua chon khong hop le");
                                 break;
                         }
                     }
@@ -471,7 +471,7 @@ public class menuKhachHang {
                     checkMenu_2 = "0";
                     break;
                 default:
-                    System.out.println("Lua chon khong hop le");
+                    System.out.println("--Lua chon khong hop le");
                     break;
             }
         }
