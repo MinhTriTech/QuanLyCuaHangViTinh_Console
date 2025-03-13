@@ -115,17 +115,6 @@ public class HoaDon implements IRandomId {
         setMaHd(newId);
     }
 
-    public boolean checkNgayTaoHd(String chuoiNgay) {
-        String regex = "^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(\\d{4})$";
-
-        if (chuoiNgay.matches(regex)) {
-            return true;
-        } else {
-            System.out.println("Sai dinh dang, vui long nhap dung dinh dang dd-mm-yyyy");
-            return false;
-        }
-    }
-
     public boolean checkMaKm(String maKm, String tongTien) {
         try {
             String st;
@@ -225,7 +214,7 @@ public class HoaDon implements IRandomId {
                 break;
             }
         }
-        while(!checkNgayTaoHd(temp));
+        while(!StaticMethod.checkNgayTaoHd(temp));
         if (temp.isEmpty()) {
             LocalDate today = LocalDate.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");

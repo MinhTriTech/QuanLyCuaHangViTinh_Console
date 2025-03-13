@@ -1,22 +1,20 @@
 package Menu;
 
-import List.DanhSachHoaDon;
-import List.DanhSachMaGiamGia;
-import List.DanhSachSanPham;
-import List.DanhSachTaiKhoan;
+import List.*;
 import StaticMethod.StaticMethod;
 
 public class menuQuanLy {
-    public menuQuanLy() {
-        init();
+    public menuQuanLy(String maTk) {
+        init(maTk);
     }
 
-    public void init() {
+    public void init(String maTk) {
         String checkMenu_3 = "1", menu_3;
         DanhSachSanPham dsSanPham = new DanhSachSanPham();
         DanhSachTaiKhoan dsTaiKhoan = new DanhSachTaiKhoan();
         DanhSachMaGiamGia dsMaGiamGia = new DanhSachMaGiamGia();
         DanhSachHoaDon dsHoaDon = new DanhSachHoaDon();
+        DanhSachPhieuNhap dsPhieuNhap = new DanhSachPhieuNhap();
 
         while (checkMenu_3.equals("1")) {
             System.out.println("===Chon===");
@@ -143,7 +141,7 @@ public class menuQuanLy {
                                 }
                                 break;
                             case "6":
-                                System.out.println("Quan ly nhap san pham");
+                                dsPhieuNhap.themPn(maTk);
                                 break;
                             case "7":
                                 System.out.println("Quan ly xuat san pham");

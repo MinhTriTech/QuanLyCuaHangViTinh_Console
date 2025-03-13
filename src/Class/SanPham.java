@@ -227,6 +227,7 @@ public abstract class SanPham implements IRandomId {
     public abstract void xuatThongTinSp();
     public abstract void xuatThongTinSpCoStt(String soTt);
     public abstract void xuatThongTinSpCoGiaVon();
+    public abstract void nhapDeNhapHang();
 
     @Override
     public String toString() {

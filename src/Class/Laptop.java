@@ -163,6 +163,52 @@ public class Laptop extends SanPham {
     }
 
     @Override
+    public void nhapDeNhapHang() {
+        String temp;
+        setRandomId();
+
+        StaticMethod.sc.nextLine();
+
+        System.out.print("Nhap ten san pham: ");
+        temp = StaticMethod.sc.nextLine();
+        setTenSp(temp.trim());
+
+        do {
+            System.out.print("Nhap so luong: ");
+            temp = StaticMethod.sc.nextLine();}
+        while(!checkSoLuong(temp.trim()));
+        setSoLuong(temp.trim());
+
+        do {
+            System.out.print("Nhap gia ban dau: ");
+            temp = StaticMethod.sc.nextLine();}
+        while(!checkGia(temp.trim()));
+        setGiaBanDau(temp.trim());
+
+        System.out.print("Nhap mo ta: ");
+        temp = StaticMethod.sc.nextLine();
+        setMoTa(temp.trim());
+
+        System.out.print("Nhap mau sac: ");
+        temp = StaticMethod.sc.nextLine();
+        setMauSac(temp.trim());
+
+        setLoaiSp("LAPTOP");
+
+        do {
+            System.out.print("Nhap gia von: ");
+            temp = StaticMethod.sc.nextLine();}
+        while(!checkGia(temp.trim()));
+        setGiaVon(temp.trim());
+
+        setKhuyenMai("0");
+
+        setGia(tinhGia(getGiaBanDau(), getKhuyenMai()));
+
+        setDungLuong("Chua co thong tin ve san pham nay");
+    }
+
+    @Override
     public String toString() {
         return super.toString() + ";" + dungLuong;
     }

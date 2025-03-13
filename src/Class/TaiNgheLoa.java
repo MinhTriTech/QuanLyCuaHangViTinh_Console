@@ -103,6 +103,50 @@ public class TaiNgheLoa extends SanPham {
     }
 
     @Override
+    public void nhapDeNhapHang() {
+        String temp;
+        setRandomId();
+
+        StaticMethod.sc.nextLine();
+
+        System.out.print("Nhap ten san pham: ");
+        temp = StaticMethod.sc.nextLine();
+        setTenSp(temp.trim());
+
+        do {
+            System.out.print("Nhap so luong: ");
+            temp = StaticMethod.sc.nextLine();}
+        while(!checkSoLuong(temp.trim()));
+        setSoLuong(temp.trim());
+
+        do {
+            System.out.print("Nhap gia ban dau: ");
+            temp = StaticMethod.sc.nextLine();}
+        while(!checkGia(temp.trim()));
+        setGiaBanDau(temp.trim());
+
+        System.out.print("Nhap mo ta: ");
+        temp = StaticMethod.sc.nextLine();
+        setMoTa(temp.trim());
+
+        System.out.print("Nhap mau sac: ");
+        temp = StaticMethod.sc.nextLine();
+        setMauSac(temp.trim());
+
+        setLoaiSp("LAPTOP");
+
+        do {
+            System.out.print("Nhap gia von: ");
+            temp = StaticMethod.sc.nextLine();}
+        while(!checkGia(temp.trim()));
+        setGiaVon(temp.trim());
+
+        setKhuyenMai("0");
+
+        setGia(tinhGia(getGiaBanDau(), getKhuyenMai()));
+    }
+
+    @Override
     public void xuatThongTinSp() {
         int[] columnWidths = {10, 20, 10, 10, 30, 10, 15, 12, 20, 40};
         String[] values = {

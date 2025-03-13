@@ -28,7 +28,7 @@ public class QuanLyCuaHang {
                         if(kq.getQuyenTk().equals("KH")) {
                             menuKhachHang mnKH = new menuKhachHang(kq.getMaTk());
                         } else if(kq.getQuyenTk().equals("QL")) {
-                            menuQuanLy mnQL = new menuQuanLy();
+                            menuQuanLy mnQL = new menuQuanLy(kq.getMaTk());
                         }
                     }
                     break;

@@ -25,6 +25,7 @@ public class DanhSachSanPham implements IDanhSach {
             System.out.println("Nhap so luong san pham can them: ");
             int slTemp = StaticMethod.sc.nextInt();
             for (int i = 1; i<= slTemp; i++) {
+                System.out.println("--Nhap thong tin san pham thu: " + i);
                 System.out.println("===Chon loai san pham can them: ===");
                 System.out.println("1. Laptop");
                 System.out.println("2. Phu kien");
