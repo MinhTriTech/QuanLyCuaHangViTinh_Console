@@ -171,12 +171,12 @@ public class PhieuNhap implements IRandomId  {
         setLoaiSp(loaiSp);
         setGiaVon(giaVon);
 
-        System.out.print("Nhap nha cung cap: ");
+        System.out.print("--Nhap nha cung cap: ");
         temp = StaticMethod.sc.nextLine();
         setNhaCungCap(temp.trim());
 
         do {
-            System.out.print("Nhap ngay tao phieu nhap(dinh dang dd-mm-yyyy)(Nhan Enter de lay ngay thang nam hien tai): ");
+            System.out.print("--Nhap ngay tao phieu nhap(dinh dang dd-mm-yyyy)(Nhan Enter de lay ngay thang nam hien tai): ");
             temp = StaticMethod.sc.nextLine();
             if (temp.isEmpty()) {
                 break;
@@ -194,7 +194,7 @@ public class PhieuNhap implements IRandomId  {
 
         setNguoiNhap(maQl);
 
-        System.out.print("Nhap ly do nhap: ");
+        System.out.print("--Nhap ly do nhap: ");
         temp = StaticMethod.sc.nextLine();
         setLyDoNhap(temp.trim());
     }

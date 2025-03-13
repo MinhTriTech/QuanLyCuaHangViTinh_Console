@@ -22,7 +22,7 @@ public class DanhSachSanPham implements IDanhSach {
                 file.createNewFile();
             }
 
-            System.out.println("Nhap so luong san pham can them: ");
+            System.out.println("--Nhap so luong san pham can them: ");
             int slTemp = StaticMethod.sc.nextInt();
             for (int i = 1; i<= slTemp; i++) {
                 System.out.println("--Nhap thong tin san pham thu: " + i);
@@ -30,7 +30,7 @@ public class DanhSachSanPham implements IDanhSach {
                 System.out.println("1. Laptop");
                 System.out.println("2. Phu kien");
                 System.out.println("3. Tai nghe/Loa");
-                System.out.print("Nhap:");
+                System.out.print("--Nhap:");
                 int luaChonSp = StaticMethod.sc.nextInt();
 
                 if (luaChonSp == 1) {
@@ -111,7 +111,7 @@ public class DanhSachSanPham implements IDanhSach {
 
                 boolean signal = false;
                 String maSp;
-                System.out.println("--Nhap ma san pham can sua--");
+                System.out.println("--Nhap ma san pham can sua");
                 maSp = StaticMethod.sc.nextLine();
                 maSp = maSp.toUpperCase().trim();
 
@@ -119,7 +119,7 @@ public class DanhSachSanPham implements IDanhSach {
 
                 for (int i = 0; i < dsSanPham.length; i++) {
                     if(!dsSanPham[i].getMaSp().equals(maSp)) {
-                        fr.write(dsSanPham[i].toString());
+                        fr.write(dsSanPham[i].toStringGiaVon());
                         fr.newLine();
                     } else{
                         dsSanPham[i].nhapDeSua();
@@ -183,7 +183,7 @@ public class DanhSachSanPham implements IDanhSach {
                 boolean signal = false;
                 boolean signal_1 = false;
                 String maSp,checkConf;
-                System.out.println("--Nhap ma san pham can xoa--");
+                System.out.println("--Nhap ma san pham can xoa");
                 maSp = StaticMethod.sc.nextLine();
                 maSp = maSp.toUpperCase().trim();
 
@@ -384,7 +384,7 @@ public class DanhSachSanPham implements IDanhSach {
                 ft.close();
                 fw.close();
             } else {
-                System.out.println("-Dan sach dang trong vui long them san pham de thuc hien thao tac-");
+                System.out.println("-Danh sach dang trong vui long them san pham de thuc hien thao tac-");
             }
 
         } catch (Exception e) {
@@ -465,7 +465,7 @@ public class DanhSachSanPham implements IDanhSach {
         try {
             String st, maSp;
             boolean check = false;
-            System.out.println("Nhap ma san pham ban muon tim:");
+            System.out.println("--Nhap ma san pham ban muon tim:");
             maSp = StaticMethod.sc.nextLine();
             maSp = maSp.toUpperCase().trim();
             System.out.println("+--------------KET QUA TIM KIEM-----------------+");
@@ -513,7 +513,7 @@ public class DanhSachSanPham implements IDanhSach {
         try {
             String st, thongTin;
             boolean check = false;
-            System.out.println("Nhap thong tin san pham ban muon tim:");
+            System.out.println("--Nhap thong tin san pham ban muon tim:");
             thongTin = StaticMethod.sc.nextLine();
             thongTin = thongTin.toLowerCase().trim();
             System.out.println("+--------------KET QUA TIM KIEM-----------------+");
@@ -628,10 +628,10 @@ public class DanhSachSanPham implements IDanhSach {
                     if (sp.getMaSp().equals(maSp)) {
                         do {
                             if(checkToast) {
-                                System.out.print("Nhap so luong san pham can mua: ");
+                                System.out.print("--Nhap so luong san pham can mua: ");
                                 checkToast = false;
                             } else {
-                                System.out.print("Nhap lai so luong san pham can mua khong duoc lon hon so luong hien co " + "(" + sp.getSoLuong() + " san pham):");
+                                System.out.print("--Nhap lai so luong san pham can mua khong duoc lon hon so luong hien co " + "(" + sp.getSoLuong() + " san pham):");
                             }
                             soLuongSp = StaticMethod.sc.nextLine();}
                         while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
@@ -645,10 +645,10 @@ public class DanhSachSanPham implements IDanhSach {
                     if (sp.getMaSp().equals(maSp)) {
                         do {
                             if(checkToast) {
-                                System.out.print("Nhap so luong san pham can mua: ");
+                                System.out.print("--Nhap so luong san pham can mua: ");
                                 checkToast = false;
                             } else {
-                                System.out.print("Nhap lai so luong san pham can mua khong duoc lon hon so luong hien co: " + "(" + sp.getSoLuong() + " san pham):");
+                                System.out.print("--Nhap lai so luong san pham can mua khong duoc lon hon so luong hien co: " + "(" + sp.getSoLuong() + " san pham):");
                             }
                             soLuongSp = StaticMethod.sc.nextLine();}
                         while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
@@ -662,10 +662,10 @@ public class DanhSachSanPham implements IDanhSach {
                     if (sp.getMaSp().equals(maSp)) {
                         do {
                             if(checkToast) {
-                                System.out.print("Nhap so luong san pham can mua: ");
+                                System.out.print("--Nhap so luong san pham can mua: ");
                                 checkToast = false;
                             } else {
-                                System.out.print("Nhap lai so luong san pham can mua khong duoc lon hon so luong hien co: " + "(" + sp.getSoLuong() + " san pham):");
+                                System.out.print("--Nhap lai so luong san pham can mua khong duoc lon hon so luong hien co: " + "(" + sp.getSoLuong() + " san pham):");
                             }
                             soLuongSp = StaticMethod.sc.nextLine();}
                         while(Integer.parseInt(soLuongSp) > Integer.parseInt(sp.getSoLuong()));
@@ -684,4 +684,206 @@ public class DanhSachSanPham implements IDanhSach {
         return spTemp;
     }
 
+    public void capNhatPhanTramKhuyenMaiTheoSp() {
+        try {
+            File file = new File(StaticMethod.FILE_NAME_SP);
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            int count = 0;
+
+            BufferedReader fw = new BufferedReader(new FileReader(file));
+            while (fw.readLine() != null) {
+                count++;
+            }
+
+            if(count > 0) {
+                dsSanPham = Arrays.copyOf(dsSanPham, count);
+
+                BufferedReader ft = new BufferedReader(new FileReader(file));
+
+                for (int i = 0; i < dsSanPham.length; i++) {
+                    String s[] = ft.readLine().split(";");
+                    if(s[6].equals("LAPTOP")) {
+                        dsSanPham[i] = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9],s[10]);
+                    }
+                    if(s[6].equals("PHUKIEN")) {
+                        dsSanPham[i] = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
+                    }
+                    if(s[6].equals("TAINGHELOA")) {
+                        dsSanPham[i] = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
+                    }
+                }
+
+                boolean signal = false;
+                String maSp;
+                System.out.println("--Nhap ma san pham can sua");
+                maSp = StaticMethod.sc.nextLine();
+                maSp = maSp.toUpperCase().trim();
+
+                BufferedWriter fr = new BufferedWriter(new FileWriter(file, false));
+
+                for (int i = 0; i < dsSanPham.length; i++) {
+                    if(!dsSanPham[i].getMaSp().equals(maSp)) {
+                        fr.write(dsSanPham[i].toStringGiaVon());
+                        fr.newLine();
+                    } else{
+                        dsSanPham[i].capNhatPhanTramSanPham();
+                        fr.write(dsSanPham[i].toStringGiaVon());
+                        fr.newLine();
+                        signal = true;
+                    }
+                }
+
+                if(signal) {
+                    System.out.println("-Cap nhat % khuyen mai thanh cong-");
+                } else {
+                    System.out.println("-Khong tim thay san pham tuong ung voi ma-");
+                }
+
+                fr.close();
+                ft.close();
+                fw.close();
+            } else {
+                System.out.println("-Danh sach dang trong vui long them san pham de thuc hien thao tac-");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void capNhatPhanTramKhuyenMaiTheoDm() {
+        try {
+            File file = new File(StaticMethod.FILE_NAME_SP);
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            int count = 0;
+
+            BufferedReader fw = new BufferedReader(new FileReader(file));
+            while (fw.readLine() != null) {
+                count++;
+            }
+
+            if(count > 0) {
+                dsSanPham = Arrays.copyOf(dsSanPham, count);
+
+                BufferedReader ft = new BufferedReader(new FileReader(file));
+
+                for (int i = 0; i < dsSanPham.length; i++) {
+                    String s[] = ft.readLine().split(";");
+                    if(s[6].equals("LAPTOP")) {
+                        dsSanPham[i] = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9],s[10]);
+                    }
+                    if(s[6].equals("PHUKIEN")) {
+                        dsSanPham[i] = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
+                    }
+                    if(s[6].equals("TAINGHELOA")) {
+                        dsSanPham[i] = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
+                    }
+                }
+                String loaiSp,khuyenMai;
+                boolean signal = false;
+
+                do {
+                    System.out.print("--Nhap % khuyen mai: ");
+                    khuyenMai = StaticMethod.sc.nextLine();}
+                while(!StaticMethod.checkKm(khuyenMai.trim()));
+
+                do {
+                    System.out.println("===Chon loai san pham can cap nhat % khuyen mai: ===");
+                    System.out.println("1. Laptop");
+                    System.out.println("2. Phu kien");
+                    System.out.println("3. Tai nghe/Loa");
+                    System.out.print("--Nhap:");
+
+                    loaiSp = StaticMethod.sc.nextLine().trim();
+
+                    try {
+                        int loai = Integer.parseInt(loaiSp);
+                        if (loai >= 1 && loai <= 3) {
+                            break;
+                        }
+                        System.out.println("-Lua chon khong hop le-");
+                    } catch (NumberFormatException e) {
+                        System.out.println("-Lua chon khong hop le-");
+                    }
+                } while(true);
+
+                if(loaiSp.equals("1")){
+                    BufferedWriter fr = new BufferedWriter(new FileWriter(file, false));
+
+                    for (int i = 0; i < dsSanPham.length; i++) {
+                        if(!dsSanPham[i].getLoaiSp().equals("LAPTOP")) {
+                            fr.write(dsSanPham[i].toStringGiaVon());
+                            fr.newLine();
+                        } else{
+                            dsSanPham[i].setKhuyenMai(khuyenMai);
+                            dsSanPham[i].setGia(dsSanPham[i].tinhGia(dsSanPham[i].getGiaBanDau(), dsSanPham[i].getKhuyenMai()));
+                            fr.write(dsSanPham[i].toStringGiaVon());
+                            fr.newLine();
+                            signal = true;
+                        }
+                    }
+
+                    fr.close();
+                }
+                if(loaiSp.equals("2")){
+                    BufferedWriter fr = new BufferedWriter(new FileWriter(file, false));
+
+                    for (int i = 0; i < dsSanPham.length; i++) {
+                        if(!dsSanPham[i].getLoaiSp().equals("PHUKIEN")) {
+                            fr.write(dsSanPham[i].toStringGiaVon());
+                            fr.newLine();
+                        } else{
+                            dsSanPham[i].setKhuyenMai(khuyenMai);
+                            dsSanPham[i].setGia(dsSanPham[i].tinhGia(dsSanPham[i].getGiaBanDau(), dsSanPham[i].getKhuyenMai()));
+                            fr.write(dsSanPham[i].toStringGiaVon());
+                            fr.newLine();
+                            signal = true;
+                        }
+                    }
+
+                    fr.close();
+                }
+                if(loaiSp.equals("3")){
+
+                    BufferedWriter fr = new BufferedWriter(new FileWriter(file, false));
+
+                    for (int i = 0; i < dsSanPham.length; i++) {
+                        if(!dsSanPham[i].getLoaiSp().equals("TAINGHELOA")) {
+                            fr.write(dsSanPham[i].toStringGiaVon());
+                            fr.newLine();
+                        } else{
+                            dsSanPham[i].setKhuyenMai(khuyenMai);
+                            dsSanPham[i].setGia(dsSanPham[i].tinhGia(dsSanPham[i].getGiaBanDau(), dsSanPham[i].getKhuyenMai()));
+                            fr.write(dsSanPham[i].toStringGiaVon());
+                            fr.newLine();
+                            signal = true;
+                        }
+                    }
+
+                    fr.close();
+                }
+
+                if(signal) {
+                    System.out.println("-Cap nhat % khuyen mai thanh cong-");
+                } else {
+                    System.out.println("-Danh muc trong-");
+                }
+
+
+                ft.close();
+                fw.close();
+            } else {
+                System.out.println("-Danh sach dang trong vui long them san pham de thuc hien thao tac-");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

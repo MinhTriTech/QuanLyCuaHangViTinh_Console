@@ -55,21 +55,21 @@ public class KhachHang extends TaiKhoan {
 
         StaticMethod.sc.nextLine();
         do {
-            System.out.print("Nhap ten dang nhap: ");
+            System.out.print("--Nhap ten dang nhap: ");
             temp = StaticMethod.sc.nextLine();}
         while(checkTenDangNhap(temp));
         setTenDn(temp.trim());
 
-        System.out.print("Nhap ho va ten: ");
+        System.out.print("--Nhap ho va ten: ");
         temp = StaticMethod.sc.nextLine();
         setHoVaTen(temp.trim());
 
-        System.out.print("Nhap mat khau: ");
+        System.out.print("--Nhap mat khau: ");
         temp = StaticMethod.sc.nextLine();
 
         String temp_test;
         do {
-            System.out.print("Nhap lai mat khau: ");
+            System.out.print("--Nhap lai mat khau: ");
             temp_test = StaticMethod.sc.nextLine();}
         while(!temp.equals(temp_test));
         setMatKhau(temp.trim());
@@ -77,16 +77,16 @@ public class KhachHang extends TaiKhoan {
         setQuyenTk("KH");
 
         do {
-            System.out.print("Nhap so dien thoai: ");
+            System.out.print("--Nhap so dien thoai: ");
             temp = StaticMethod.sc.nextLine();}
         while(!checkSoDienThoai(temp.trim()));
         setSoDienThoai(temp.trim());
 
-        System.out.print("Nhap email: ");
+        System.out.print("--Nhap email: ");
         temp = StaticMethod.sc.nextLine();
         setEmail(temp.trim());
 
-        System.out.print("Nhap dia chi: ");
+        System.out.print("--Nhap dia chi: ");
         temp = StaticMethod.sc.nextLine();
         setDiaChi(temp.trim());
 
@@ -96,27 +96,27 @@ public class KhachHang extends TaiKhoan {
     public void nhapDeSua() {
         String temp;
 
-        System.out.print("Nhap ho va ten moi(Nhan Enter de giu thong tin cu): ");
+        System.out.print("--Nhap ho va ten moi(Nhan Enter de giu thong tin cu): ");
         temp = StaticMethod.sc.nextLine();
         if (temp.isEmpty()) {
         } else {
             setHoVaTen(temp.trim());
         }
 
-        System.out.print("Nhap mat khau moi(Nhan Enter de giu thong tin cu): ");
+        System.out.print("--Nhap mat khau moi(Nhan Enter de giu thong tin cu): ");
         temp = StaticMethod.sc.nextLine();
         if (temp.isEmpty()) {
         } else {
             String temp_test;
             do {
-                System.out.print("Nhap lai mat khau: ");
+                System.out.print("--Nhap lai mat khau: ");
                 temp_test = StaticMethod.sc.nextLine();}
             while(!temp.equals(temp_test));
             setMatKhau(temp);
         }
 
         do {
-            System.out.print("Nhap so dien thoai moi(Nhan Enter de giu thong tin cu): ");
+            System.out.print("--Nhap so dien thoai moi(Nhan Enter de giu thong tin cu): ");
             temp = StaticMethod.sc.nextLine();
             if (temp.isEmpty()) {
                 break;
@@ -125,14 +125,14 @@ public class KhachHang extends TaiKhoan {
         while(!checkSoDienThoai(temp.trim()));
         setSoDienThoai(temp.trim());
 
-        System.out.print("Nhap email moi(Nhan Enter de giu thong tin cu): ");
+        System.out.print("--Nhap email moi(Nhan Enter de giu thong tin cu): ");
         temp = StaticMethod.sc.nextLine();
         if (temp.isEmpty()) {
         } else {
             setEmail(temp.trim());
         }
 
-        System.out.print("Nhap dia chi moi (Nhan Enter de giu thong tin cu): ");
+        System.out.print("--Nhap dia chi moi (Nhan Enter de giu thong tin cu): ");
         temp = StaticMethod.sc.nextLine();
         if (temp.isEmpty()) {
         } else {
@@ -160,24 +160,24 @@ public class KhachHang extends TaiKhoan {
 
         do {
             if (checkMk) {
-                System.out.print("Nhap mat khau cu: ");
+                System.out.print("--Nhap mat khau cu: ");
                 checkMk = false;
             } else {
-                System.out.print("Khong trung khop!Vui long nhap lai: ");
+                System.out.print("--Khong trung khop!Vui long nhap lai: ");
             }
             temp = StaticMethod.sc.nextLine();
         }
         while(!temp.equals(getMatKhau()));
 
-        System.out.print("Nhap mat khau moi: ");
+        System.out.print("--Nhap mat khau moi: ");
         mkMoiConf = StaticMethod.sc.nextLine();
 
         do {
             if (checkMk2) {
-                System.out.print("Nhap lai mat khau moi: ");
+                System.out.print("--Nhap lai mat khau moi: ");
                 checkMk2 = false;
             } else {
-                System.out.print("Khong trung khop!Vui long nhap lai: ");
+                System.out.print("--Khong trung khop!Vui long nhap lai: ");
             }
             temp = StaticMethod.sc.nextLine();
         }

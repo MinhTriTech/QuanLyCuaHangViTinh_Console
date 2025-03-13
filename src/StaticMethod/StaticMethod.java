@@ -83,7 +83,7 @@ public class StaticMethod {
     }
 
     public static void xuatHeaderMgg() {
-        int[] columnWidths = {10, 10, 15, 30, 20};
+        int[] columnWidths = {20, 20, 20, 30, 20};
         String[] headers = {"Ma MGG", "Ma", "% giam", "Gia tri toi da", "Trang thai"};
 
         printSeparator(columnWidths);
@@ -320,8 +320,48 @@ public class StaticMethod {
         if (chuoiNgay.matches(regex)) {
             return true;
         } else {
-            System.out.println("Sai dinh dang, vui long nhap dung dinh dang dd-mm-yyyy");
+            System.out.println("-Sai dinh dang, vui long nhap dung dinh dang dd-mm-yyyy -");
             return false;
         }
+    }
+
+    public static boolean checkKm(String string) {
+        if (string == null || string.isEmpty()) {
+            System.out.println("-Vui long nhap lai phan tram khuyen mai-");
+            return false;
+        } else {
+            try {
+                double number = Double.parseDouble(string);
+                if (number >= 0 && number <= 100) {
+                    return true;
+                } else {
+                    System.out.println("-Vui long nhap lai phan tram khuyen mai-");
+                    return false;
+                }
+            } catch (NumberFormatException e) {
+                return false;
+            }
+        }
+    }
+
+    public static boolean checkGia(String string) {
+        if (string == null || string.isEmpty()) {
+            System.out.println("-Vui long nhap lai gia-");
+            return false;
+        } else {
+            try {
+                double number = Double.parseDouble(string);
+                if (number > 0) {
+                    return true;
+                } else {
+                    System.out.println("-Vui long nhap lai gia-");
+                    return false;
+                }
+            } catch (NumberFormatException e) {
+                return false;
+            }
+        }
+
+
     }
 }

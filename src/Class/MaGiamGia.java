@@ -91,7 +91,7 @@ public class MaGiamGia {
 
     public boolean checkGia(String string) {
         if (string == null || string.isEmpty()) {
-            System.out.println("Vui long nhap lai gia !!!");
+            System.out.println("-Vui long nhap lai gia-");
             return false;
         }
 
@@ -100,7 +100,7 @@ public class MaGiamGia {
             if (number > 0) {
                 return true;
             } else {
-                System.out.println("Vui long nhap lai gia !!!");
+                System.out.println("-Vui long nhap lai gia-");
                 return false;
             }
         } catch (NumberFormatException e) {
@@ -110,7 +110,7 @@ public class MaGiamGia {
 
     public boolean checkKm(String string) {
         if (string == null || string.isEmpty()) {
-            System.out.println("Vui long nhap lai phan tram khuyen mai !!!");
+            System.out.println("-Vui long nhap lai phan tram khuyen mai-");
             return false;
         }
 
@@ -119,7 +119,7 @@ public class MaGiamGia {
             if (number >= 0 && number <= 100) {
                 return true;
             } else {
-                System.out.println("Vui long nhap lai phan tram khuyen mai !!!");
+                System.out.println("-Vui long nhap lai phan tram khuyen mai-");
                 return false;
             }
         } catch (NumberFormatException e) {
@@ -129,14 +129,14 @@ public class MaGiamGia {
 
     public boolean checkMaKm(String string) {
         if (string == null || string.isEmpty()) {
-            System.out.println("Vui long nhap lai ma khuyen mai !!!");
+            System.out.println("-Vui long nhap lai ma khuyen mai-");
             return false;
         }
 
         if (string.length() <= 6) {
             return true;
         } else {
-            System.out.println("Vui long nhap lai ma khuyen mai toi da 6 ki tu !!!");
+            System.out.println("-Vui long nhap lai ma khuyen mai toi da 6 ki tu-");
             return false;
         }
     }
@@ -145,22 +145,20 @@ public class MaGiamGia {
         String temp;
         setRandomId();
 
-        StaticMethod.sc.nextLine();
-
         do {
-            System.out.print("Nhap ma khuyen mai: ");
+            System.out.print("--Nhap ma khuyen mai: ");
             temp = StaticMethod.sc.nextLine();}
         while(!checkMaKm(temp));
         setMaChu(temp.trim().toUpperCase());
 
         do {
-            System.out.print("Nhap % khuyen mai: ");
+            System.out.print("--Nhap % khuyen mai: ");
             temp = StaticMethod.sc.nextLine();}
         while(!checkKm(temp));
         setPhanTramGiam(temp.trim());
 
         do {
-            System.out.print("Nhap gia tri toi da: ");
+            System.out.print("--Nhap gia tri toi da: ");
             temp = StaticMethod.sc.nextLine();}
         while(!checkGia(temp));
         setGiaTriToiDa(temp.trim());
@@ -169,7 +167,7 @@ public class MaGiamGia {
     }
 
     public void xuatThongTinMgg() {
-        int[] columnWidths = {10, 10, 15, 30, 20};
+        int[] columnWidths = {20, 20, 20, 30, 20};
         String[] values = {
                 getMaGg(), getMaChu(), getPhanTramGiam(),
                 getGiaTriToiDa(), getTrangThai()

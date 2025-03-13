@@ -112,7 +112,7 @@ public abstract class TaiKhoan implements IRandomId {
                     tenDn = tenDn.toLowerCase();
 
                     if (tenDnCheck.equals(tenDn)){
-                        System.out.println("Ten dang nhap da ton tai");
+                        System.out.println("-Ten dang nhap da ton tai-");
                         signal = true;
                         return true;
                     }
@@ -121,7 +121,7 @@ public abstract class TaiKhoan implements IRandomId {
             }
 
             if (signal == false){
-                System.out.println("Ten dang nhap co the su dung !!!");
+                System.out.println("-Ten dang nhap co the su dung-");
                 return false;
             }
         }

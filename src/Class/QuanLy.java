@@ -24,21 +24,21 @@ public class QuanLy extends TaiKhoan {
 
         StaticMethod.sc.nextLine();
         do {
-            System.out.print("Nhap ten dang nhap: ");
+            System.out.print("--Nhap ten dang nhap: ");
             temp = StaticMethod.sc.nextLine();}
         while(checkTenDangNhap(temp.trim())==true);
         setTenDn(temp.trim());
 
-        System.out.print("Nhap ho va ten: ");
+        System.out.print("--Nhap ho va ten: ");
         temp = StaticMethod.sc.nextLine();
         setHoVaTen(temp.trim());
 
-        System.out.print("Nhap mat khau: ");
+        System.out.print("--Nhap mat khau: ");
         temp = StaticMethod.sc.nextLine();
 
         String temp_test;
         do {
-            System.out.print("Nhap lai mat khau: ");
+            System.out.print("--Nhap lai mat khau: ");
             temp_test = StaticMethod.sc.nextLine();}
         while(!temp.equals(temp_test));
         setMatKhau(temp);
@@ -50,21 +50,21 @@ public class QuanLy extends TaiKhoan {
     public void nhapDeSua() {
         String temp;
 
-        System.out.print("Nhap ho va ten moi(Nhan Enter de giu thong tin cu): ");
+        System.out.print("--Nhap ho va ten moi(Nhan Enter de giu thong tin cu): ");
         temp = StaticMethod.sc.nextLine();
         if (temp.isEmpty()) {
         } else {
             setHoVaTen(temp.trim());
         }
 
-        System.out.print("Nhap mat khau moi(Nhan Enter de giu thong tin cu): ");
+        System.out.print("--Nhap mat khau moi(Nhan Enter de giu thong tin cu): ");
         temp = StaticMethod.sc.nextLine();
 
         if (temp.isEmpty()) {
         } else {
             String temp_test;
             do {
-                System.out.print("Nhap lai mat khau: ");
+                System.out.print("--Nhap lai mat khau: ");
                 temp_test = StaticMethod.sc.nextLine();}
             while(!temp.equals(temp_test));
             setMatKhau(temp);

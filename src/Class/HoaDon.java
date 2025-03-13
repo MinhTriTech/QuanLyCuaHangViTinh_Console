@@ -127,12 +127,12 @@ public class HoaDon implements IRandomId {
                 String s[] = st.split(";");
                 MaGiamGia mgg = new MaGiamGia(s[0],s[1],s[2],s[3],s[4]);
                 if(mgg.getMaChu().equals(maKm) && mgg.getTrangThai().equals("Hoat dong")) {
-                    System.out.println("--Voi hoa don nay ban duoc giam " + mgg.tinhSoTienDuocGiam(Double.parseDouble(tongTien)) + " ban co muon su dung ma giam gia nay khong?");
+                    System.out.println("-Voi hoa don nay ban duoc giam " + mgg.tinhSoTienDuocGiam(Double.parseDouble(tongTien)) + " ban co muon su dung ma giam gia nay khong?-");
 
                     String xacNhan, tongTienConLaiDaLamTron;
 
                     do {
-                        System.out.print("Nhap Co hoac Khong de tiep tuc:");
+                        System.out.print("--Nhap Co hoac Khong de tiep tuc:");
                         xacNhan = StaticMethod.sc.nextLine();
                         if(xacNhan.equals("Co")) {
                             check = true;
@@ -155,7 +155,7 @@ public class HoaDon implements IRandomId {
             br.close();
 
             if(check == false) {
-                System.out.println("--Khong tim thay ma giam gia tuong ung");
+                System.out.println("-Khong tim thay ma giam gia tuong ung-");
             }
 
             return checkYesNo;
@@ -174,7 +174,7 @@ public class HoaDon implements IRandomId {
         setTongTienBanDau(tongTien);
 
         do {
-            System.out.print("Nhap ma khuyen mai(Nhan Enter de bo qua): ");
+            System.out.print("--Nhap ma khuyen mai(Nhan Enter de bo qua): ");
             temp = StaticMethod.sc.nextLine();
             if (temp.isEmpty()) {
                 break;
@@ -191,7 +191,7 @@ public class HoaDon implements IRandomId {
         }
 
         do {
-            System.out.println("Chon phuong thuc thanh toan: ");
+            System.out.println("--Chon phuong thuc thanh toan: ");
             System.out.println("===Chon===");
             System.out.println("1. Tien mat");
             System.out.println("2. Momo");
@@ -208,7 +208,7 @@ public class HoaDon implements IRandomId {
         }
 
         do {
-            System.out.print("Nhap ngay tao hoa don(dinh dang dd-mm-yyyy)(Nhan Enter de lay ngay thang nam hien tai): ");
+            System.out.print("--Nhap ngay tao hoa don(dinh dang dd-mm-yyyy)(Nhan Enter de lay ngay thang nam hien tai): ");
             temp = StaticMethod.sc.nextLine();
             if (temp.isEmpty()) {
                 break;

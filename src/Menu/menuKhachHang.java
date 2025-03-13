@@ -31,24 +31,24 @@ public class menuKhachHang {
         SanPham[] dsSanPhamHienTai = new SanPham[1];
 
         while (checkMenu_2.equals("1")) {
-            System.out.println("===Chon===");
+            System.out.println("===Chon:===");
             System.out.println("1. Quan ly san pham");
             System.out.println("2. Quan ly hoa don");
             System.out.println("3. Doi mat khau");
             System.out.println("4. Dang xuat");
-            System.out.print("Nhap:");
+            System.out.print("--Nhap:");
             menu_2 = StaticMethod.sc.nextLine();
 
             switch (menu_2) {
                 case "1":
                     String checkMenu_2_1 = "1", menu_2_1;
                     while (checkMenu_2_1.equals("1")) {
-                        System.out.println("===Chon===");
+                        System.out.println("===Chon:===");
                         System.out.println("1. Mua san pham");
                         System.out.println("2. Xem danh sach san pham");
                         System.out.println("3. Tim san pham");
                         System.out.println("4. Thoat");
-                        System.out.print("Nhap:");
+                        System.out.print("--Nhap:");
                         menu_2_1 = StaticMethod.sc.nextLine();
 
                         switch (menu_2_1) {
@@ -56,8 +56,8 @@ public class menuKhachHang {
                                 String checkMenu_2_1_1 = "1", menu_2_1_1;
                                 dsSanPham.xuat();
                                 while (checkMenu_2_1_1.equals("1")) {
-                                    System.out.println("Xem danh sach san pham theo:");
-                                    System.out.println("===Chon===");
+                                    System.out.println("===Xem danh sach san pham theo:===");
+                                    System.out.println("===Chon:===");
                                     System.out.println("1. Theo thu tu mac dinh");
                                     System.out.println("2. Theo gia tu thap den cao");
                                     System.out.println("3. Theo gia tu cao den thap");
@@ -65,9 +65,9 @@ public class menuKhachHang {
                                     System.out.println("5. Theo danh muc Phu kien");
                                     System.out.println("6. Theo danh muc Tai nghe/Loa");
                                     System.out.println("7. Tim kiem san pham");
-                                    System.out.println("Nhap cac so ben tren de loc san pham:");
-                                    System.out.println("Hoac?");
-                                    System.out.println("Nhap ma san pham muon mua (Nhap s de xem gio hang | Nhap d de xoa san pham trong gio | Nhap a de thanh toan | Nhap e de thoat):");
+                                    System.out.println("--Nhap cac so ben tren de loc san pham:");
+                                    System.out.println("--Hoac?");
+                                    System.out.println("--Nhap ma san pham muon mua (Nhap s de xem gio hang | Nhap d de xoa san pham trong gio | Nhap a de thanh toan | Nhap e de thoat):");
                                     menu_2_1_1 = StaticMethod.sc.nextLine();
 
                                     switch (menu_2_1_1) {
@@ -92,11 +92,11 @@ public class menuKhachHang {
                                         case "7":
                                             String checkMenu_2_1_1_1 = "1", menu_2_1_1_1;
                                             while (checkMenu_2_1_1_1.equals("1")) {
-                                                System.out.println("===Chon===");
+                                                System.out.println("===Chon:===");
                                                 System.out.println("1. Tim kiem theo ma san pham");
                                                 System.out.println("2. Tim kiem tong quat");
                                                 System.out.println("3. Thoat");
-                                                System.out.print("Nhap:");
+                                                System.out.print("--Nhap:");
                                                 menu_2_1_1_1 = StaticMethod.sc.nextLine();
 
                                                 switch (menu_2_1_1_1) {
@@ -110,7 +110,7 @@ public class menuKhachHang {
                                                         checkMenu_2_1_1_1 = "0";
                                                         break;
                                                     default:
-                                                        System.out.println("--Lua chon khong hop le");
+                                                        System.out.println("-Lua chon khong hop le-");
                                                         break;
                                                 }
                                             }
@@ -120,7 +120,7 @@ public class menuKhachHang {
                                             break;
                                         case "a":
                                             if(dsSanPhamTrongGioHang.length == 0) {
-                                                System.out.println("--Gio hang trong");
+                                                System.out.println("-Gio hang trong-");
                                             }
                                             else {
                                                 Double tongTien = 0.0;
@@ -186,7 +186,7 @@ public class menuKhachHang {
 
 //                                        Nếu không rỗng nghĩa là có nhiều hơn 1 sản phẩm không hợp lệ
                                                 else {
-                                                    System.out.println("--Cac san pham ben duoi khong du trong kho, vui long sap xep lai gio hang");
+                                                    System.out.println("-Cac san pham ben duoi khong du trong kho, vui long sap xep lai gio hang-");
                                                     StaticMethod.xuatHeaderSpCoStt();
                                                     for (int i = 0; i < sanPhamKhongDatDieuKien.length; i++) {
                                                         sanPhamKhongDatDieuKien[i].xuatThongTinSpCoStt(String.valueOf(i + 1));
@@ -197,7 +197,7 @@ public class menuKhachHang {
                                         case "s":
                                             StaticMethod.xuatHeaderSpCoStt();
                                             if(dsSanPhamTrongGioHang.length == 0) {
-                                                System.out.println("--Gio hang trong");
+                                                System.out.println("-Gio hang trong-");
                                             }
                                             else {
                                                 for (int i = 0; i < dsSanPhamTrongGioHang.length; i++) {
@@ -208,7 +208,7 @@ public class menuKhachHang {
                                         case "d":
                                             StaticMethod.xuatHeaderSpCoStt();
                                             if(dsSanPhamTrongGioHang.length == 0) {
-                                                System.out.println("--Gio hang trong");
+                                                System.out.println("-Gio hang trong-");
                                             }
                                             else {
                                                 for (int i = 0; i < dsSanPhamTrongGioHang.length; i++) {
@@ -244,7 +244,7 @@ public class menuKhachHang {
                                                     dsSanPhamTrongGioHang[i] = dsSanPhamTrongGioHangTemp[i];
                                                 }
 
-                                                System.out.println("--Xoa san pham thu " + stt + " thanh cong");
+                                                System.out.println("-Xoa san pham thu " + stt + " thanh cong-");
 
                                                 StaticMethod.xuatHeaderSpCoStt();
                                                 for (int i = 0; i < dsSanPhamTrongGioHang.length; i++) {
@@ -282,12 +282,12 @@ public class menuKhachHang {
                                                     TaiNgheLoa temp = (TaiNgheLoa) dsSanPhamTrongGioHang[dsSanPhamTrongGioHang.length-1];
                                                 }
 
-                                                System.out.println("--Them san pham vao gio hang thanh cong");
+                                                System.out.println("-Them san pham vao gio hang thanh cong-");
 
 //                                        Hiển thị giỏ hàng hiện tại
                                                 StaticMethod.xuatHeaderSpCoStt();
                                                 if(dsSanPhamTrongGioHang.length == 0) {
-                                                    System.out.println("--Gio hang trong");
+                                                    System.out.println("-Gio hang trong-");
                                                 } else {
                                                     for (int i = 0; i < dsSanPhamTrongGioHang.length; i++) {
                                                         dsSanPhamTrongGioHang[i].xuatThongTinSpCoStt(String.valueOf(i + 1));
@@ -295,7 +295,7 @@ public class menuKhachHang {
                                                 }
                                             }
                                             else {
-                                                System.out.println("--Khong tim thay ma san pham");
+                                                System.out.println("-Khong tim thay ma san pham-");
                                             }
                                             break;
                                     }
@@ -305,7 +305,7 @@ public class menuKhachHang {
                                 String checkMenu_2_1_3 = "1", menu_2_1_3;
                                 dsSanPham.xuat();
                                 while (checkMenu_2_1_3.equals("1")) {
-                                    System.out.println("===Chon===");
+                                    System.out.println("===Chon:===");
                                     System.out.println("1. Theo thu tu mac dinh");
                                     System.out.println("2. Theo gia tu thap den cao");
                                     System.out.println("3. Theo gia tu cao den thap");
@@ -313,7 +313,7 @@ public class menuKhachHang {
                                     System.out.println("5. Theo danh muc Phu kien");
                                     System.out.println("6. Theo danh muc Tai nghe/Loa");
                                     System.out.println("7. Thoat");
-                                    System.out.print("Nhap:");
+                                    System.out.print("--Nhap:");
                                     menu_2_1_3 = StaticMethod.sc.nextLine();
 
                                     switch (menu_2_1_3) {
@@ -339,7 +339,7 @@ public class menuKhachHang {
                                             checkMenu_2_1_3 = "0";;
                                             break;
                                         default:
-                                            System.out.println("--Lua chon khong hop le");
+                                            System.out.println("-Lua chon khong hop le-");
                                             break;
                                     }
                                 }
@@ -347,11 +347,11 @@ public class menuKhachHang {
                             case "3":
                                 String checkMenu_2_1_2 = "1", menu_2_1_2;
                                 while (checkMenu_2_1_2.equals("1")) {
-                                    System.out.println("===Chon===");
+                                    System.out.println("===Chon:===");
                                     System.out.println("1. Tim kiem theo ma san pham");
                                     System.out.println("2. Tim kiem tong quat");
                                     System.out.println("3. Thoat");
-                                    System.out.print("Nhap:");
+                                    System.out.print("--Nhap:");
                                     menu_2_1_2 = StaticMethod.sc.nextLine();
 
                                     switch (menu_2_1_2) {
@@ -365,7 +365,7 @@ public class menuKhachHang {
                                             checkMenu_2_1_2 = "0";
                                             break;
                                         default:
-                                            System.out.println("--Lua chon khong hop le");
+                                            System.out.println("-Lua chon khong hop le-");
                                             break;
                                     }
                                 }
@@ -374,7 +374,7 @@ public class menuKhachHang {
                                 checkMenu_2_1 = "0";
                                 break;
                             default:
-                                System.out.println("--Lua chon khong hop le");
+                                System.out.println("-Lua chon khong hop le-");
                                 break;
                         }
                     }
@@ -382,11 +382,11 @@ public class menuKhachHang {
                 case "2":
                     String checkMenu_2_2 = "1", menu_2_2;
                     while (checkMenu_2_2.equals("1")) {
-                        System.out.println("===Chon===");
+                        System.out.println("===Chon:===");
                         System.out.println("1. Xem danh sach hoa don");
                         System.out.println("2. Tim kiem hoa don");
                         System.out.println("3. Thoat");
-                        System.out.print("Nhap:");
+                        System.out.print("--Nhap:");
                         menu_2_2 = StaticMethod.sc.nextLine();
 
                         switch (menu_2_2) {
@@ -394,14 +394,14 @@ public class menuKhachHang {
                                 dsHoaDon.xuatDsHoaDonTheoMaKH(maKh);
                                 String checkMenu_2_2_2 = "1", menu_2_2_2;
                                 while (checkMenu_2_2_2.equals("1")) {
-                                    System.out.println("===Chon===");
+                                    System.out.println("===Chon:===");
                                     System.out.println("1. Theo thu tu mac dinh");
                                     System.out.println("2. Theo gia tu thap den cao");
                                     System.out.println("3. Theo gia tu cao den thap");
                                     System.out.println("4. Theo thoi gian moi nhat");
                                     System.out.println("5. Theo thoi gian cu nhat");
                                     System.out.println("6. Thoat");
-                                    System.out.print("Nhap:");
+                                    System.out.print("--Nhap:");
                                     menu_2_2_2 = StaticMethod.sc.nextLine();
 
                                     switch (menu_2_2_2) {
@@ -424,7 +424,7 @@ public class menuKhachHang {
                                             checkMenu_2_2_2 = "0";
                                             break;
                                         default:
-                                            System.out.println("--Lua chon khong hop le");
+                                            System.out.println("-Lua chon khong hop le-");
                                             break;
                                     }
                                 }
@@ -432,25 +432,25 @@ public class menuKhachHang {
                             case "2":
                                 String checkMenu_2_2_1 = "1", menu_2_2_1;
                                 while (checkMenu_2_2_1.equals("1")) {
-                                    System.out.println("===Chon===");
+                                    System.out.println("===Chon:===");
                                     System.out.println("1. Tim kiem theo ma hoa don");
                                     System.out.println("2. Tim kiem tong quat");
                                     System.out.println("3. Thoat");
-                                    System.out.print("Nhap:");
+                                    System.out.print("--Nhap:");
                                     menu_2_2_1 = StaticMethod.sc.nextLine();
 
                                     switch (menu_2_2_1) {
                                         case "1":
-                                            dsHoaDon.timKiemTheoMaHd();
+                                            dsHoaDon.timKiemTheoMaHd(maKh);
                                             break;
                                         case "2":
-                                            dsHoaDon.timKiemTongQuatHd();
+                                            dsHoaDon.timKiemTongQuatHd(maKh);
                                             break;
                                         case "3":
                                             checkMenu_2_2_1 = "0";
                                             break;
                                         default:
-                                            System.out.println("--Lua chon khong hop le");
+                                            System.out.println("-Lua chon khong hop le-");
                                             break;
                                     }
                                 }
@@ -459,7 +459,7 @@ public class menuKhachHang {
                                 checkMenu_2_2 = "0";
                                 break;
                             default:
-                                System.out.println("--Lua chon khong hop le");
+                                System.out.println("-Lua chon khong hop le-");
                                 break;
                         }
                     }
@@ -471,7 +471,7 @@ public class menuKhachHang {
                     checkMenu_2 = "0";
                     break;
                 default:
-                    System.out.println("--Lua chon khong hop le");
+                    System.out.println("-Lua chon khong hop le-");
                     break;
             }
         }

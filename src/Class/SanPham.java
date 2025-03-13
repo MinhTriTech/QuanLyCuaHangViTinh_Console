@@ -143,7 +143,7 @@ public abstract class SanPham implements IRandomId {
 
     public boolean checkSoLuong(String string) {
         if (string == null || string.isEmpty()) {
-            System.out.println("Vui long nhap lai so luong !!!");
+            System.out.println("--Vui long nhap lai so luong");
             return false;
         }
 
@@ -152,26 +152,7 @@ public abstract class SanPham implements IRandomId {
             if (number > 0) {
                 return true;
             } else {
-                System.out.println("Vui long nhap lai so luong !!!");
-                return false;
-            }
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
-    public boolean checkGia(String string) {
-        if (string == null || string.isEmpty()) {
-            System.out.println("Vui long nhap lai gia !!!");
-            return false;
-        }
-
-        try {
-            double number = Double.parseDouble(string);
-            if (number > 0) {
-                return true;
-            } else {
-                System.out.println("Vui long nhap lai gia !!!");
+                System.out.println("--Vui long nhap lai so luong");
                 return false;
             }
         } catch (NumberFormatException e) {
@@ -196,30 +177,9 @@ public abstract class SanPham implements IRandomId {
         }
     }
 
-    public boolean checkKm(String string) {
-        if (string == null || string.isEmpty()) {
-            System.out.println("Vui long nhap lai phan tram khuyen mai !!!");
-            return false;
-        }
-
-        try {
-            double number = Double.parseDouble(string);
-            if (number >= 0 && number <= 100) {
-                return true;
-            } else {
-                System.out.println("Vui long nhap lai phan tram khuyen mai !!!");
-                return false;
-            }
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
     public String tinhGia(String gia, String khuyenMai) {
-        double giaLast = 0.0;
-        giaLast = Double.parseDouble(gia) - (Double.parseDouble(gia) * Double.parseDouble(khuyenMai) / 100);
-        String ketQua = String.format("%.2f", giaLast);
-        return ketQua;
+        double giaLast = Double.parseDouble(gia) - (Double.parseDouble(gia) * Double.parseDouble(khuyenMai) / 100);
+        return String.format("%.2f", giaLast);
     }
 
     public abstract void nhap();
@@ -228,6 +188,7 @@ public abstract class SanPham implements IRandomId {
     public abstract void xuatThongTinSpCoStt(String soTt);
     public abstract void xuatThongTinSpCoGiaVon();
     public abstract void nhapDeNhapHang();
+    public abstract void capNhatPhanTramSanPham();
 
     @Override
     public String toString() {

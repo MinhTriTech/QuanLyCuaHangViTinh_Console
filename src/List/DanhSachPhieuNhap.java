@@ -45,7 +45,7 @@ public class DanhSachPhieuNhap implements IDanhSach {
                 file_pn.createNewFile();
             }
 
-            System.out.println("Nhap so luong san pham can nhap: ");
+            System.out.println("--Nhap so luong san pham can nhap: ");
             int slTemp = StaticMethod.sc.nextInt();
             for (int i = 1; i <= slTemp; i++) {
                 System.out.println("--Nhap thong tin san pham thu: " + i);
@@ -53,7 +53,7 @@ public class DanhSachPhieuNhap implements IDanhSach {
                 System.out.println("1. Laptop");
                 System.out.println("2. Phu kien");
                 System.out.println("3. Tai nghe/Loa");
-                System.out.print("Nhap:");
+                System.out.print("--Nhap:");
                 int luaChonSp = StaticMethod.sc.nextInt();
 
                 if (luaChonSp == 1) {

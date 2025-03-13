@@ -24,7 +24,7 @@ public class DanhSachTaiKhoan implements IDanhSach {
             BufferedWriter fr = new BufferedWriter(new FileWriter(file, true));
 
             TaiKhoan tk = new QuanLy();
-            System.out.println("--Nhap thong tin--");
+            System.out.println("--Nhap thong tin");
             tk.nhap();
 
             fr.write(tk.toString());
@@ -72,7 +72,7 @@ public class DanhSachTaiKhoan implements IDanhSach {
                 BufferedWriter fr = new BufferedWriter(new FileWriter(file, false));
                 boolean signal = false;
                 String maTk;
-                System.out.println("--Nhap ma tai khoan can sua--");
+                System.out.println("--Nhap ma tai khoan can sua");
                 StaticMethod.sc.nextLine();
                 maTk = StaticMethod.sc.nextLine();
                 maTk = maTk.toUpperCase().trim();
@@ -99,7 +99,7 @@ public class DanhSachTaiKhoan implements IDanhSach {
                 ft.close();
                 fw.close();
             } else {
-                System.out.println("-Dan sach dang trong vui long them tai khoan de thuc hien thao tac-");
+                System.out.println("-Danh sach dang trong vui long them tai khoan de thuc hien thao tac-");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -140,7 +140,7 @@ public class DanhSachTaiKhoan implements IDanhSach {
                 BufferedWriter fr = new BufferedWriter(new FileWriter(file, false));
                 boolean signal = false;
                 String maTk;
-                System.out.println("--Nhap ma tai khoan can xoa--");
+                System.out.println("--Nhap ma tai khoan can xoa");
                 StaticMethod.sc.nextLine();
                 maTk = StaticMethod.sc.nextLine();
                 maTk = maTk.toUpperCase().trim();
@@ -164,7 +164,7 @@ public class DanhSachTaiKhoan implements IDanhSach {
                 ft.close();
                 fw.close();
             } else {
-                System.out.println("-Dan sach dang trong vui long them tai khoan de thuc hien thao tac-");
+                System.out.println("-Danh sach dang trong vui long them tai khoan de thuc hien thao tac-");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -212,7 +212,7 @@ public class DanhSachTaiKhoan implements IDanhSach {
             BufferedWriter fr = new BufferedWriter(new FileWriter(file, true));
 
             TaiKhoan tk = new KhachHang();
-            System.out.println("--Nhap thong tin--");
+            System.out.println("--Nhap thong tin");
             tk.nhap();
 
             fr.write(tk.toString());
@@ -239,10 +239,10 @@ public class DanhSachTaiKhoan implements IDanhSach {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String st;
 
-            System.out.println("--Nhap thong tin dang nhap--");
-            System.out.print("Nhap ten dang nhap: ");
+            System.out.println("--Nhap thong tin dang nhap");
+            System.out.print("--Nhap ten dang nhap: ");
             String tenDn = StaticMethod.sc.nextLine();
-            System.out.print("Nhap mat khau: ");
+            System.out.print("--Nhap mat khau: ");
             String matKhau = StaticMethod.sc.nextLine();
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
@@ -252,16 +252,16 @@ public class DanhSachTaiKhoan implements IDanhSach {
                     if (tk.getTenDn().equals(tenDn) && tk.getMatKhau().equals(matKhau)) {
                         check = tk;
                         check_2 = true;
-                        System.out.println("Dang nhap thanh cong !!!");
-                        System.out.println("Xin chao khach hang " + tk.getHoVaTen());
+                        System.out.println("-Dang nhap thanh cong-");
+                        System.out.println("-Xin chao khach hang " + tk.getHoVaTen() + "-");
                     }
                 } else {
                     TaiKhoan tk = new QuanLy(s[0], s[1], s[2], s[3], s[4]);
                     if (tk.getTenDn().equals(tenDn) && tk.getMatKhau().equals(matKhau)) {
                         check = tk;
                         check_2 = true;
-                        System.out.println("Dang nhap thanh cong !!!");
-                        System.out.println("Xin chao quan ly " + tk.getHoVaTen());
+                        System.out.println("-Dang nhap thanh cong-");
+                        System.out.println("-Xin chao quan ly " + tk.getHoVaTen() + "-");
                     }
                 }
             }
@@ -269,7 +269,7 @@ public class DanhSachTaiKhoan implements IDanhSach {
             br.close();
 
             if(!check_2) {
-                System.out.println("Sai ten dang nhap hoac mat khau !!!");
+                System.out.println("-Sai ten dang nhap hoac mat khau-");
             }
 
         } catch (Exception e) {
@@ -345,7 +345,7 @@ public class DanhSachTaiKhoan implements IDanhSach {
             String st, maTk;
             boolean check = false;
             StaticMethod.sc.nextLine();
-            System.out.println("Nhap ma tai khoan ban muon tim:");
+            System.out.println("--Nhap ma tai khoan ban muon tim:");
             maTk = StaticMethod.sc.nextLine();
             maTk = maTk.toUpperCase().trim();
             System.out.println("+--------------KET QUA TIM KIEM-----------------+");
@@ -387,7 +387,7 @@ public class DanhSachTaiKhoan implements IDanhSach {
             String st, thongTin;
             boolean check = false;
             StaticMethod.sc.nextLine();
-            System.out.println("Nhap thong tin tai khoan ban muon tim:");
+            System.out.println("--Nhap thong tin tai khoan ban muon tim:");
             thongTin = StaticMethod.sc.nextLine();
             thongTin = thongTin.toUpperCase().trim();
             System.out.println("+--------------KET QUA TIM KIEM-----------------+");
