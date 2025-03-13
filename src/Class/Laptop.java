@@ -28,7 +28,7 @@ public class Laptop extends SanPham {
 
 //    Các phương thức
 
-//    Nhập chỉ nhập được tên, số lượng, giá ban đầu, mô tả, màu sắc, % khuyến mãi, dung lượng mới
+//    Nhập chỉ nhập được tên, số lượng, giá ban đầu, mô tả, màu sắc, % khuyến mãi, dung lượng mới (không nhập được giá vốn hạn chế sử dụng)
     @Override
     public void nhap() {
         String temp;
@@ -73,6 +73,8 @@ public class Laptop extends SanPham {
         setGia(tinhGia(getGiaBanDau(), getKhuyenMai()));
 
         setLoaiSp("LAPTOP");
+
+        setGiaVon("0");
     }
 
     //    Sửa chỉ sửa được tên mới, giá ban đầu mới, mô tả mới, màu sắc mới, dung lượng mới
