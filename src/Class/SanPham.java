@@ -37,6 +37,15 @@ public abstract class SanPham implements IRandomId {
         this.gia = gia;
     }
 
+    public SanPham(String maSp, String tenSp, String soLuong, String giaBanDau, String giaVon, String loaiSp) {
+        this.maSp = maSp;
+        this.tenSp = tenSp;
+        this.soLuong = soLuong;
+        this.giaBanDau = giaBanDau;
+        this.giaVon = giaVon;
+        this.loaiSp = loaiSp;
+    }
+
     public String getMaSp() {
         return maSp;
     }
@@ -189,6 +198,7 @@ public abstract class SanPham implements IRandomId {
     public abstract void xuatThongTinSpCoGiaVon();
     public abstract void nhapDeNhapHang();
     public abstract void capNhatPhanTramSanPham();
+    public abstract void xuatThongTinSpThongKe();
 
     @Override
     public String toString() {

@@ -14,6 +14,10 @@ public class TaiNgheLoa extends SanPham {
         super(maSp, tenSp, soLuong, giaBanDau, moTa, mauSac, loaiSp, khuyenMai, gia);
     }
 
+    public TaiNgheLoa(String maSp, String tenSp, String soLuong, String giaBanDau, String giaVon, String loaiSp) {
+        super(maSp, tenSp, soLuong, giaBanDau, giaVon, loaiSp);
+    }
+
     //    Các phương thức
 
     //    Nhập chỉ nhập được tên, số lượng, giá ban đầu, mô tả, màu sắc, % khuyến mãi, dung lượng mới (không nhập được giá vốn hạn chế sử dụng)
@@ -193,6 +197,28 @@ public class TaiNgheLoa extends SanPham {
         setKhuyenMai(temp.trim());
 
         setGia(tinhGia(getGiaBanDau(), getKhuyenMai()));
+    }
+
+    @Override
+    public void xuatThongTinSpThongKe() {
+        String giaBanDau = "", giaVon = "", loiNhuan = "";
+        double giaDoubleBd= Double.parseDouble(getSoLuong()) * Double.parseDouble(getGiaBanDau());
+        giaBanDau =  String.format("%.2f", giaDoubleBd);
+
+        double giaDoubleVon= Double.parseDouble(getSoLuong()) * Double.parseDouble(getGiaVon());
+        giaVon =  String.format("%.2f", giaDoubleVon);
+
+        double giaDoubleLn = giaDoubleBd - giaDoubleVon;
+        loiNhuan =  String.format("%.2f", giaDoubleLn);
+
+        int[] columnWidths = {10, 20, 20, 20, 30, 30, 30, 30, 30};
+        String[] values = {
+                getMaSp(),getTenSp(),getSoLuong(),getGiaBanDau(),getGiaVon(),getLoaiSp(),
+                giaBanDau, giaVon, loiNhuan
+        };
+
+        StaticMethod.printMultiLineRow(values, columnWidths);
+        StaticMethod.printSeparator(columnWidths);
     }
 
     @Override

@@ -18,6 +18,10 @@ public class Laptop extends SanPham {
         this.dungLuong = dungLuong;
     }
 
+    public Laptop(String maSp, String tenSp, String soLuong, String giaBanDau, String giaVon, String loaiSp) {
+        super(maSp, tenSp, soLuong, giaBanDau, giaVon, loaiSp);
+    }
+
     public String getDungLuong() {
         return dungLuong;
     }
@@ -219,6 +223,28 @@ public class Laptop extends SanPham {
         setKhuyenMai(temp.trim());
 
         setGia(tinhGia(getGiaBanDau(), getKhuyenMai()));
+    }
+
+    @Override
+    public void xuatThongTinSpThongKe() {
+        String giaBanDau = "", giaVon = "", loiNhuan = "";
+        double giaDoubleBd= Double.parseDouble(getSoLuong()) * Double.parseDouble(getGiaBanDau());
+        giaBanDau =  String.format("%.2f", giaDoubleBd);
+
+        double giaDoubleVon= Double.parseDouble(getSoLuong()) * Double.parseDouble(getGiaVon());
+        giaVon =  String.format("%.2f", giaDoubleVon);
+
+        double giaDoubleLn= giaDoubleBd - giaDoubleVon;
+        loiNhuan =  String.format("%.2f", giaDoubleLn);
+
+        int[] columnWidths = {10, 20, 20, 20, 30, 30, 30, 30, 30};
+        String[] values = {
+                getMaSp(),getTenSp(),getSoLuong(),getGiaBanDau(),getGiaVon(),getLoaiSp(),
+                giaBanDau, giaVon, loiNhuan
+        };
+
+        StaticMethod.printMultiLineRow(values, columnWidths);
+        StaticMethod.printSeparator(columnWidths);
     }
 
     @Override

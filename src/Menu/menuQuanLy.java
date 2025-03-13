@@ -344,7 +344,7 @@ public class menuQuanLy {
                     String checkMenu_3_3 = "1", menu_3_3;
                     while (checkMenu_3_3.equals("1")) {
                         System.out.println("===Chon:===");
-                        System.out.println("1. Thong ke so ban");
+                        System.out.println("1. Thong ke loi nhuan");
                         System.out.println("2. Thong ke nhap/xuat");
                         System.out.println("3. Thoat");
                         System.out.print("--Nhap:");
@@ -367,14 +367,14 @@ public class menuQuanLy {
                                             while (checkMenu_3_3_1_1.equals("1")) {
                                                 System.out.println("===Chon:===");
                                                 System.out.println("1. Theo san pham");
-                                                System.out.println("2. Tong quat");
+                                                System.out.println("2. Theo danh muc");
                                                 System.out.println("3. Thoat");
                                                 System.out.print("--Nhap:");
                                                 menu_3_3_1_1 = StaticMethod.sc.nextLine();
 
                                                 switch (menu_3_3_1_1) {
                                                     case "1":
-                                                        System.out.println("-Quan ly thong ke so ban theo thang (ma san pham)-");
+                                                        StaticMethod.thongKeTheoSoBan_theoThang_theoSp();
                                                         break;
                                                     case "2":
                                                         System.out.println("-Quan ly thong ke so ban theo thang (tong quat)-");
@@ -393,7 +393,7 @@ public class menuQuanLy {
                                             while (checkMenu_3_3_1_2.equals("1")) {
                                                 System.out.println("===Chon:===");
                                                 System.out.println("1. Theo san pham");
-                                                System.out.println("2. Tong quat");
+                                                System.out.println("2. Theo danh muc");
                                                 System.out.println("3. Thoat");
                                                 System.out.print("--Nhap:");
                                                 menu_3_3_1_2 = StaticMethod.sc.nextLine();
@@ -439,7 +439,7 @@ public class menuQuanLy {
                                             while (checkMenu_3_3_2_1.equals("1")) {
                                                 System.out.println("===Chon:===");
                                                 System.out.println("1. Theo san pham");
-                                                System.out.println("2. Tong quat");
+                                                System.out.println("2. Theo danh muc");
                                                 System.out.println("3. Thoat");
                                                 System.out.print("--Nhap:");
                                                 menu_3_3_2_1 = StaticMethod.sc.nextLine();
@@ -449,7 +449,7 @@ public class menuQuanLy {
                                                         System.out.println("-Quan ly thong ke nhap/xuat theo thang (ma san pham)-");
                                                         break;
                                                     case "2":
-                                                        System.out.println("-Quan ly thong ke nhap/xuat theo thang (tong quat)-");
+                                                        System.out.println("-Chua phat trien-");
                                                         break;
                                                     case "3":
                                                         checkMenu_3_3_2_1 = "0";
@@ -465,7 +465,7 @@ public class menuQuanLy {
                                             while (checkMenu_3_3_2_2.equals("1")) {
                                                 System.out.println("===Chon:===");
                                                 System.out.println("1. Theo san pham");
-                                                System.out.println("2. Tong quat");
+                                                System.out.println("2. Theo danh mục");
                                                 System.out.println("3. Thoat");
                                                 System.out.print("--Nhap:");
                                                 menu_3_3_2_2 = StaticMethod.sc.nextLine();
@@ -475,7 +475,7 @@ public class menuQuanLy {
                                                         System.out.println("-Quan ly thong ke nhap/xuat tu ngay den ngay (ma san pham)-");
                                                         break;
                                                     case "2":
-                                                        System.out.println("-Quan ly thong ke nhap/xuat tu ngay den ngay (tong quat)-");
+                                                        System.out.println("-Chua phat trien-");
                                                         break;
                                                     case "3":
                                                         checkMenu_3_3_2_2 = "0";

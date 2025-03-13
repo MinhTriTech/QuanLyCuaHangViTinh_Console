@@ -22,7 +22,6 @@ public class QuanLy extends TaiKhoan {
         String temp;
         setRandomId();
 
-        StaticMethod.sc.nextLine();
         do {
             System.out.print("--Nhap ten dang nhap: ");
             temp = StaticMethod.sc.nextLine();}

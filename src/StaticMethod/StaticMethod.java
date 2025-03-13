@@ -8,6 +8,7 @@ import Class.TaiKhoan;
 import Class.KhachHang;
 import Class.QuanLy;
 import ActionClass.MuaHangAction;
+import Class.HoaDon;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -325,6 +326,34 @@ public class StaticMethod {
         }
     }
 
+    public static boolean checkThangHopLe(String chuoiThang) {
+        String regex = "^(0[1-9]|1[0-2])$"; // Chỉ cho phép từ "01" đến "12"
+
+        if (chuoiThang.matches(regex)) {
+            return true;
+        } else {
+            System.out.println("- Sai định dạng, vui lòng nhập tháng từ 01 đến 12 -");
+            return false;
+        }
+    }
+
+    public static boolean checkNamHopLe(String chuoiNam) {
+        String regex = "^\\d{4}$"; // Năm phải có đúng 4 chữ số
+
+        if (chuoiNam.matches(regex)) {
+            int nam = Integer.parseInt(chuoiNam);
+            if (nam >= 1900 && nam <= 2100) { // Giới hạn khoảng hợp lệ
+                return true;
+            } else {
+                System.out.println("- Năm không hợp lệ, vui lòng nhập năm từ 1900 đến 2100 -");
+                return false;
+            }
+        } else {
+            System.out.println("- Sai định dạng, năm phải có đúng 4 chữ số -");
+            return false;
+        }
+    }
+
     public static boolean checkKm(String string) {
         if (string == null || string.isEmpty()) {
             System.out.println("-Vui long nhap lai phan tram khuyen mai-");
@@ -363,5 +392,111 @@ public class StaticMethod {
         }
 
 
+    }
+
+    public static void xuatHeaderSpCoSttThongKe() {
+        int[] columnWidths = {10, 20, 20, 20, 30, 30, 30, 30, 30};
+        String[] headers ={"Ma SP", "Ten SP", "So luong", "Gia", "Gia von", "Loai SP", "Tong gia ban dau", "Tong gia von", "Tong loi nhuan"};
+
+        printSeparator(columnWidths);
+        printRow(headers, columnWidths);
+        printSeparator(columnWidths);
+    }
+
+    public static void thongKeTheoSoBan_theoThang_theoSp() {
+        String thangSoSanh, namSoSanh;
+
+        do {
+            System.out.print("--Nhap thang thong ke(Nhan Enter de lay thang hien tai): ");
+            thangSoSanh = sc.nextLine();
+            if (thangSoSanh.isEmpty()) {
+                break;
+            }
+        }
+        while(!checkThangHopLe(thangSoSanh));
+        if (thangSoSanh.isEmpty()) {
+            LocalDate today = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM");
+            thangSoSanh = today.format(formatter);
+        }
+
+        do {
+            System.out.print("--Nhap nam thong ke(Nhan Enter de lay nam hien tai): ");
+            namSoSanh = sc.nextLine();
+            if (namSoSanh.isEmpty()) {
+                break;
+            }
+        }
+        while(!checkNamHopLe(namSoSanh));
+        if (namSoSanh.isEmpty()) {
+            LocalDate today = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy");
+            namSoSanh = today.format(formatter);
+        }
+
+        String st;
+        boolean check = false;
+
+        xuatHeaderSpCoSttThongKe();
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_HD));
+
+            String thongTin = thangSoSanh + "-" + namSoSanh;
+
+            for(int i=1; (st = br.readLine()) != null ; i++) {
+                String s[] = st.split(";");
+                if(s[7].equals("Hoat dong")) {
+                    HoaDon hd = new HoaDon(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(hd.getNgayRaHd().toLowerCase().contains(thongTin)) {
+                        check = true;
+                        thongKeTheoSoBan_theoThang_theoSp_xuatTt(hd.getMaHd());
+                    }
+                }
+            }
+
+            br.close();
+
+            if(check == false) {
+                System.out.println("+--------------KHONG CO HOA DON TUONG UNG-----------------+");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void thongKeTheoSoBan_theoThang_theoSp_xuatTt(String maHd) {
+        try {
+            String st;
+
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_SPDX));
+
+            for(int i=1; (st = br.readLine()) != null ; i++) {
+                String s[] = st.split(";");
+                if(s[6].equals("LAPTOP")) {
+                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],StaticMethod.layTienVonSp(s[0]),s[6]);
+                    if(s[10].equals(maHd)) {
+                        sp.xuatThongTinSpThongKe();
+                    }
+                }
+                if(s[6].equals("PHUKIEN")) {
+                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],StaticMethod.layTienVonSp(s[0]),s[6]);
+                    if(s[10].equals(maHd)) {
+                        sp.xuatThongTinSpThongKe();
+                    }
+                }
+                if(s[6].equals("TAINGHELOA")) {
+                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],StaticMethod.layTienVonSp(s[0]),s[6]);
+                    if(s[10].equals(maHd)) {
+                        sp.xuatThongTinSpThongKe();
+                    }
+                }
+            }
+
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
