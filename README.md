@@ -22,7 +22,7 @@
 ## Sơ đồ Class
 Dưới đây là sơ đồ class minh họa cấu trúc của ứng dụng:
 
-- **File chỉnh sửa được**: [class_diagram.drawio](class_diagram.drawio)
+- **File chỉnh sửa được**: [class_diagram.drawio](Biểu đồ không có tiêu đề.drawio)
 
 ## Hướng dẫn chạy ứng dụng
 ### 1. Clone Repository
