@@ -82,6 +82,8 @@ public class PhieuXuat implements IRandomId {
         this.lyDoXuat = lyDoXuat;
     }
 
+//    Các phương thức
+
     @Override
     public void setRandomId() {
         String lastId = "PX00000";

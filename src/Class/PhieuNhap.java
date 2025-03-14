@@ -136,6 +136,8 @@ public class PhieuNhap implements IRandomId  {
         this.lyDoNhap = lyDoNhap;
     }
 
+//    Các phương thức
+
     @Override
     public void setRandomId() {
         String lastId = "PN00000";

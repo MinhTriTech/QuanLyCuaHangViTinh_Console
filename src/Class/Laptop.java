@@ -178,18 +178,6 @@ public class Laptop extends SanPham {
     }
 
     @Override
-    public void xuatThongTinSpCoGiaVon() {
-        int[] columnWidths = {10, 20, 10, 10, 30, 10, 15, 12, 20, 20, 40};
-        String[] values = {
-                getMaSp(),getTenSp(),getSoLuong(),getGiaBanDau(),getMoTa(),
-                getMauSac(),getLoaiSp(),getKhuyenMai(),getGia(),getGiaVon(),getDungLuong()
-        };
-
-        StaticMethod.printMultiLineRow(values, columnWidths);
-        StaticMethod.printSeparator(columnWidths);
-    }
-
-    @Override
     public void nhapDeNhapHang() {
         String temp;
         setRandomId();

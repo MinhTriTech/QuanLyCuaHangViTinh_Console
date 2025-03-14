@@ -6,11 +6,7 @@ import StaticMethod.StaticMethod;
 import java.io.*;
 
 public abstract class TaiKhoan implements IRandomId {
-    private String maTk;
-    private String tenDn;
-    private String matKhau;
-    private String hoVaTen;
-    private String quyenTk;
+    private String maTk, tenDn, matKhau, hoVaTen, quyenTk;
 
     public TaiKhoan() {
     }
