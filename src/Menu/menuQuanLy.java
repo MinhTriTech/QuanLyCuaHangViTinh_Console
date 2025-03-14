@@ -144,7 +144,7 @@ public class menuQuanLy {
                                 dsPhieuNhap.themPn(maTk);
                                 break;
                             case "7":
-                                System.out.println("-Quan ly xuat san pham-");
+                                System.out.println("-Chua phat trien chuc nang nay-");
                                 break;
                             case "8":
                                 checkMenu_3_1 = "0";
@@ -377,7 +377,7 @@ public class menuQuanLy {
                                                         StaticMethod.thongKeTheoSoBan_theoThang_theoSp();
                                                         break;
                                                     case "2":
-                                                        System.out.println("-Quan ly thong ke so ban theo thang (tong quat)-");
+                                                        StaticMethod.thongKeTheoSoBan_theoThang_theoDm();
                                                         break;
                                                     case "3":
                                                         checkMenu_3_3_1_1 = "0";
@@ -400,10 +400,10 @@ public class menuQuanLy {
 
                                                 switch (menu_3_3_1_2) {
                                                     case "1":
-                                                        System.out.println("-Quan ly thong ke so ban tu ngay den ngay (ma san pham)-");
+                                                        System.out.println("-Chua phat trien chuc nang nay-");
                                                         break;
                                                     case "2":
-                                                        System.out.println("-Quan ly thong ke so ban tu ngay den ngay (tong quat)-");
+                                                        System.out.println("-Chua phat trien chuc nang nay-");
                                                         break;
                                                     case "3":
                                                         checkMenu_3_3_1_2 = "0";
@@ -446,10 +446,10 @@ public class menuQuanLy {
 
                                                 switch (menu_3_3_2_1) {
                                                     case "1":
-                                                        System.out.println("-Quan ly thong ke nhap/xuat theo thang (ma san pham)-");
+                                                        System.out.println("-Chua phat trien chuc nang nay-");
                                                         break;
                                                     case "2":
-                                                        System.out.println("-Chua phat trien-");
+                                                        System.out.println("-Chua phat trien chuc nang nay-");
                                                         break;
                                                     case "3":
                                                         checkMenu_3_3_2_1 = "0";
@@ -472,10 +472,10 @@ public class menuQuanLy {
 
                                                 switch (menu_3_3_2_2) {
                                                     case "1":
-                                                        System.out.println("-Quan ly thong ke nhap/xuat tu ngay den ngay (ma san pham)-");
+                                                        System.out.println("-Chua phat trien chuc nang nay-");
                                                         break;
                                                     case "2":
-                                                        System.out.println("-Chua phat trien-");
+                                                        System.out.println("-Chua phat trien chuc nang nay-");
                                                         break;
                                                     case "3":
                                                         checkMenu_3_3_2_2 = "0";

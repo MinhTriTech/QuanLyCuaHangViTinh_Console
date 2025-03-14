@@ -157,9 +157,11 @@ public class menuKhachHang {
                                                     }
 //                                            Tạo hóa đơn
                                                     for (int i = 0; i < dsSanPhamTrongGioHang.length; i++) {
-                                                        tongTien += Double.parseDouble(dsSanPhamTrongGioHang[i].getGia());
+                                                        tongTien += Double.parseDouble(dsSanPhamTrongGioHang[i].getGia()) * Double.parseDouble(dsSanPhamTrongGioHang[i].getSoLuong());
                                                         tongTienDaLamTron = String.format("%.2f", tongTien);
                                                     }
+
+                                                    System.out.println(tongTienDaLamTron);
 
 
 //                                            Trừ số tiền mã khuyến mãi

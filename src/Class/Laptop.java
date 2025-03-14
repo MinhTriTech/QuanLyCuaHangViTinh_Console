@@ -22,6 +22,14 @@ public class Laptop extends SanPham {
         super(maSp, tenSp, soLuong, giaBanDau, giaVon, loaiSp);
     }
 
+    public Laptop(String maSp, String tenSp, String soLuong, String giaBanDau, String mauSac, String loaiSp, String khuyenMai, String gia) {
+        super(maSp, tenSp, soLuong, giaBanDau, mauSac, loaiSp, khuyenMai, gia);
+    }
+
+    public Laptop(String loaiSp) {
+        super(loaiSp);
+    }
+
     public String getDungLuong() {
         return dungLuong;
     }
@@ -143,6 +151,21 @@ public class Laptop extends SanPham {
     }
 
     @Override
+    public void xuatThongTinSpCoTongGia() {
+        double tongGia = Double.parseDouble(getSoLuong())*Double.parseDouble(getGia());
+        String tongGiaString =  String.format("%.2f", tongGia);
+
+        int[] columnWidths = {10, 20, 10, 10, 10, 15, 12, 20, 20};
+        String[] values = {
+                getMaSp(),getTenSp(),getSoLuong(),getGiaBanDau(),
+                getMauSac(),getLoaiSp(),getKhuyenMai(),getGia(), tongGiaString
+        };
+
+        StaticMethod.printMultiLineRow(values, columnWidths);
+        StaticMethod.printSeparator(columnWidths);
+    }
+
+    @Override
     public void xuatThongTinSpCoStt(String soTt) {
         int[] columnWidths = {10, 10, 20, 10, 10, 30, 10, 15, 12, 20, 40};
         String[] values = {
@@ -248,8 +271,30 @@ public class Laptop extends SanPham {
     }
 
     @Override
+    public void xuatThongTinSpThongKeDm(String tongSoLuong, String tongGiaBd, String tongGiaVon) {
+        String loiNhuan = "";
+
+        double giaDoubleLn= Double.parseDouble(tongGiaBd) - Double.parseDouble(tongGiaVon);
+        loiNhuan =  String.format("%.2f", giaDoubleLn);
+
+        int[] columnWidths = {30, 30, 30, 30, 30};
+        String[] values = {
+                getLoaiSp(),
+                tongSoLuong, tongGiaBd, tongGiaVon, loiNhuan
+        };
+
+        StaticMethod.printMultiLineRow(values, columnWidths);
+        StaticMethod.printSeparator(columnWidths);
+    }
+
+    @Override
     public String toString() {
         return super.toString() + ";" + dungLuong;
+    }
+
+    @Override
+    public String toStringCoTongGia() {
+        return super.toStringCoTongGia();
     }
 
     @Override

@@ -46,9 +46,9 @@ public class DanhSachSanPhamDaXuat implements IDanhSach {
             for (SanPham sp : dsSanPham) {
                 if (sp instanceof Laptop) {
                     Laptop laptop = (Laptop) sp;
-                    fr.write(laptop.toString() + ";" + maHd);
+                    fr.write(laptop.toStringCoTongGia() + ";" + maHd);
                 } else if (sp instanceof PhuKien || sp instanceof TaiNgheLoa) {
-                    fr.write(sp.toString() + ";" + "Khong co dung luong" + ";" + maHd);
+                    fr.write(sp.toStringCoTongGia()  + ";" + maHd);
                 }
                 fr.newLine();
             }
@@ -60,7 +60,7 @@ public class DanhSachSanPhamDaXuat implements IDanhSach {
     }
 
     public void xuatChiTietHoaDon(String maHd) {
-        StaticMethod.xuatHeaderSp();
+        StaticMethod.xuatHeaderCtHdCoTongGia();
         try {
             String st;
 
@@ -68,22 +68,22 @@ public class DanhSachSanPhamDaXuat implements IDanhSach {
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
-                if(s[6].equals("LAPTOP")) {
-                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]);
-                    if(s[10].equals(maHd)) {
-                        sp.xuatThongTinSp();
+                if(s[5].equals("LAPTOP")) {
+                    Laptop sp = new Laptop(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(s[9].equals(maHd)) {
+                        sp.xuatThongTinSpCoTongGia();
                     }
                 }
-                if(s[6].equals("PHUKIEN")) {
-                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
-                    if(s[10].equals(maHd)) {
-                        sp.xuatThongTinSp();
+                if(s[5].equals("PHUKIEN")) {
+                    PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(s[9].equals(maHd)) {
+                        sp.xuatThongTinSpCoTongGia();
                     }
                 }
-                if(s[6].equals("TAINGHELOA")) {
-                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8]);
-                    if(s[10].equals(maHd)) {
-                        sp.xuatThongTinSp();
+                if(s[5].equals("TAINGHELOA")) {
+                    TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(s[9].equals(maHd)) {
+                        sp.xuatThongTinSpCoTongGia();
                     }
                 }
             }

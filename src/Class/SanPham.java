@@ -46,6 +46,21 @@ public abstract class SanPham implements IRandomId {
         this.loaiSp = loaiSp;
     }
 
+    public SanPham(String maSp, String tenSp, String soLuong, String giaBanDau, String mauSac, String loaiSp, String khuyenMai, String gia) {
+        this.maSp = maSp;
+        this.tenSp = tenSp;
+        this.soLuong = soLuong;
+        this.giaBanDau = giaBanDau;
+        this.mauSac = mauSac;
+        this.loaiSp = loaiSp;
+        this.khuyenMai = khuyenMai;
+        this.gia = gia;
+    }
+
+    public SanPham(String loaiSp) {
+        this.loaiSp = loaiSp;
+    }
+
     public String getMaSp() {
         return maSp;
     }
@@ -199,6 +214,8 @@ public abstract class SanPham implements IRandomId {
     public abstract void nhapDeNhapHang();
     public abstract void capNhatPhanTramSanPham();
     public abstract void xuatThongTinSpThongKe();
+    public abstract void xuatThongTinSpCoTongGia();
+    public abstract void xuatThongTinSpThongKeDm(String tongSoLuong, String tongGiaBd, String tongGiaVon);
 
     @Override
     public String toString() {
@@ -211,6 +228,20 @@ public abstract class SanPham implements IRandomId {
                 loaiSp + ";" +
                 khuyenMai + ";" +
                 gia;
+    }
+
+    public String toStringCoTongGia() {
+        double tongGia = Double.parseDouble(soLuong)*Double.parseDouble(gia);
+        String tongGiaString =  String.format("%.2f", tongGia);
+        return  maSp + ";" +
+                tenSp + ";" +
+                soLuong + ";" +
+                giaBanDau + ";" +
+                mauSac + ";" +
+                loaiSp + ";" +
+                khuyenMai + ";" +
+                gia + ";" +
+                tongGiaString;
     }
 
     public String toStringGiaVon() {

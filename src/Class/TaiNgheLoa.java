@@ -18,6 +18,14 @@ public class TaiNgheLoa extends SanPham {
         super(maSp, tenSp, soLuong, giaBanDau, giaVon, loaiSp);
     }
 
+    public TaiNgheLoa(String maSp, String tenSp, String soLuong, String giaBanDau, String mauSac, String loaiSp, String khuyenMai, String gia) {
+        super(maSp, tenSp, soLuong, giaBanDau, mauSac, loaiSp, khuyenMai, gia);
+    }
+
+    public TaiNgheLoa(String loaiSp) {
+        super(loaiSp);
+    }
+
     //    Các phương thức
 
     //    Nhập chỉ nhập được tên, số lượng, giá ban đầu, mô tả, màu sắc, % khuyến mãi, dung lượng mới (không nhập được giá vốn hạn chế sử dụng)
@@ -222,8 +230,44 @@ public class TaiNgheLoa extends SanPham {
     }
 
     @Override
+    public void xuatThongTinSpCoTongGia() {
+        double tongGia = Double.parseDouble(getSoLuong())*Double.parseDouble(getGia());
+        String tongGiaString =  String.format("%.2f", tongGia);
+        int[] columnWidths = {10, 20, 10, 10, 10, 15, 12, 20, 20};
+        String[] values = {
+                getMaSp(),getTenSp(),getSoLuong(),getGiaBanDau(),
+                getMauSac(),getLoaiSp(),getKhuyenMai(),getGia(), tongGiaString
+        };
+
+        StaticMethod.printMultiLineRow(values, columnWidths);
+        StaticMethod.printSeparator(columnWidths);
+    }
+
+    @Override
+    public void xuatThongTinSpThongKeDm(String tongSoLuong, String tongGiaBd, String tongGiaVon) {
+        String loiNhuan = "";
+
+        double giaDoubleLn= Double.parseDouble(tongGiaBd) - Double.parseDouble(tongGiaVon);
+        loiNhuan =  String.format("%.2f", giaDoubleLn);
+
+        int[] columnWidths = {30, 30, 30, 30, 30};
+        String[] values = {
+                getLoaiSp(),
+                tongSoLuong, tongGiaBd, tongGiaVon, loiNhuan
+        };
+
+        StaticMethod.printMultiLineRow(values, columnWidths);
+        StaticMethod.printSeparator(columnWidths);
+    }
+
+    @Override
     public String toString() {
         return super.toString();
+    }
+
+    @Override
+    public String toStringCoTongGia() {
+        return super.toStringCoTongGia();
     }
 
     @Override

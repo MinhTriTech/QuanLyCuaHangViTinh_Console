@@ -101,6 +101,15 @@ public class StaticMethod {
         printSeparator(columnWidths);
     }
 
+    public static void xuatHeaderCtHdCoTongGia() {
+        int[] columnWidths = {10, 20, 10, 10, 10, 15, 12, 20, 20};
+        String[] headers = {"Ma SP", "Ten SP", "So luong", "Gia", "Mau sac", "Loai SP", "Khuyen mai", "Gia sau khuyen mai", "Tong gia"};
+
+        printSeparator(columnWidths);
+        printRow(headers, columnWidths);
+        printSeparator(columnWidths);
+    }
+
     public static void xuatHeaderSpCoStt() {
         int[] columnWidths = {10, 10, 20, 10, 10, 30, 10, 15, 12, 20, 40};
         String[] headers ={"STT","Ma SP", "Ten SP", "So luong", "Gia", "Mo ta", "Mau sac", "Loai SP", "Khuyen mai", "Gia sau khuyen mai", "Dung luong"};
@@ -403,6 +412,15 @@ public class StaticMethod {
         printSeparator(columnWidths);
     }
 
+    public static void xuatHeaderDmCoSttThongKe() {
+        int[] columnWidths = {30, 30, 30, 30, 30};
+        String[] headers ={"Loai SP", "Tong so luong", "Tong gia ban dau", "Tong gia von", "Tong loi nhuan"};
+
+        printSeparator(columnWidths);
+        printRow(headers, columnWidths);
+        printSeparator(columnWidths);
+    }
+
     public static void thongKeTheoSoBan_theoThang_theoSp() {
         String thangSoSanh, namSoSanh;
 
@@ -474,24 +492,149 @@ public class StaticMethod {
 
             for(int i=1; (st = br.readLine()) != null ; i++) {
                 String s[] = st.split(";");
-                if(s[6].equals("LAPTOP")) {
+                if(s[5].equals("LAPTOP")) {
                     Laptop sp = new Laptop(s[0],s[1],s[2],s[3],StaticMethod.layTienVonSp(s[0]),s[6]);
-                    if(s[10].equals(maHd)) {
+                    if(s[9].equals(maHd)) {
                         sp.xuatThongTinSpThongKe();
                     }
                 }
-                if(s[6].equals("PHUKIEN")) {
+                if(s[5].equals("PHUKIEN")) {
                     PhuKien sp = new PhuKien(s[0],s[1],s[2],s[3],StaticMethod.layTienVonSp(s[0]),s[6]);
-                    if(s[10].equals(maHd)) {
+                    if(s[9].equals(maHd)) {
                         sp.xuatThongTinSpThongKe();
                     }
                 }
-                if(s[6].equals("TAINGHELOA")) {
+                if(s[5].equals("TAINGHELOA")) {
                     TaiNgheLoa sp = new TaiNgheLoa(s[0],s[1],s[2],s[3],StaticMethod.layTienVonSp(s[0]),s[6]);
-                    if(s[10].equals(maHd)) {
+                    if(s[9].equals(maHd)) {
                         sp.xuatThongTinSpThongKe();
                     }
                 }
+            }
+
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void thongKeTheoSoBan_theoThang_theoDm() {
+        String thangSoSanh, namSoSanh;
+
+        do {
+            System.out.print("--Nhap thang thong ke(Nhan Enter de lay thang hien tai): ");
+            thangSoSanh = sc.nextLine();
+            if (thangSoSanh.isEmpty()) {
+                break;
+            }
+        }
+        while(!checkThangHopLe(thangSoSanh));
+        if (thangSoSanh.isEmpty()) {
+            LocalDate today = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM");
+            thangSoSanh = today.format(formatter);
+        }
+
+        do {
+            System.out.print("--Nhap nam thong ke(Nhan Enter de lay nam hien tai): ");
+            namSoSanh = sc.nextLine();
+            if (namSoSanh.isEmpty()) {
+                break;
+            }
+        }
+        while(!checkNamHopLe(namSoSanh));
+        if (namSoSanh.isEmpty()) {
+            LocalDate today = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy");
+            namSoSanh = today.format(formatter);
+        }
+
+        String st;
+        boolean check = false;
+        xuatHeaderDmCoSttThongKe();
+
+        ThongKeData thongKeData = new ThongKeData();
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_HD));
+
+            String thongTin = thangSoSanh + "-" + namSoSanh;
+            String lastMaHd = "";
+
+            for(int i=1; (st = br.readLine()) != null ; i++) {
+                String s[] = st.split(";");
+                if(s[7].equals("Hoat dong")) {
+                    HoaDon hd = new HoaDon(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7]);
+                    if(hd.getNgayRaHd().toLowerCase().contains(thongTin)) {
+                        check = true;
+                        lastMaHd = hd.getMaHd();
+
+                        thongKeTheoSoBan_theoThang_theoDm_xuatTt(hd.getMaHd(), false,
+                                thongKeData);
+                    }
+                }
+            }
+
+            thongKeTheoSoBan_theoThang_theoDm_xuatTt(lastMaHd, true,
+                    thongKeData);
+
+            br.close();
+
+            if(check == false) {
+                System.out.println("+--------------KHONG CO HOA DON TUONG UNG-----------------+");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void thongKeTheoSoBan_theoThang_theoDm_xuatTt(String maHd, boolean check,
+                                                                ThongKeData thongKeData) {
+        try {
+            String st, tongSlLaptop, tongGiaBdLaptop, tongGiaVonLaptop, tongSlPhukien, tongGiaBdPhukien, tongGiaVonPhukien,tongSlTainghe, tongGiaBdTainghe, tongGiaVonTainghe;
+
+            BufferedReader br = new BufferedReader(new FileReader(StaticMethod.FILE_NAME_SPDX));
+
+            if(!check) {
+                for(int i=1; (st = br.readLine()) != null ; i++) {
+                    String s[] = st.split(";");
+                    if(s[5].equals("LAPTOP") && s[9].equals(maHd)) {
+                        thongKeData.tongSlLaptop += Double.parseDouble(s[2]);
+                        thongKeData.tongGiaBdLaptop += Double.parseDouble(s[8]);
+                        thongKeData.tongGiaVonLaptop += Double.parseDouble(StaticMethod.layTienVonSp(s[0]))*Double.parseDouble(s[2]);
+                    }
+                    if(s[5].equals("PHUKIEN") && s[9].equals(maHd)) {
+                        thongKeData.tongSlPhukien += Double.parseDouble(s[2]);
+                        thongKeData.tongGiaBdPhukien += Double.parseDouble(s[8]);
+                        thongKeData.tongGiaVonPhukien += Double.parseDouble(StaticMethod.layTienVonSp(s[0]))*Double.parseDouble(s[2]);
+                    }
+                    if(s[5].equals("TAINGHELOA") && s[9].equals(maHd)) {
+                        thongKeData.tongSlTainghe += Double.parseDouble(s[2]);
+                        thongKeData.tongGiaBdTainghe += Double.parseDouble(s[8]);
+                        thongKeData.tongGiaVonTainghe += Double.parseDouble(StaticMethod.layTienVonSp(s[0]))*Double.parseDouble(s[2]);
+                    }
+                }
+            } else {
+                tongSlLaptop = String.format("%.2f", thongKeData.tongSlLaptop);
+                tongGiaBdLaptop = String.format("%.2f", thongKeData.tongGiaBdLaptop);
+                tongGiaVonLaptop = String.format("%.2f", thongKeData.tongGiaVonLaptop);
+
+                tongSlPhukien = String.format("%.2f", thongKeData.tongSlPhukien);
+                tongGiaBdPhukien = String.format("%.2f", thongKeData.tongGiaBdPhukien);
+                tongGiaVonPhukien = String.format("%.2f", thongKeData.tongGiaVonPhukien);
+
+                tongSlTainghe = String.format("%.2f", thongKeData.tongSlTainghe);
+                tongGiaBdTainghe = String.format("%.2f", thongKeData.tongGiaBdTainghe);
+                tongGiaVonTainghe = String.format("%.2f", thongKeData.tongGiaVonTainghe);
+
+                Laptop laptop = new Laptop("LAPTOP");
+                PhuKien phuKien = new PhuKien("PHUKIEN");
+                TaiNgheLoa taiNgheLoa = new TaiNgheLoa("TAINGHELOA");
+
+                laptop.xuatThongTinSpThongKeDm(tongSlLaptop, tongGiaBdLaptop, tongGiaVonLaptop);
+                phuKien.xuatThongTinSpThongKeDm(tongSlPhukien, tongGiaBdPhukien, tongGiaVonPhukien);
+                taiNgheLoa.xuatThongTinSpThongKeDm(tongSlTainghe, tongGiaBdTainghe, tongGiaVonTainghe);
             }
 
             br.close();
