@@ -19,6 +19,11 @@
 - **Quản lý tài khoản**: Thêm, sửa, xóa tài khoản.
 - **Đăng xuất**.
 
+## Sơ đồ Class
+Dưới đây là sơ đồ class minh họa cấu trúc của ứng dụng:
+
+- **File chỉnh sửa được**: [class_diagram.drawio](class_diagram.drawio)
+
 ## Hướng dẫn chạy ứng dụng
 ### 1. Clone Repository
 Trước tiên, bạn cần clone repository về máy:
