@@ -66,6 +66,7 @@ cd your-repo
 3. **Bổ sung bộ lọc thời gian** trong các danh sách có thuộc tính thời gian.
 4. **Thống kê** chỉ tập trung vào doanh số bán hàng theo tháng và khoảng thời gian để tối ưu thời gian phát triển.
 5. **Không hỗ trợ xuất sản phẩm**, chỉ tập trung vào phiếu xuất khi khách hàng mua hàng.
+6. **Giao diện console đơn giản**, cần cải thiện trải nghiệm người dùng hoặc hướng tới giao diện đồ họa trong tương lai.
 
 ## Liên hệ
 - Nếu bạn có bất kỳ câu hỏi hoặc góp ý nào, vui lòng liên hệ qua email: **hoangminhtri.ngo@gmail.com**.
