@@ -1,7 +1,7 @@
 # Ứng dụng Quản lý Bán hàng Laptop - Console
 
 ## Giới thiệu
-Đây là một ứng dụng quản lý bán hàng laptop chạy trên console, hỗ trợ khách hàng mua sắm và quản lý hóa đơn, đồng thời cung cấp các chức năng quản lý sản phẩm, tài khoản, khuyến mãi và thống kê dành cho quản trị viên.
+Đây là một ứng dụng quản lý bán hàng laptop chạy trên console, hỗ trợ khách hàng mua sắm và quản lý hóa đơn, đồng thời cung cấp các chức năng quản lý sản phẩm, tài khoản, khuyến mãi và thống kê dành cho quản trị viên. Dữ liệu được lưu trữ bằng file TXT để đảm bảo tính đơn giản và dễ sử dụng mà không cần cơ sở dữ liệu phức tạp.
 
 ## Chức năng chính
 ### 1. Khách hàng
@@ -67,10 +67,10 @@ cd your-repo
 4. **Thống kê** chỉ tập trung vào doanh số bán hàng theo tháng và khoảng thời gian để tối ưu thời gian phát triển.
 5. **Không hỗ trợ xuất sản phẩm**, chỉ tập trung vào phiếu xuất khi khách hàng mua hàng.
 6. **Giao diện console đơn giản**, cần cải thiện trải nghiệm người dùng hoặc hướng tới giao diện đồ họa trong tương lai.
+7. **Lưu trữ dữ liệu bằng file TXT**, cần xem xét chuyển sang sử dụng cơ sở dữ liệu quan hệ hoặc NoSQL để tăng hiệu suất và tính linh hoạt.
 
 ## Liên hệ
 - Nếu bạn có bất kỳ câu hỏi hoặc góp ý nào, vui lòng liên hệ qua email: **hoangminhtri.ngo@gmail.com**.
 
 ---
 Cảm ơn bạn đã sử dụng ứng dụng này! 🚀
-
